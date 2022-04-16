@@ -1,0 +1,37 @@
+@extends('index')
+
+@section('title', 'Inicio')
+
+@section('content')
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
+        <h1 class="mb-4 pb-0">Explorando las<br><span>Raíces de una Sanación</span> Verdadera</h1>
+        <p class="mb-4 pb-0">2 - 6 Mayo de 2022, Gran ciclo de conferencias. ¡Cinco días para encontrar lo mejor de tí!</p>
+        <a href="https://www.youtube.com/watch?v=XU3SlbNAZIo" class="glightbox play-btn mb-4"></a>
+        <a href="/register" class="about-btn scrollto">¡Registrate Ahora!</a>
+    </div>
+</section>
+<!-- End Hero Section -->
+<!-- ======= About Section ======= -->
+<section id="about">
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Un Algo Para Ti</h2>
+                <p>Es momento de ampliar conceptos, y darle claridad a temas que hemos comprado como verdad absoluta. Salud Vs. enfermedad, mitos y realidades
+                    Bienestar integral Vs. desarmonía, una opción de vida.</p>
+            </div>
+            <div class="col-lg-3">
+                <h3>Donde</h3>
+                <p>Eventos Virtuales, Desde la comodidad de tu casa o oficina.</p>
+            </div>
+            <div class="col-lg-3">
+                <h3>Cuando</h3>
+                <p>¡Valida tu agenda te esperamos!<br>2-5 Mayo 2022</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End About Section -->
+@endsection

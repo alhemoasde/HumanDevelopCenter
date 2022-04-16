@@ -14,7 +14,10 @@ class CreateContactsTable extends Migration
     public function up()
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->id();
+            $table->id()->comment('Identificador unico del registro.');
+            $table->string('email', 100)->comment('Correo electronico de contacto');
+            $table->string('subject', 100)->comment('Asunto del mensaje.');
+            $table->string('message', 2000)->comment('Texto del mensaje recibido.');
             $table->timestamps();
         });
     }
