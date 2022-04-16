@@ -1,5 +1,4 @@
 @component('mail::message')
-# Introduction
 
 <table style="width: 100%;">
     <tbody>

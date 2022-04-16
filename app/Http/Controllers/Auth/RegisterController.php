@@ -75,6 +75,5 @@ class RegisterController extends Controller
             'profile' => 'Cliente',
         ]);
 
-
     }
 }
