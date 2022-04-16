@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContactsTable extends Migration
+class CreateSubscribersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('subscribers', function (Blueprint $table) {
             $table->id()->comment('Identificador unico del registro.');
-            $table->string('email', 100)->comment('Correo electronico de contacto');
-            $table->string('subject', 100)->comment('Asunto del mensaje.');
-            $table->string('message', 2000)->comment('Texto del mensaje recibido.');
+            $table->string('email', 100)->unique()->comment('Correo electronico del suscriptor.');
             $table->timestamps()->comment('Marcas de tiempo de creación y edición.');
         });
     }
@@ -29,6 +27,6 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('subscribers');
     }
 }

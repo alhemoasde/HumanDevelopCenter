@@ -1,4 +1,5 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app') -->
+@extends('index')
 
 @section('content')
 <div class="container">
@@ -14,7 +15,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Usted ha ingresado satisfactoriamente!') }}
                 </div>
             </div>
         </div>

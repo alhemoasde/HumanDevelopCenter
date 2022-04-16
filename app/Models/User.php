@@ -18,9 +18,20 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'idIdenty',
         'name',
         'email',
         'password',
+        'telephone',
+        'profile',
+        'web',
+        'accountTwitter',
+        'accountFacabook',
+        'accountInstagram',
+        'accountLinkedin',
+        'famousPhrase',
+        'biografhy',
+        'photography',
     ];
 
     /**
@@ -41,4 +52,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Obtener las actividades de un Ponente.
+     */
+    public function listActivityBySpeaker()
+    {
+        return $this->hasMany('App\Models\EventActivitys', 'id', 'speaker');
+    }
 }

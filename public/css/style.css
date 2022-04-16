@@ -126,7 +126,9 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  height: 90px;
+  height: 70px;
+  background: rgba(6, 12, 34, 0.98);
+  opacity: 0.8;
   position: fixed;
   left: 0;
   top: 0;
@@ -1417,4 +1419,77 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   font-size: 13px;
   color: #ddd;
+}
+
+
+/*--------------------------------------------------------------
+# Login Section
+--------------------------------------------------------------*/
+#login {
+  padding: 60px;
+  background: url(../img/venue-info-bg.jpg) center center no-repeat;
+  opacity: 0.8;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+#login .card-header{
+  background: #16192b;
+  color: #fff;
+}
+
+#login:before {
+  content: "";
+  background: rgba(6, 12, 34, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+@media (min-width: 1024px) {
+  #login {
+    background-attachment: fixed;
+  }
+}
+
+#login .section-header h2, #login p {
+  color: #fff;
+}
+
+#login input {
+  border: 4;
+  padding: 9px 20px;
+  border-radius: 15px;
+  font-size: 14px;
+}
+
+@media (min-width: 767px) {
+  #login input {
+    min-width: auto;
+  }
+}
+
+#login button {
+  border: 0;
+  padding: 9px 25px;
+  cursor: pointer;
+  background: #f82249;
+  color: #fff;
+  transition: all 0.3s ease;
+  outline: none;
+  font-size: 14px;
+  border-radius: 50px;
+}
+
+#login button:hover {
+  background: #e0072f;
+}
+
+@media (max-width: 460px) {
+  #login button {
+    margin-top: 10px;
+  }
 }
