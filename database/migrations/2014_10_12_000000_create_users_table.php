@@ -15,7 +15,6 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id()->comment('Identificador unico del registro.');
-            $table->string('idIdenty', 25)->unique()->comment('Número de identificación del usuario. Aplica principalmente para cliente.');
             $table->string('name', 100)->comment('Nombres y apellidos del usuario.');
             $table->string('email')->unique()->comment('Correo electronico del usuario.');
             $table->string('password')->comment('Contraseña asignada por el usuario.');
