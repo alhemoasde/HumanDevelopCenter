@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->string('path', 100)->nullable()->comment('Url de acceso al archivo en el servidor. Productos Digitales');
             $table->string('image', 100)->nullable()->comment('URL de acceso a imagen de portada del producto.');
             $table->boolean('activo')->comment('Estado del Producto 0= inactivo 1 = Activo');
-            $table->timestamps()->comment('Marcas de tiempo de creación y edición.');
+            $table->timestamps();
         });
     }
 

@@ -16,7 +16,7 @@ class CreateSubscribersTable extends Migration
         Schema::create('subscribers', function (Blueprint $table) {
             $table->id()->comment('Identificador unico del registro.');
             $table->string('email', 100)->unique()->comment('Correo electronico del suscriptor.');
-            $table->timestamps()->comment('Marcas de tiempo de creación y edición.');
+            $table->timestamps();
         });
     }
 

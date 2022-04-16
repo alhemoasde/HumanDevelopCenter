@@ -23,7 +23,7 @@ class CreateEventsTable extends Migration
             $table->time('hourFinish', $precision = 0)->comment('Hora de finalización del Evento.');
             $table->string('status', 50)->comment('Estatus del Evento.');
             $table->boolean('activo')->comment('Estado del Evento 0= inactivo 1 = Activo');
-            $table->timestamps()->comment('Marcas de tiempo de creación y edición.');
+            $table->timestamps();
         });
     }
 

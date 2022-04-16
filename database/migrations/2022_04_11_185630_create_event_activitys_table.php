@@ -22,7 +22,7 @@ class CreateEventActivitysTable extends Migration
             $table->time('noursFinish', $precision = 0)->comment('Hora de finalización de la actividad.');
             $table->string('title', 100)->comment('Titulo descriptivo de la actividad.');
             $table->string('descripion', 255)->comment('Descripción de la actividad.');
-            $table->timestamps()->comment('Marcas de tiempo de creación y edición.');
+            $table->timestamps();
         });
     }
 

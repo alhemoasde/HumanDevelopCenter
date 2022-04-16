@@ -18,7 +18,7 @@ class CreateContactsTable extends Migration
             $table->string('email', 100)->comment('Correo electronico de contacto');
             $table->string('subject', 100)->comment('Asunto del mensaje.');
             $table->string('message', 2000)->comment('Texto del mensaje recibido.');
-            $table->timestamps()->comment('Marcas de tiempo de creación y edición.');
+            $table->timestamps();
         });
     }
 

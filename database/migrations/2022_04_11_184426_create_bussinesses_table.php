@@ -28,7 +28,7 @@ class CreateBussinessesTable extends Migration
             $table->string('accountLinkedin', 50)->nullable()->comment('Información de usuario en Linkedin.');
             $table->string('motto', 100)->nullable()->comment('Lema corporativo que identifica el negocio.');
             $table->string('photography', 100)->nullable()->comment('Url de acceso a la imagen del logo del negocio.');
-            $table->timestamps()->comment('Marcas de tiempo de creación y edición.');
+            $table->timestamps();
         });
     }
 

@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('famousPhrase', 255)->nullable()->comment('Frase celébre del usuario conferencista.');
             $table->string('biografhy', 500)->nullable()->comment('Biografía del usuario conferencista.');
             $table->string('photography', 100)->nullable()->comment('Url de acceso a la fotografia del usuario.');
-            $table->timestamps()->comment('Marcas de tiempo de creación y edición.');
+            $table->timestamps();
             $table->rememberToken()->comment('Identificador para recordar contraseña.');
             $table->timestamp('email_verified_at')->nullable()->comment('Marca de tiempo de cuando fue verificado el email.');
 
