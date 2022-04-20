@@ -5,6 +5,8 @@ namespace App\Policies;
 use App\Models\Contacts;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class ContactsPolicy
 {
@@ -30,7 +32,10 @@ class ContactsPolicy
      */
     public function view(User $user, Contacts $contacts)
     {
-        //
+        if ($user->profile === 'Admin'){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -41,7 +46,7 @@ class ContactsPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +58,7 @@ class ContactsPolicy
      */
     public function update(User $user, Contacts $contacts)
     {
-        //
+        return false;
     }
 
     /**
@@ -65,7 +70,7 @@ class ContactsPolicy
      */
     public function delete(User $user, Contacts $contacts)
     {
-        //
+        return false;
     }
 
     /**
@@ -77,7 +82,7 @@ class ContactsPolicy
      */
     public function restore(User $user, Contacts $contacts)
     {
-        //
+        return false;
     }
 
     /**
@@ -89,6 +94,6 @@ class ContactsPolicy
      */
     public function forceDelete(User $user, Contacts $contacts)
     {
-        //
+        return false;
     }
 }

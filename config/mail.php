@@ -42,7 +42,6 @@ return [
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
-            'auth_mode' => env('MAIL_AUTH_MODE'),
             'stream' => [
                 'ssl' => [
                    'allow_self_signed' => true,

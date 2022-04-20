@@ -71,7 +71,7 @@
             <li><a href="#">Drop Down 4</a></li>
           </ul>
         </li> -->
-          <li><a class="nav-link scrollto" href="#contact">Contactanos</a></li>
+          <li><a class="nav-link scrollto" href="/contact/create">Contactanos</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -204,7 +204,7 @@
   <script src="{{asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
   <script src="{{asset('/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-  <script src="{{asset('/assets/vendor/php-email-form/validate.js')}}"></script>
+  <!-- <script src="{{asset('/assets/vendor/php-email-form/validate.js')}}"></script> -->
 
   <!-- Template Main JS File -->
   <script src="{{asset('/js/main.js')}}"></script>
