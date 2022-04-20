@@ -22,4 +22,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('contact', App\Http\Controllers\ContactsController::class);
+Route::resource('contacts', App\Http\Controllers\ContactsController::class)->except(['edit','update','destroy']);

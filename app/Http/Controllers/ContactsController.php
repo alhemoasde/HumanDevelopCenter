@@ -15,10 +15,8 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        $data = Contacts::latest()->paginate(5);
-
-        return view('contact.index', compact('data'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $contacts = Contacts::all($columns=['id','name','email','subject', 'message','created_at']);
+        return view('contacts.index', compact('contacts'));
     }
 
     /**
@@ -28,7 +26,7 @@ class ContactsController extends Controller
      */
     public function create()
     {
-        return view('contact.create');
+        return view('contacts.create');
     }
 
     /**
@@ -47,18 +45,19 @@ class ContactsController extends Controller
         $validated = $request->safe()->except(['name', 'email', 'subject', 'message']);
         
         Contacts::create($request->all());
+
         return back()->with('status', 'Su mensaje ha sido enviado satisfactoriamente, pronto nos pondremos en contacto.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Contacts  $contacts
+     * @param  \App\Models\Contacts  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Contacts $contacts)
+    public function show(Contacts $contact)
     {
-        return view('contact.show', compact('contacts'));
+        return view('contacts.show', compact('contact'));
     }
 
     /**
