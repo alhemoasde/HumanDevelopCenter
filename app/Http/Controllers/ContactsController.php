@@ -15,7 +15,10 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        //
+        $data = Contacts::latest()->paginate(5);
+
+        return view('contact.index', compact('data'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -25,7 +28,7 @@ class ContactsController extends Controller
      */
     public function create()
     {
-        //
+        return view('contact.create');
     }
 
     /**
@@ -36,7 +39,15 @@ class ContactsController extends Controller
      */
     public function store(StoreContactsRequest $request)
     {
-        //
+        // Retrieve the validated input data...
+        $validated = $request->validated();
+
+        // Retrieve a portion of the validated input data...
+        $validated = $request->safe()->only(['name', 'email', 'subject', 'message']);
+        $validated = $request->safe()->except(['name', 'email', 'subject', 'message']);
+        
+        Contacts::create($request->all());
+        return back()->with('status', 'Su mensaje ha sido enviado satisfactoriamente, pronto nos pondremos en contacto.');
     }
 
     /**
@@ -47,7 +58,7 @@ class ContactsController extends Controller
      */
     public function show(Contacts $contacts)
     {
-        //
+        return view('contact.show', compact('contacts'));
     }
 
     /**
@@ -58,7 +69,7 @@ class ContactsController extends Controller
      */
     public function edit(Contacts $contacts)
     {
-        //
+        //No aplica actualización.
     }
 
     /**
@@ -70,7 +81,7 @@ class ContactsController extends Controller
      */
     public function update(UpdateContactsRequest $request, Contacts $contacts)
     {
-        //
+        //No aplica actualización.
     }
 
     /**
@@ -81,6 +92,6 @@ class ContactsController extends Controller
      */
     public function destroy(Contacts $contacts)
     {
-        //
+        //No aplica eliminación.
     }
 }

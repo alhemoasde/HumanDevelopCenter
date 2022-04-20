@@ -2,7 +2,10 @@
 @extends('index')
 
 @section('content')
-<div class="container">
+<!-- ======= Dashboard Cliente Section ======= -->
+<section id="login">
+    <br>
+    <br>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -15,7 +18,7 @@
                         </div>
                     @endif
 
-                    {{ __('Usted ha ingresado satisfactoriamente!') }}
+                    {{ __('Estamos trabajando para ofrecerte el mejor contenido.!') }}
                 </div>
             </div>
         </div>
