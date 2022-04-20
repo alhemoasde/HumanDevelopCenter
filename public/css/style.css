@@ -1493,3 +1493,43 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 10px;
   }
 }
+
+/*--------------------------------------------------------------
+# Video Intro
+--------------------------------------------------------------*/
+
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+  position: sticky;
+  right: 0;
+  bottom: 0;
+  min-width: 70%;
+  min-height: 55%;
+  border-radius: 50px;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+  position: fixed;
+  bottom: 1px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 44%;
+  padding: 1px;
+}
+
+/* Style the button used to pause/play the video */
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #e0072f;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
