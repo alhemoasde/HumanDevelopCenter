@@ -106,12 +106,13 @@
   <!-- End Header -->
   <main id="main">
     @yield('content')
+    @guest
     <!-- ======= Subscribe Section ======= -->
     <section id="subscribe">
       <div class="container" data-aos="zoom-in">
         <div class="section-header">
           <h2>Boletín de Noticias</h2>
-          <p>Suscribete ahora y recibe notificación de nuestros eventos.</p>
+          <p>Suscríbete ahora y recibe notificación de nuestros eventos.</p>
         </div>
         <form method="POST" action="#">
           <div class="row justify-content-center">
@@ -124,6 +125,7 @@
       </div>
     </section>
     <!-- End Subscribe Section -->
+    @endguest
   </main>
   <!-- End #main -->
 
