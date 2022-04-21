@@ -21,10 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('telephone', 20)->nullable()->comment('Número teléfonico del usuario.');
             $table->string('profile', 50)->comment('Perfil asignado en el sistema.');
             $table->string('web', 50)->nullable()->comment('Nombre del sitio web del usuario, aplica solo conferencistas.');
-            $table->string('accountTwitter', 50)->nullable()->comment('Información de usuario en Twitter.');
-            $table->string('accountFacabook', 50)->nullable()->comment('Información de usuario en Facebook.');
-            $table->string('accountInstagram', 50)->nullable()->comment('Información de usuario en Instagram.');
-            $table->string('accountLinkedin', 50)->nullable()->comment('Información de usuario en Linkedin.');
+            $table->string('accountTwitter', 100)->nullable()->comment('Información de usuario en Twitter.');
+            $table->string('accountFacabook', 100)->nullable()->comment('Información de usuario en Facebook.');
+            $table->string('accountInstagram', 100)->nullable()->comment('Información de usuario en Instagram.');
+            $table->string('accountLinkedin', 100)->nullable()->comment('Información de usuario en Linkedin.');
             $table->string('famousPhrase', 255)->nullable()->comment('Frase celébre del usuario conferencista.');
             $table->string('biografhy', 500)->nullable()->comment('Biografía del usuario conferencista.');
             $table->string('photography', 100)->nullable()->comment('Url de acceso a la fotografia del usuario.');

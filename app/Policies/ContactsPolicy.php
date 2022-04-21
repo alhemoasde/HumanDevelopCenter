@@ -20,7 +20,10 @@ class ContactsPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        if ($user->profile === 'Admin'){
+            return true;
+        }
+        return false;
     }
 
     /**

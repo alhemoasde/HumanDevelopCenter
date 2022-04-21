@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bussiness;
 use App\Http\Requests\StoreBussinessRequest;
 use App\Http\Requests\UpdateBussinessRequest;
+use Illuminate\Support\Facades\Storage;
 
 class BussinessController extends Controller
 {
@@ -15,7 +16,9 @@ class BussinessController extends Controller
      */
     public function index()
     {
-        //
+        $bussiness = Bussiness::all()->first();
+        $urlLogo = Storage::url($bussiness->logo);
+        return view('bussiness.index', compact(['bussiness','urlLogo']));
     }
 
     /**
@@ -25,7 +28,7 @@ class BussinessController extends Controller
      */
     public function create()
     {
-        //
+        return view('bussiness.create');
     }
 
     /**
@@ -36,7 +39,14 @@ class BussinessController extends Controller
      */
     public function store(StoreBussinessRequest $request)
     {
-        //
+        $busine = Bussiness::create($request->all());
+
+        if($request->file('logo')){
+            $busine ->logo =$request->file('logo')->store('logo','public');
+            $busine->save();
+        }
+
+        return redirect()->route('bussiness.index')->with('status', 'Datos enviados satisfactoriamente.');
     }
 
     /**
@@ -47,7 +57,7 @@ class BussinessController extends Controller
      */
     public function show(Bussiness $bussiness)
     {
-        //
+        //No aplica.
     }
 
     /**
@@ -58,7 +68,8 @@ class BussinessController extends Controller
      */
     public function edit(Bussiness $bussiness)
     {
-        //
+        $urlLogo = Storage::url($bussiness->logo);
+        return view('bussiness.edit', compact(['bussiness','urlLogo']));
     }
 
     /**
@@ -70,7 +81,21 @@ class BussinessController extends Controller
      */
     public function update(UpdateBussinessRequest $request, Bussiness $bussiness)
     {
-        //
+        
+        if($bussiness->logo != ''){
+            Storage::disk('public')->delete($bussiness->logo);
+            $bussiness->logo ='';
+            $bussiness->update();
+        }
+
+        $bussiness->update($request->all());
+
+        if ($request->file('logo')) {
+            $bussiness->logo = $request->file('logo')->store('logo', 'public');
+            $bussiness->update();
+        }
+
+        return redirect()->route('bussiness.index')->with('status', 'Datos actualizados satisfactoriamente.');
     }
 
     /**

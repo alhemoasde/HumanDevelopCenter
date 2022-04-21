@@ -19,7 +19,7 @@ class Bussiness extends Model
         'address',
         'email',
         'telephone',
-        'about',
+        'aboutUs',
         'mission',
         'vision',
         'accountTwitter',
