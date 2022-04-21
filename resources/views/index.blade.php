@@ -48,6 +48,34 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="/">Inicio</a></li>
+          @auth
+          <li class="dropdown"><a href="#"><span>Administración</span> <i class="bi bi-chevron-right"></i></a>
+
+            <ul>
+              <li>
+                <a href="{{ route('bussiness.index') }}">Datos Negocio</a>
+              </li>
+              <li>
+                <a href="{{ route('contacts.index') }}">Usuarios</a>
+              </li>
+              <li>
+                <a href="{{ route('contacts.index') }}">Eventos</a>
+              </li>
+              <li>
+                <a href="{{ route('contacts.index') }}">Productos</a>
+              </li>
+              <li>
+                <a href="{{ route('contacts.index') }}">Suscriptores</a>
+              </li>
+              <li>
+                <a href="{{ route('contacts.index') }}">Mensajes</a>
+              </li>
+              <li>
+                <a href="{{ route('contacts.index') }}">Ventas</a>
+              </li>
+            </ul>
+          </li>
+          @endauth
           <!-- <li><a class="nav-link scrollto" href="#about">About</a></li> -->
           <li><a class="nav-link scrollto" href="#speakers">Conferencistas</a></li>
           <li><a class="nav-link scrollto" href="#schedule">Evento</a></li>
@@ -76,7 +104,8 @@
             @auth
             <ul>
               <li>
-                <a href="{{ route('contacts.index') }}">Ver Mensajes</a></li>
+                <a href="{{ route('contacts.index') }}">Ver Mensajes</a>
+              </li>
             </ul>
             @endauth
           </li>

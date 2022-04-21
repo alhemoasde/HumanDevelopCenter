@@ -23,3 +23,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('contacts', App\Http\Controllers\ContactsController::class)->except(['edit','update','destroy']);
+
+Route::resource('bussiness', App\Http\Controllers\BussinessController::class)->middleware('auth')->except('destroy','show');
