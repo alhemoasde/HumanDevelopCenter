@@ -5,6 +5,7 @@
 @section('content')
 <!-- ======= Hero Section ======= -->
 <section id="hero">
+    
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
         <h1 class="mb-4 pb-0">Explorando las<br><span>Raíces de una Sanación</span> Verdadera</h1>
         <p class="mb-4 pb-0">2 - 6 Mayo de 2022, Gran ciclo de conferencias. ¡Cinco días para encontrar lo mejor de tí!</p>
@@ -13,16 +14,13 @@
         <!-- <video autoplay loop id="myVideo">
             <source src="/videos/0.InvitacionCamila.mp4" type="video/mp4">
         </video> -->
-        <video type="video/mp4" id="myVideo" src="/videos/0.InvitacionCamila.mp4" autoplay preload="auto" poster="/img/video1IntroCamilaMontes.png">
+        <video id="myVideo" width="800" preload="auto" poster="/img/video1IntroCamilaMontes.png" controls loop autoplay>
+            <source src="/videos/0.InvitacionCamila.mp4" type="video/mp4">
             Tu navegador no admite el elemento <code>video</code>.
         </video>
         <!-- Optional: some overlay text to describe the video -->
         <div class="content">
-            <!-- <h2>Invitación</h2>
-            <p>Es ahora mismo que debes iniciar tu proceso de sanación.</p> -->
-        <!-- Use a button to pause/play the video with JavaScript -->
-         <button id="myBtn" class="about-btn scrollto" onclick="myFunction()">Pause</button>
-         <a href="/register" class="about-btn scrollto">¡Registrate Ahora!</a>
+            <a href="/register" class="about-btn scrollto">¡Registrate Ahora!</a>
         </div>
     </div>
     <br>
@@ -53,7 +51,7 @@
     </div>
 </section>
 <!-- End About Section -->
-<script>
+{{-- <script>
 var video = document.getElementById("myVideo");
 var btn = document.getElementById("myBtn");
 
@@ -66,6 +64,6 @@ function myFunction() {
     btn.innerHTML = "Ver";
   }
 }
-</script>
+</script> --}}
 @endsection
 
