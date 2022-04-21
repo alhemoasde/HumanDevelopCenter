@@ -24,7 +24,7 @@
                 <div class="card-header bg-transparent border-success">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="{{ url($urlLogo) }}" alt="Logo" class="img-fluid">
+                            <img src="{{ asset('/storage/'.$bussiness->logo) }}" alt="Logo" class="img-fluid">
                         </div>
                         <div class="col-md-8">
                             <h1 class="display-6"><strong>{{ strtoupper($bussiness->name) }}</strong></h1>
