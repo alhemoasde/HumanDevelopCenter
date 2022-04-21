@@ -17,8 +17,7 @@ class BussinessController extends Controller
     public function index()
     {
         $bussiness = Bussiness::all()->first();
-        $urlLogo = Storage::url('app/public/'.$bussiness->logo);
-        
+        $urlLogo = Storage::url($bussiness->logo);
         return view('bussiness.index', compact(['bussiness','urlLogo']));
     }
 
@@ -69,7 +68,7 @@ class BussinessController extends Controller
      */
     public function edit(Bussiness $bussiness)
     {
-        $urlLogo = Storage::url('app/public/'.$bussiness->logo);
+        $urlLogo = Storage::url($bussiness->logo);
         return view('bussiness.edit', compact(['bussiness','urlLogo']));
     }
 
@@ -82,14 +81,18 @@ class BussinessController extends Controller
      */
     public function update(UpdateBussinessRequest $request, Bussiness $bussiness)
     {
+        
+        if($bussiness->logo != ''){
+            Storage::disk('public')->delete($bussiness->logo);
+            $bussiness->logo ='';
+            $bussiness->update();
+        }
+
         $bussiness->update($request->all());
-        $busine = $bussiness;
-       
 
         if ($request->file('logo')) {
-            Storage::disk('public')->delete($bussiness->logo);
             $bussiness->logo = $request->file('logo')->store('logo', 'public');
-            $bussiness->save();
+            $bussiness->update();
         }
 
         return redirect()->route('bussiness.index')->with('status', 'Datos actualizados satisfactoriamente.');
