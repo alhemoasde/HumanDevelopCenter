@@ -27,3 +27,4 @@ Route::resource('contacts', App\Http\Controllers\ContactsController::class)->exc
 
 Route::resource('bussiness', App\Http\Controllers\BussinessController::class)->middleware('auth')->except('destroy','show');
 
+Route::resource('events', App\Http\Controllers\EventsController::class)->middleware('auth');

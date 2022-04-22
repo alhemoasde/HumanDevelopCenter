@@ -15,7 +15,8 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //
+        $events = Events::all();
+        return view('events.index', compact('events'));
     }
 
     /**
@@ -25,7 +26,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        //
+        return view('events.create');
     }
 
     /**
@@ -36,41 +37,48 @@ class EventsController extends Controller
      */
     public function store(StoreEventsRequest $request)
     {
-        //
+        Events::create( $request->all()
+        +[
+            'active' => true,
+        ]
+        );        
+            
+        return redirect()->route('events.index')->with('status', 'Evento creado satisfactoriamente.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Events  $events
+     * @param  \App\Models\Events  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Events $events)
+    public function show(Events $event)
     {
-        //
+        return view('events.show', compact('event'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Events  $events
+     * @param  \App\Models\Events  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Events $events)
+    public function edit(Events $event)
     {
-        //
+        return view('events.edit', compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateEventsRequest  $request
-     * @param  \App\Models\Events  $events
+     * @param  \App\Models\Events  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEventsRequest $request, Events $events)
+    public function update(UpdateEventsRequest $request, Events $event)
     {
-        //
+        $event->update($request->all());
+        return redirect()->route('events.index')->with('status', 'Evento actualizado satisfactoriamente.');
     }
 
     /**
@@ -79,8 +87,11 @@ class EventsController extends Controller
      * @param  \App\Models\Events  $events
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Events $events)
+    public function destroy(Events $event)
     {
-        //
+        $event->delete();
+    
+        return redirect()->route('events.index')
+                        ->with('status','Evento eliminado satisfactoriamente.');
     }
 }

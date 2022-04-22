@@ -19,15 +19,15 @@
                     </div>
                 @endif
             </div>
-
+            @foreach ( $bussiness as $bussines)
             <div class="card col-md-12 border-success shadow-lg mb-3 ">
                 <div class="card-header bg-transparent border-success">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="{{ asset('/storage/'.$bussiness->logo) }}" alt="Logo" class="img-fluid">
+                            <img src="{{ asset('/public/storage/'.$bussines->logo) }}" alt="Logo" class="img-fluid">
                         </div>
                         <div class="col-md-8">
-                            <h1 class="display-6"><strong>{{ strtoupper($bussiness->name) }}</strong></h1>
+                            <h1 class="display-6"><strong>{{ strtoupper($bussines->name) }}</strong></h1>
                         </div>
                     </div>
                 </div>
@@ -37,66 +37,68 @@
                         <li class="list-group-item">
                             <label for="name"><strong>Nombre:</strong></label>
                             <p id="name">
-                            <h1 class="display-6">{{ $bussiness->name }}</h1>
+                            <h1 class="display-6">{{ $bussines->name }}</h1>
                             </p>
                         </li>
                         <li class="list-group-item">
                             <label for="motto"><strong>Lema Corporativo:</strong></label>
-                            <p id="motto"><h2>{{ $bussiness->motto }}</h2></p>
+                            <p id="motto"><h2>{{ $bussines->motto }}</h2></p>
                         </li>
                         <li class="list-group-item">
                             <label for="address"><strong>Dirección:</strong></label>
-                            <p id="address">{{ $bussiness->address }}</p>
+                            <p id="address">{{ $bussines->address }}</p>
                         </li>
                         <li class="list-group-item">
                             <label for="telephone"><strong>Telefóno:</strong></label>
-                            <p id="telephone">{{ $bussiness->telephone }}</p>
+                            <p id="telephone">{{ $bussines->telephone }}</p>
                         </li>
                         <li class="list-group-item">
                             <label for="email"><strong>Email:</strong></label>
-                            <p id="email"><a href="mailto:{{ $bussiness->email }}">{{ $bussiness->email }}</a></p>
+                            <p id="email"><a href="mailto:{{ $bussines->email }}">{{ $bussines->email }}</a></p>
                         </li>
                         <li class="list-group-item" style="text-align: justify;">
                             <label for="aboutUs"><strong>Sobre Nosotros:</strong></label>
-                            <p id="aboutUs">{{ $bussiness->aboutUs }}</p>
+                            <p id="aboutUs">{{ $bussines->aboutUs }}</p>
                         </li>
                         <li class="list-group-item" style="text-align: justify;">
                             <label for="mission"><strong>Misión:</strong></label>
-                            <p id="mission">{{ $bussiness->mission }}</p>
+                            <p id="mission">{{ $bussines->mission }}</p>
                         </li>
                         <li class="list-group-item" style="text-align: justify;">
                             <label for="vision"><strong>Visión:</strong></label>
-                            <p id="vision">{{ $bussiness->vision }}</p>
+                            <p id="vision">{{ $bussines->vision }}</p>
                         </li>
                         <li class="list-group-item">
                             <label for="accountTwitter"><strong>Usuario Twitter:</strong></label>
-                            <p id="accountTwitter"><a href="{{$bussiness->accountTwitter}}" target="_blank">{{ $bussiness->accountTwitter }}</a></p>
+                            <p id="accountTwitter"><a href="{{$bussines->accountTwitter}}" target="_blank">{{ $bussines->accountTwitter }}</a></p>
                         </li>
                         <li class="list-group-item">
                             <label for="accountFacabook"><strong>Fanpage Facabook:</strong></label>
-                            <p id="accountFacabook"> <a href="{{$bussiness->accountFacabook}}" target="_blank"> {{ $bussiness->accountFacabook }}</a></p>
+                            <p id="accountFacabook"> <a href="{{$bussines->accountFacabook}}" target="_blank"> {{ $bussines->accountFacabook }}</a></p>
                         </li>
                         <li class="list-group-item">
                             <label for="accountInstagram"><strong>Usuario Instagram:</strong></label>
-                            <p id="accountInstagram"><a href="{{$bussiness->accountInstagram}}" target="_blank"> {{ $bussiness->accountInstagram }}</a></p>
+                            <p id="accountInstagram"><a href="{{$bussines->accountInstagram}}" target="_blank"> {{ $bussines->accountInstagram }}</a></p>
                         </li>
                         <li class="list-group-item">
                             <label for="accountLinkedin"><strong>Usuario Linkedin:</strong></label>
-                            <p id="accountLinkedin"><a href="{{$bussiness->accountLinkedin}}" target="_blank"> {{ $bussiness->accountLinkedin }}</a></p>
+                            <p id="accountLinkedin"><a href="{{$bussines->accountLinkedin}}" target="_blank"> {{ $bussines->accountLinkedin }}</a></p>
                         </li>
                     </ul>
                     </p>
                 </div>
                 <div class="card-footer bg-transparent border-success text-center">
                     <div class="btn-group">
-                        <a class="btn btn-outline-success" href="{{ route('bussiness.edit', $bussiness) }}">
+                        <a class="btn btn-outline-success" href="{{ route('bussiness.edit', $bussines) }}">
                             <i class="bi bi-vector-pen"> Editar Información Compañia</i>
                         </a>
                     </div>
                 </div>
             </div>
+            @endforeach
+            
 
-            @if (!$bussiness)
+            @if (sizeof($bussiness)<1)
                 <a class="btn btn-outline-success" href="{{ route('bussiness.create') }}">
                     <i class="bi bi-building"> Inicializar Datos de la Compañia</i>
                 </a>
