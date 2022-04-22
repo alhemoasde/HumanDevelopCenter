@@ -59,7 +59,7 @@
                 <a href="{{ route('contacts.index') }}">Usuarios</a>
               </li>
               <li>
-                <a href="{{ route('contacts.index') }}">Eventos</a>
+                <a href="{{ route('events.index') }}">Eventos</a>
               </li>
               <li>
                 <a href="{{ route('contacts.index') }}">Productos</a>
