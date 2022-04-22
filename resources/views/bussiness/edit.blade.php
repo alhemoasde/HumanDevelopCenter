@@ -267,7 +267,7 @@
                                             class="col-md-4 col-form-label text-md-end">{{ __('Logo Antiguo Corporativo:') }}</label>
 
                                         <div class="col-md-6">
-                                            <img src="{{ asset('/storage/'.$bussiness->logo) }}" alt="Logo Anterior" class="img-fluid">
+                                            <img src="{{ asset('/public/storage/'.$bussiness->logo) }}" alt="Logo Anterior" class="img-fluid">
                                         </div>
                                     </div>
                                 @endif

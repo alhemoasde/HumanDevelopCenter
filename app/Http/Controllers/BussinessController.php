@@ -16,9 +16,8 @@ class BussinessController extends Controller
      */
     public function index()
     {
-        $bussiness = Bussiness::all()->first();
-        $urlLogo = Storage::url($bussiness->logo);
-        return view('bussiness.index', compact(['bussiness','urlLogo']));
+        $bussiness = Bussiness::all();
+        return view('bussiness.index', compact('bussiness'));
     }
 
     /**
@@ -68,8 +67,7 @@ class BussinessController extends Controller
      */
     public function edit(Bussiness $bussiness)
     {
-        $urlLogo = Storage::url($bussiness->logo);
-        return view('bussiness.edit', compact(['bussiness','urlLogo']));
+        return view('bussiness.edit', compact('bussiness'));
     }
 
     /**
