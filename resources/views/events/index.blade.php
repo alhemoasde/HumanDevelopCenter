@@ -77,6 +77,7 @@
             </table>
             <br>
             <br>
+        </div>    
     </section>
     <!-- End Event-list Section -->
 @endsection
