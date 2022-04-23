@@ -19,7 +19,7 @@
 
                         <div class="card-body">
                             <div class="pull-right">
-                                <a class="btn btn-primary" href="{{ route('bussiness.index') }}"> Volver</a>
+                                <a class="btn btn-outline-success" href="{{ route('bussiness.index') }}"> <i class="bi bi-arrow-left-square-fill"> Volver</i></a>
                             </div>
                             <div class="my-3">
                                 @if (session('status'))

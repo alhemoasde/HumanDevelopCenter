@@ -52,7 +52,7 @@
                             <td class="text-center"></td>
                             <td>{{ date('d/m/Y', strtotime($product->created_at)) }}</td>
                             <td>{{ $product->type }}</td>
-                            <td>{{ $product->event }}</td>
+                            <td>{{ $product->enventByProduct($product->id)->title }}</td>
                             {{-- <td>{{ $product->codec }}</td> --}}
                             <td>{{ $product->name }}</td>
                             <td style="text-align: justify;">{{ \Str::limit($product->description, 70) }}</td>

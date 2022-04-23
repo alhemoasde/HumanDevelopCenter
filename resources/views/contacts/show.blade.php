@@ -13,7 +13,7 @@
                     <h1> Mensajes de {{ $contact->name }} </h1>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('contacts.index') }}"> Volver</a>
+                    <a class="btn btn-outline-success" href="{{ route('contacts.index') }}"><i class="bi bi-arrow-left-square-fill"> Volver</i></a>
                 </div>
             </div>
         </div>
