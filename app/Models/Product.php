@@ -15,15 +15,17 @@ class Product extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'event',
         'codec',
         'name',
         'description',
-        'price',
+        'priceBuy',
+        'priceSell',
         'paymentLink',
-        'path',
-        'tipo',
+        'type',
+        'video',
+        'poster',
         'status',
-        
     ];
 
     /**

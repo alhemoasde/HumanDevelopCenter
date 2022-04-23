@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Events;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -15,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -25,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $events = Events::all();
+        return view('products.create', compact('events'));
     }
 
     /**
@@ -36,7 +40,19 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $product = Product::create($request->all());
+
+        if($request->file('video')){
+            $product ->video = $request->file('video')->store('videos','public');
+            $product->save();
+        }
+
+        if($request->file('poster')){
+            $product ->poster = $request->file('poster')->store('posters','public');
+            $product->save();
+        }
+
+        return redirect()->route('products.index')->with('status', 'Datos enviados satisfactoriamente.');
     }
 
     /**
@@ -47,7 +63,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -58,7 +74,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $events = Events::all();
+        return view('products.edit', compact(['product','events']));
     }
 
     /**
@@ -70,7 +87,31 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        if($product->video != ''){
+            Storage::disk('public')->delete($product->video);
+            $product->video ='';
+            $product->update();
+        }
+
+        if($product->poster != ''){
+            Storage::disk('public')->delete($product->poster);
+            $product->poster ='';
+            $product->update();
+        }
+        
+        $product->update($request->all());
+
+        if($request->file('video')){
+            $product ->video = $request->file('video')->store('videos','public');
+            $product->save();
+        }
+
+        if($request->file('poster')){
+            $product ->poster = $request->file('poster')->store('posters','public');
+            $product->save();
+        }
+
+        return redirect()->route('products.index')->with('status', 'Producto actualizado satisfactoriamente.');
     }
 
     /**
@@ -81,6 +122,21 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if($product->video != ''){
+            Storage::disk('public')->delete($product->video);
+            $product->video ='';
+            $product->update();
+        }
+
+        if($product->poster != ''){
+            Storage::disk('public')->delete($product->poster);
+            $product->poster ='';
+            $product->update();
+        }
+
+        $product->delete();
+    
+        return redirect()->route('products.index')
+                        ->with('status','Producto eliminado satisfactoriamente.');
     }
 }
