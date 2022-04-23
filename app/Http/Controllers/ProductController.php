@@ -28,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $events = Events::all();
+        $events = Events::where('status','=','Programado')
+        ->orWhere('status','=','En Desarrollo')->get();
         return view('products.create', compact('events'));
     }
 
@@ -74,7 +75,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $events = Events::all();
+        $events = Events::where('status','=','Programado')
+        ->orWhere('status','=','En Desarrollo')->get();
         return view('products.edit', compact(['product','events']));
     }
 

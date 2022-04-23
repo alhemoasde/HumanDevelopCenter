@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h1> {{ $product->name }} </h1>
+                    <h1 class="display-4" style="text-align: center"> :: {{ $product->name }} :: </h1>
                 </div>
                 <a class="btn btn-outline-success" href="{{ route('products.index') }}">
                     <i class="bi bi-arrow-left-square-fill"> Volver</i>
@@ -66,7 +66,8 @@
                     </div>
                     <li class="list-group-item col-sm-6">
                         <label for="event"><strong>Evento:</strong></label>
-                        <p id="event">{{ $product->event }}</p>
+                        <p id="event">:: {{ $product->enventByProduct($product->id)->title }} ::
+                            Fecha Inicio: {{ date('d/m/Y', strtotime($product->enventByProduct($product->id)->dateStart)) }}</p>
                     </li>
                     <li class="list-group-item col-sm-6">
                         <label for="type"><strong>Tipo:</strong></label>

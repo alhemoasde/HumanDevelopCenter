@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Product;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,6 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 class Events extends Model
 {
     use HasFactory;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'events';
 
     /**
      * The attributes that are mass assignable.
@@ -38,6 +46,13 @@ class Events extends Model
      */
     public function listProductByEvent()
     {
-        return $this->hasMany('App\Models\Product', 'id', 'event');
+        return $this->hasMany(Product::class, 'event', 'id');
+    }
+
+    /**
+     * Obtener los productos de un Evento.
+     */
+    public function productsByEvent($event){
+        return $products = Product::where('event','=',$event->id)->get();
     }
 }

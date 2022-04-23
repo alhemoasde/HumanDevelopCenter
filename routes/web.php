@@ -1,5 +1,19 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Web Autor Data
+|--------------------------------------------------------------------------
+|
+| @autor: Alejandro Herrera Montilla.
+| @data: marzo de 2022.
+| contact: 
+| @telephone: (057) 320 829 2559
+| @email: alhemoasde@gmail.com
+| @linkedin: https://www.linkedin.com/in/alhemoasde/
+|
+*/
+
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
