@@ -53,10 +53,9 @@
                     @auth
                         <li class="dropdown"><a href="#"><span>Administración</span> <i
                                     class="bi bi-chevron-right"></i></a>
-
                             <ul>
                                 <li>
-                                    <a href="{{ route('bussiness.index') }}">Datos Negocio</a>
+                                    <a class="nav-link scrollto" href="{{ route('bussiness.index') }}">Datos Negocio</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('contacts.index') }}">Usuarios</a>
@@ -79,30 +78,9 @@
                             </ul>
                         </li>
                     @endauth
-                    <!-- <li><a class="nav-link scrollto" href="#about">About</a></li> -->
+                    {{-- <li><a class="nav-link scrollto" href="{{ route('shop') }}">Tienda</a></li> --}}
                     <li><a class="nav-link scrollto" href="#speakers">Conferencistas</a></li>
                     <li><a class="nav-link scrollto" href="#schedule">Evento</a></li>
-                    <!-- <li><a class="nav-link scrollto" href="#venue">Venue</a></li> -->
-                    <!-- <li><a class="nav-link scrollto" href="#hotels">Hotels</a></li> -->
-                    <!-- <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li> -->
-                    <!-- <li><a class="nav-link scrollto" href="#supporters">Sponsors</a></li> -->
-                    <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="#">Drop Down 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#">Deep Drop Down 1</a></li>
-                <li><a href="#">Deep Drop Down 2</a></li>
-                <li><a href="#">Deep Drop Down 3</a></li>
-                <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Drop Down 2</a></li>
-            <li><a href="#">Drop Down 3</a></li>
-            <li><a href="#">Drop Down 4</a></li>
-          </ul>
-        </li> -->
                     <li class="dropdown"><a href="{{ route('contacts.create') }}"><span>Contáctanos</span> <i
                                 class="bi bi-chevron-right"></i></a>
                         @auth
@@ -113,6 +91,23 @@
                             </ul>
                         @endauth
                     </li>
+
+                    <li class="dropdown">
+                        <a href="/cart" class="btn btn-secondary" role="button">
+                            <span><i class="bi bi-cart4"></i></span>
+                            <span class="position-absolute top-0 translate-middle badge bg-danger">
+                                {{ \Cart::getTotalQuantity() }}
+                            </span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <ul>
+                            <li class="list-group list-group-flush">
+                                @include('partials.cart-drop')
+                            </li>
+                        </ul>
+                    </li>
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -132,7 +127,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                      document.getElementById('logout-form').submit();">
+                                          document.getElementById('logout-form').submit();">
                             {{ __('Salir') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -141,7 +136,7 @@
                     </div>
                 </li>
             @endguest
-            <a class="buy-tickets scrollto" href="#buy-tickets">Comprar</a>
+            <a class="buy-tickets scrollto" href="{{ route('shop') }}">Comprar</a>
         </div>
     </header>
 
@@ -176,56 +171,60 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                   
-                        <div class="col-lg-3 col-md-6 footer-info">
-                            <img src="/img/logo.png" alt="TheEvenet">
-                            <p>Centro de Desarrollo Humano Colombia <br> <strong>¿Por qué existe la enfermedad?</strong> <br> Es momento de ampliar conceptos y darle claridad a temas que hemos comprado como verdad Salud Vs. enfermedad, mitos y realidades absoluta. Bienestar integral Vs. desarmonía, una opción de vida.</p>
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <img src="/img/logo.png" alt="TheEvenet">
+                        <p>Centro de Desarrollo Humano Colombia <br> <strong>¿Por qué existe la enfermedad?</strong>
+                            <br> Es momento de ampliar conceptos y darle claridad a temas que hemos comprado como verdad
+                            Salud Vs. enfermedad, mitos y realidades absoluta. Bienestar integral Vs. desarmonía, una
+                            opción de vida.
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Enlaces Útiles</h4>
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <a href="/">Inicio</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="/">Quienes Somos</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="/">Servicios</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="/">Condiciones de servicio</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="/">Política de privacidad</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="/">Preguntas Frecuentes</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Enlaces Frecuentes</h4>
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('register') }}">Registro</a>
+                            </li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('login') }}">Ingresar</a> </li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('shop') }}">Tienda</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a
+                                    href="{{ route('contacts.create') }}">Contacto</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="/">Galería</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="/">Blog</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+
+                        <h4>Datos de Contacto</h4>
+                        <p>
+                            Carrera 77B #72A-42, CP. 111051 <br>
+                            Bogotá D.C. - Colombia <br>
+                            <strong>Teléfono:</strong> (+57) 320 888 76 62 <br>
+                            <strong>Correo:</strong> info@laboratorioparaelconocimiento.com <br>
+                        </p>
+
+                        <div class="social-links">
+                            <a href="/" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="/" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="/" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="/" class="linkedin"><i class="bi bi-linkedin"></i></a>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 footer-links">
-                            <h4>Enlaces Útiles</h4>
-                            <ul>
-                                <li><i class="bi bi-chevron-right"></i> <a href="/">Inicio</a></li>
-                                <li><i class="bi bi-chevron-right"></i> <a href="/">Quienes Somos</a></li>
-                                <li><i class="bi bi-chevron-right"></i> <a href="/">Servicios</a></li>
-                                <li><i class="bi bi-chevron-right"></i> <a href="/">Condiciones de servicio</a></li>
-                                <li><i class="bi bi-chevron-right"></i> <a href="/">Política de privacidad</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 footer-links">
-                            <h4>Enlaces Frecuentes</h4>
-                            <ul>
-                                <li><i class="bi bi-chevron-right"></i> <a
-                                        href="{{ route('contacts.create') }}">Contacto</a></li>
-                                <li><i class="bi bi-chevron-right"></i> <a
-                                        href="{{ route('register') }}">Registro</a></li>
-                                <li><i class="bi bi-chevron-right"></i> <a href="{{ route('login') }}">Ingresar</a>
-                                </li>
-                                <li><i class="bi bi-chevron-right"></i> <a href="/">Galería</a></li>
-                                <li><i class="bi bi-chevron-right"></i> <a href="/">Preguntas Frecuentes</a></li>
-                                <li><i class="bi bi-chevron-right"></i> <a href="/">Blog</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 footer-contact">
-
-                            <h4>Datos de Contacto</h4>
-                            <p>
-                              Carrera 77B #72A-42, CP. 111051 <br>
-                              Bogotá D.C. - Colombia <br>
-                                <strong>Teléfono:</strong> (+57) 320 888 76 62 <br>
-                                <strong>Correo:</strong> info@laboratorioparaelconocimiento.com <br>
-                            </p>
-
-                            <div class="social-links">
-                                <a href="/" class="twitter"><i class="bi bi-twitter"></i></a>
-                                <a href="/" class="facebook"><i class="bi bi-facebook"></i></a>
-                                <a href="/" class="instagram"><i class="bi bi-instagram"></i></a>
-                                <a href="/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                            </div>
-
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -251,7 +250,6 @@
     <script src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ asset('/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <!-- <script src="{{ asset('/assets/vendor/php-email-form/validate.js') }}"></script> -->
 
     <!-- Template Main JS File -->
     <script src="{{ asset('/js/main.js') }}"></script>

@@ -268,7 +268,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.3s;
 }
 .navbar .dropdown ul li {
-  min-width: 200px;
+  min-width: auto;
 }
 .navbar .dropdown ul a {
   padding: 10px 20px;
@@ -1533,3 +1533,7 @@ h1, h2, h3, h4, h5, h6 {
   .col-12 {width: 100%;}
 }
 
+.scroll {
+  max-height: 250px;
+  overflow-y: auto;
+}
