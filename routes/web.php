@@ -44,3 +44,14 @@ Route::resource('bussiness', App\Http\Controllers\BussinessController::class)->m
 Route::resource('events', App\Http\Controllers\EventsController::class)->middleware('auth');
 
 Route::resource('products', App\Http\Controllers\ProductController::class)->middleware('auth');
+
+/**
+ * Rutas Cart
+ */
+Route::get('/shop', [App\Http\Controllers\CartController::class, 'shop'])->name('shop');
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart'])->name('cart.index');
+Route::post('/add', [App\Http\Controllers\CartController::class, 'add'])->name('cart.store');
+Route::post('/update', [App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
+Route::post('/remove', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
+Route::post('/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('cart.clear');
+Route::get('checkout', [App\Http\Controllers\CartController::class, 'checkout']);
