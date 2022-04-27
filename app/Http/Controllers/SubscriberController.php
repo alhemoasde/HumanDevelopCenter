@@ -7,7 +7,6 @@ use App\Mail\WelcomUserNew;
 use App\Http\Requests\StoreSubscriberRequest;
 use App\Http\Requests\UpdateSubscriberRequest;
 use Illuminate\Support\Facades\Mail;
-use PhpParser\Node\Expr\FuncCall;
 
 class SubscriberController extends Controller
 {

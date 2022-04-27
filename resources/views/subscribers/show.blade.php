@@ -20,11 +20,11 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <label for="name"><strong>Nombre:</strong></label>
-                        <p id="name"><h1 class="display-6">{{ $contact->name }}</h1></p>
+                        <p id="name"><h1 class="display-6">{{ $subscriber->name }}</h1></p>
                     </li>
                     <li class="list-group-item">
                         <label for="email"><strong>Email:</strong></label>
-                        <p id="email"><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></p>
+                        <p id="email"><a href="mailto:{{ $subscriber->email }}">{{ $subscriber->email }}</a></p>
                     </li>
                     <td><h1 class="display-4">{{ $subscriber->status == 1 ? 'Activo' : 'Inactivo'}}</h1></td>
                 </ul>

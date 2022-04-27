@@ -12,7 +12,7 @@
     <br>
     <div class="row text-center">
         <div class="col-md-2">
-            <img src="/img/arbol.png" width="125%" height="auto" alt="Arbol de raices.">
+            <img src="{{ asset('/img/arbol.png')}}" width="125%" height="auto" alt="Arbol de raices.">
         </div>
         <div class="col-md-10">
             <h4>Evento Virtual Gratuito</h4>
@@ -25,7 +25,7 @@
     <div class="text-center">
         <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
             <video id="myVideo" width="600" preload="auto" poster="/img/video1IntroCamilaMontes.png" controls loop autoplay>
-                <source src="/video-intro/0.Preeventomilena1.mp4" type="video/mp4">
+                <source src="{{ asset('/video-intro/0.Preeventomilena1.mp4')}}" type="video/mp4">
                 Tu navegador no admite el elemento <code>video</code>.
             </video>
         </div>
@@ -67,6 +67,5 @@
     <p class="text-center">
         Agradecimiento especial a: <strong> LABORATORIO PARA EL CONOCIMIENTO </strong>, por el montaje de este Evento Virtual... <br> Correo electrónico: <a href="mailto:info@laboratorioparaelconocimiento.com">info@laboratorioparaelconocimiento.com</a>
     </p>
-
 
 </div>

@@ -188,11 +188,13 @@
                         <h4>Enlaces Útiles</h4>
                         <ul>
                             <li><i class="bi bi-chevron-right"></i> <a href="/">Inicio</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Quienes Somos</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Servicios</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Condiciones de servicio</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Política de privacidad</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Preguntas Frecuentes</a></li>
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Quienes Somos</a></li> --}}
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Servicios</a></li> --}}
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Condiciones de servicio</a></li> --}}
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Política de privacidad</a></li> --}}
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Preguntas Frecuentes</a></li> --}}
+                            <li><i class="bi bi-chevron-right"></i> <a
+                                href="{{ route('contacts.create') }}">Contacto</a></li>
                         </ul>
                     </div>
 
@@ -203,10 +205,9 @@
                             </li>
                             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('login') }}">Ingresar</a> </li>
                             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('shop') }}">Tienda</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a
-                                    href="{{ route('contacts.create') }}">Contacto</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Galería</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Blog</a></li>
+                            
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Galería</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="/">Blog</a></li> --}}
                         </ul>
                     </div>
 
@@ -214,18 +215,18 @@
 
                         <h4>Datos de Contacto</h4>
                         <p>
-                            Carrera 77B #72A-42, CP. 111051 <br>
+                            {{-- Carrera 77B #72A-42, CP. 111051 <br> --}}
                             Bogotá D.C. - Colombia <br>
-                            <strong>Teléfono:</strong> (+57) 320 888 76 62 <br>
+                            <strong>Teléfono:</strong> (+57) 310 765 75 56 <br>
                             <strong>Correo:</strong> info@laboratorioparaelconocimiento.com <br>
                         </p>
 
-                        <div class="social-links">
+                        {{-- <div class="social-links">
                             <a href="/" class="twitter"><i class="bi bi-twitter"></i></a>
                             <a href="/" class="facebook"><i class="bi bi-facebook"></i></a>
                             <a href="/" class="instagram"><i class="bi bi-instagram"></i></a>
                             <a href="/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>

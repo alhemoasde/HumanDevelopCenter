@@ -67,7 +67,7 @@
                                 </video>
                             </td> --}}
                             <td class="text-center">
-                                <img class="img-fluid img-thumbnail" src="{{ asset('/storage/'.$product->poster)}}" width="50px" height="50px" alt="Portada del Producto">
+                                <img class="img-fluid img-thumbnail" src="{{ asset('/public/storage/'.$product->poster)}}" width="50px" height="50px" alt="Portada del Producto">
                             </td>
                             <td>{{ $product->day }}</td>
                             <td>{{ $product->status == 1 ? 'Activo' : 'Inactivo'}}</td>
