@@ -16,7 +16,7 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id()->comment('Identificador unico del registro.');
             $table->string('title', 100)->comment('Titulo descriptivo del Evento.');
-            $table->string('descripion', 2000)->comment('Texto descriptivo del Evento.');
+            $table->string('description', 2000)->comment('Texto descriptivo del Evento.');
             $table->date('dateStart')->comment('Fecha de inicio del Evento.');
             $table->time('hourStart', $precision = 0)->comment('Hora de inicio del Evento.');
             $table->date('dateFinish')->comment('Fecha de finalización del Evento.');

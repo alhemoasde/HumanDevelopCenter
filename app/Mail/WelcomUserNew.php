@@ -29,6 +29,6 @@ class WelcomUserNew extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.registerNew');
+        return $this->markdown('emails.registerNew')->subject('🥳Información de Bienvenida CDH 🥂');
     }
 }

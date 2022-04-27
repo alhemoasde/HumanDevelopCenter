@@ -11,6 +11,7 @@
 | @telephone: (057) 320 829 2559
 | @email: alhemoasde@gmail.com
 | @linkedin: https://www.linkedin.com/in/alhemoasde/
+| @version: 1.0
 |
 */
 
@@ -37,13 +38,24 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('contacts', App\Http\Controllers\ContactsController::class)->except(['edit','update','destroy']);
+Route::resource('contacts', App\Http\Controllers\ContactsController::class)->except(['create','store','edit','update','destroy'])->middleware('auth');
+Route::get('/contacts-create', [App\Http\Controllers\ContactsController::class, 'create'])->name('contacts.create');
+Route::post('/contacts-store', [App\Http\Controllers\ContactsController::class, 'store'])->name('contacts.store');
 
 Route::resource('bussiness', App\Http\Controllers\BussinessController::class)->middleware('auth')->except('destroy','show');
 
 Route::resource('events', App\Http\Controllers\EventsController::class)->middleware('auth');
 
 Route::resource('products', App\Http\Controllers\ProductController::class)->middleware('auth');
+
+Route::resource('videos', App\Http\Controllers\VideosController::class)->middleware('auth');
+
+Route::resource('subscribers', App\Http\Controllers\SubscriberController::class)->except(['create','store'])->middleware('auth');
+Route::get('/subscriber-create', [App\Http\Controllers\SubscriberController::class, 'create'])->name('subscribers.create');
+Route::get('/subscriber-welcome', [App\Http\Controllers\SubscriberController::class, 'welcome'])->name('subscribers.welcome');
+Route::post('/subscriber-store', [App\Http\Controllers\SubscriberController::class, 'store'])->name('subscribers.store');
+
+
 
 /**
  * Rutas Cart
@@ -54,4 +66,4 @@ Route::post('/add', [App\Http\Controllers\CartController::class, 'add'])->name('
 Route::post('/update', [App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
 Route::post('/remove', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
 Route::post('/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('cart.clear');
-Route::get('checkout', [App\Http\Controllers\CartController::class, 'checkout']);
+/* Route::get('checkout', [App\Http\Controllers\CartController::class, 'checkout']); */

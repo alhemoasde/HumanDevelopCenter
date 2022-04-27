@@ -6,17 +6,17 @@
 @endsection
 
 @section('content')
-    <!-- ======= Event-list Section ======= -->
+    <!-- ======= Subscriber-list Section ======= -->
     <section id="contact-list" class="section-bg">
         <br>
         <br>
         <br>
         <br>
-        <div class="container" data-aos="fade-up">
-            <h1 class="display-6 text-center">::: Bandeja de Eventos :::</h1>
+        <div class="container-fluid" data-aos="fade-up">
+            <h1 class="display-6 text-center">::: Bandeja de Suscriptores :::</h1>
             <div class="btn-group">
-                <a class="btn btn-outline-success" href="{{ route('events.create') }}">
-                    <i class="bi bi-plus-square-fill"> Crear Evento</i>
+                <a class="btn btn-outline-success" href="{{ route('subscribers.create') }}">
+                    <i class="bi bi-plus-square-fill"> Agregar Suscriptor</i>
                 </a>
             </div>
             <div class="my-3">
@@ -27,46 +27,38 @@
                 @endif
             </div>
             <br>
-            <table id="events-list" class="table table-bordered shadow-lg mt-4">
+            <table id="subscriptor-list" class="table table-bordered shadow-lg mt-4">
                 <thead>
                     <tr class="table-dark text-center">
                         <th width="5%">No.</th>
                         <th width="5%">Creado</th>
-                        <th width="20%">Titulo</th>
-                        <th width="35%">Descripción</th>
-                        <th width="5%">Fecha Inicio</th>
-                        <th width="5%">Hora Inicio</th>
-                        <th width="5%">Fecha Fin</th>
-                        <th width="5%">Hora Fin</th>
+                        <th width="35%">Nombre</th>
+                        <th width="40%">Email</th>
                         <th width="5%">Estado</th>
                         <th width="10%">Opción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($events as $event)
+                    @foreach ($subscribers as $subscriber)
                         <tr>
                             <td class="text-center"></td>
-                            <td>{{ date('d/m/Y', strtotime($event->created_at)) }}</td>
-                            <td>{{ $event->title }}</td>
-                            <td style="text-align: justify;">{{ \Str::limit($event->description, 70) }}</td>
-                            <td>{{ date('d/m/Y', strtotime($event->dateStart)) }}</td>
-                            <td>{{ date('H:i A', strtotime($event->hourStart)) }}</td>
-                            <td>{{ date('d/m/Y', strtotime($event->dateFinish)) }}</td>
-                            <td>{{ date('H:i A', strtotime($event->hourFinish)) }}</td>
-                            <td>{{ $event->status }}</td>
+                            <td>{{ date('d/m/Y', strtotime($subscriber->created_at)) }}</td>
+                            <td>{{ $subscriber->name }}</td>
+                            <td>{{ $subscriber->email }}</td>
+                            <td>{{ $subscriber->status == 1 ? 'Activo' : 'Inactivo'}}</td>
 
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a class="btn btn-outline-secondary" href="{{ route('events.show', $event->id) }}">
+                                    <a class="btn btn-outline-secondary" href="{{ route('subscribers.show', $subscriber->id) }}">
                                         <i class="bi bi-eye-fill"></i>
                                     </a>
-                                    <a class="btn btn-outline-success" href="{{ route('events.edit', $event->id) }}">
+                                    <a class="btn btn-outline-success" href="{{ route('subscribers.edit', $subscriber->id) }}">
                                         <i class="bi bi-vector-pen"></i>
                                     </a>
-                                    <form action="{{ route('events.destroy', $event) }}" method="POST">
+                                    <form action="{{ route('subscribers.destroy', $subscriber) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onclick="return confirm('¿Desea eliminar el Evento?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                        <button type="submit" onclick="return confirm('¿Desea eliminar el Suscriptor?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
                                     </form>
                                 </div>
 
@@ -77,9 +69,9 @@
             </table>
             <br>
             <br>
-        </div>    
+        </div>
     </section>
-    <!-- End Event-list Section -->
+    <!-- End Subscriber-list Section -->
 @endsection
 
 @section('js')
@@ -89,14 +81,14 @@
     <script>
         $(document).ready(function() {
             /* inicializando libreria requiere ID tabla */
-            var t = $('#events-list').DataTable({
+            var t = $('#subscriptor-list').DataTable({
                 "order": [
                     /* Ordenamiento predeterminado indice en base cero*/
                     [1, "desc"]
                 ],
                 "columnDefs": [{
                     /* columna no busqueda indice en base cero*/
-                    "targets": [6],
+                    "targets": [5],
                     "searchable": false,
                 }],
                 "buttons": [{

@@ -1,10 +1,10 @@
 @extends('index')
 
-@section('title', 'Evento')
+@section('title', 'Video')
 
 @section('content')
 
-    <!-- ======= Events-create Section ======= -->
+    <!-- ======= Video-edit Section ======= -->
     <section id="login" class="section-bg">
         <br>
         <br>
@@ -15,14 +15,12 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">{{ __('CREANDO UN EVENTO') }}</div>
+                        <div class="card-header">{{ __('EDITAR VIDEO') }}</div>
 
                         <div class="card-body">
-                            <div class="btn-group">
-                                <a class="btn btn-outline-success" href="{{ route('events.index') }}">
-                                    <i class="bi bi-arrow-left-square-fill"> Volver</i>
-                                </a>
-                            </div>
+                            <a class="btn btn-outline-success" href="{{ route('videos.index') }}">
+                                <i class="bi bi-arrow-left-square-fill"> Volver</i>
+                            </a>
                             <br>
                             <div class="my-3">
                                 @if (session('status'))
@@ -40,8 +38,9 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form method="POST" action="{{ route('events.store') }}">
+                            <form method="POST" action="{{ route('videos.update', $video) }}" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
 
                                 <div class="row mb-3">
                                     <label for="title"
@@ -50,7 +49,7 @@
                                     <div class="col-md-6">
                                         <input id="title" type="text"
                                             class="form-control @error('title') is-invalid @enderror" name="title"
-                                            value="{{ old('title') }}" required autocomplete="title" autofocus>
+                                            value="{{ old('title', $video->title) }}" required autocomplete="title" autofocus>
 
                                         @error('title')
                                             <span class="invalid-feedback" role="alert">
@@ -61,13 +60,13 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="descripion"
-                                        class="col-md-4 col-form-label text-md-end">{{ __('Descripción del Evento *:') }}</label>
+                                    <label for="description"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Descripción *:') }}</label>
 
                                     <div class="col-md-6">
                                         <textarea id="description" rows="2" class="form-control @error('description') is-invalid @enderror" name="description"
                                             autocomplete="description" autofocus
-                                            required>{{ old('description') }}</textarea>
+                                            required>{{ old('description', $video->description) }}</textarea>
 
                                         @error('description')
                                             <span class="invalid-feedback" role="alert">
@@ -77,16 +76,28 @@
                                     </div>
                                 </div>
 
+                                
+
+                                @if ($video->url)
+                                    <div class="row mb-3">
+                                        <label for="videoOld"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Video Actual:') }}</label>
+
+                                        <div class="col-md-6">
+                                            <video id="myVideo" src="{{ asset('/storage/'.$video->url) }}" width="250px" height="250px" class="img-fluid" controls></video>
+                                        </div>
+                                    </div>
+                                @endif
+
                                 <div class="row mb-3">
-                                    <label for="dateStart"
-                                        class="col-md-4 col-form-label text-md-end">{{ __('Fecha de Inicio: ') }}</label>
+                                    <label for="url"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Video:') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="dateStart" type="date"
-                                            class="form-control @error('dateStart') is-invalid @enderror" name="dateStart"
-                                            value="{{ old('dateStart') }}" autocomplete="dateStart" autofocus>
+                                        <input id="url" type="file"
+                                            class="form-control @error('url') is-invalid @enderror" name="url">
 
-                                        @error('dateStart')
+                                        @error('url')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -94,56 +105,33 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label for="hourStart"
-                                        class="col-md-4 col-form-label text-md-end">{{ __('Hora de Inicio: ') }}</label>
+                                {{-- @if ($product->poster)
+                                    <div class="row mb-3">
+                                        <label for="posterOld"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Poster Actual:') }}</label>
+
+                                        <div class="col-md-6">
+                                            <img src="{{ asset('/public/storage/'.$product->poster) }}" width="60px" height="60px" alt="poster Anterior" class="img-fluid">
+                                        </div>
+                                    </div>
+                                @endif --}}
+
+                                {{-- <div class="row mb-3">
+                                    <label for="poster"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Poster: *') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="hourStart" type="time"
-                                            class="form-control @error('hourStart') is-invalid @enderror" name="hourStart"
-                                            value="{{ old('hourStart') }}" autocomplete="hourStart" autofocus>
+                                        <input id="poster" type="file"
+                                            class="form-control @error('poster') is-invalid @enderror" name="poster" required>
 
-                                        @error('hourStart')
+                                        @error('poster')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="row mb-3">
-                                    <label for="dateFinish"
-                                        class="col-md-4 col-form-label text-md-end">{{ __('Fecha de Finalización: ') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="dateFinish" type="date" 
-                                            class="form-control @error('dateFinish') is-invalid @enderror" name="dateFinish"
-                                            value="{{ old('dateFinish') }}" autocomplete="dateFinish" autofocus>
-
-                                        @error('dateFinish')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="hourFinish"
-                                        class="col-md-4 col-form-label text-md-end">{{ __('Hora de Finalización: ') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="hourFinish" type="time"
-                                            class="form-control @error('hourFinish') is-invalid @enderror" name="hourFinish"
-                                            value="{{ old('hourFinish') }}" autocomplete="hourFinish" autofocus>
-
-                                        @error('hourFinish')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
 
                                 <div class="row mb-3">
                                     <label for="status"
@@ -151,12 +139,12 @@
 
                                     <div class="col-md-6">
 
-                                        <select id="status" name="status" class="form-select @error('status') is-invalid @enderror" required>
-                                            <option value="Programado" {{ old('status') == 'Programado' ? 'selected' : '' }}>Programado</option>
-                                            <option value="En Desarrollo" {{ old('status') == 'En Desarrollo' ? 'selected' : '' }}>En Desarrollo</option>
-                                            <option value="Finalizado" {{ old('status') == 'Finalizado' ? 'selected' : '' }}>Finalizado</option>
-                                            <option value="Aplazado" {{ old('status') == 'Aplazado' ? 'selected' : '' }}>Aplazado</option>
-                                            <option value="Cancelado" {{ old('status') == 'Cancelado' ? 'selected' : '' }}>Cancelado</option>
+                                        <select id="status" name="status"
+                                            class="form-select @error('status') is-invalid @enderror" required>
+                                            <option value="1"
+                                                {{ old('status') == $video->status ? 'selected' : '' }}>Activo</option>
+                                            <option value="0"
+                                                {{ old('status') == $video->status ? 'selected' : '' }}>Inactivo</option>
                                         </select>
 
                                         @error('status')
@@ -167,10 +155,11 @@
                                     </div>
                                 </div>
 
+
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                            <i class="bi bi-send-check-fill"> {{ __('Guardar Evento') }} </i>
+                                            <i class="bi bi-send-check-fill"> {{ __('Guardar Video') }} </i>
                                         </button>
                                     </div>
                                 </div>
@@ -185,5 +174,5 @@
         <br>
         <br>
     </section>
-    <!-- End Events-create Section -->
+    <!-- End Video-edit Section -->
 @endsection

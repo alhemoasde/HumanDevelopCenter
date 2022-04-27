@@ -43,10 +43,10 @@ class ProductController extends Controller
     {
         $product = Product::create($request->all());
 
-        if($request->file('video')){
+       /*  if($request->file('video')){
             $product ->video = $request->file('video')->store('videos','public');
             $product->save();
-        }
+        } */
 
         if($request->file('poster')){
             $product ->poster = $request->file('poster')->store('posters','public');
@@ -89,11 +89,11 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        if($product->video != ''){
+        /* if($product->video != ''){
             Storage::disk('public')->delete($product->video);
             $product->video ='';
             $product->update();
-        }
+        } */
 
         if($product->poster != ''){
             Storage::disk('public')->delete($product->poster);
@@ -103,10 +103,10 @@ class ProductController extends Controller
         
         $product->update($request->all());
 
-        if($request->file('video')){
+        /* if($request->file('video')){
             $product ->video = $request->file('video')->store('videos','public');
             $product->save();
-        }
+        } */
 
         if($request->file('poster')){
             $product ->poster = $request->file('poster')->store('posters','public');
@@ -124,11 +124,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if($product->video != ''){
+        /* if($product->video != ''){
             Storage::disk('public')->delete($product->video);
             $product->video ='';
             $product->update();
-        }
+        } */
 
         if($product->poster != ''){
             Storage::disk('public')->delete($product->poster);

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-use App\Models\Events;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,7 +22,7 @@ class Product extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'event',
+        'events_id',
         'codec',
         'name',
         'description',
@@ -31,8 +30,9 @@ class Product extends Model
         'priceSell',
         'paymentLink',
         'type',
-        'video',
         'poster',
+        'day',
+        'category',
         'status',
     ];
 
@@ -41,7 +41,7 @@ class Product extends Model
      */
     public function event()
     {
-        return $this->belongsTo(Events::class,'event');
+        return $this->belongsTo(Events::class,'events_id');
     }
 
     /**
@@ -49,5 +49,13 @@ class Product extends Model
      */
     public function enventByProduct($eventId){
         return Events::find($eventId);
+    }
+
+    /**
+     * Obtener todos los videos de un producto digital 1..n
+     */
+    public function videos()
+    {
+        return$this->belongsToMany(Videos::class);
     }
 }

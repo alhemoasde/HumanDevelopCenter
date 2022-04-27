@@ -67,7 +67,10 @@
                                     <a href="{{ route('products.index') }}">Productos</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('contacts.index') }}">Suscriptores</a>
+                                    <a href="{{ route('videos.index') }}">Videos</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('subscribers.index') }}">Suscriptores</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('contacts.index') }}">Mensajes</a>
@@ -145,7 +148,7 @@
         @yield('content')
         @guest
             <!-- ======= Subscribe Section ======= -->
-            <section id="subscribe">
+            {{-- <section id="subscribe">
                 <div class="container" data-aos="zoom-in">
                     <div class="section-header">
                         <h2>Boletín de Noticias</h2>
@@ -160,7 +163,7 @@
                         </div>
                     </form>
                 </div>
-            </section>
+            </section> --}}
             <!-- End Subscribe Section -->
         @endguest
     </main>

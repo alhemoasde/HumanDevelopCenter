@@ -30,10 +30,11 @@ class UpdateProductRequest extends FormRequest
             'priceBuy' => ['nullable','numeric'],
             'priceSell' => ['required', 'numeric', 'min:1'],
             'paymentLink' => ['nullable','string', 'min:5','max:255'],
-            'video' => "mimes:mp4|max:500000",
             'poster' => "image|mimes:jpeg,png|max:3000",
             'type' => ['required','string', 'min:5', 'max:100'],
-            'event'  => ['required', 'exists:Events,id'],
+            'events_id'  => ['required', 'exists:Events,id'],
+            'day' => ['nullable','string', 'min:5', 'max:100'],
+            'category' => ['nullable','string', 'min:5', 'max:100'],
         ];
     }
 }

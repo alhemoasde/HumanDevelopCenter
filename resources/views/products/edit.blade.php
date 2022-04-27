@@ -148,7 +148,7 @@
                                     </div>
                                 </div>
 
-                                @if ($product->video)
+                                {{-- @if ($product->video)
                                     <div class="row mb-3">
                                         <label for="videoOld"
                                             class="col-md-4 col-form-label text-md-end">{{ __('Video Actual:') }}</label>
@@ -157,9 +157,9 @@
                                             <img src="{{ asset('/public/storage/'.$product->video) }}" width="60px" height="60px" class="img-fluid">
                                         </div>
                                     </div>
-                                @endif
+                                @endif --}}
 
-                                <div class="row mb-3">
+                                {{-- <div class="row mb-3">
                                     <label for="video"
                                         class="col-md-4 col-form-label text-md-end">{{ __('Video:') }}</label>
 
@@ -173,7 +173,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 @if ($product->poster)
                                     <div class="row mb-3">
@@ -248,20 +248,88 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="event"
+                                    <label for="day"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Asignar Día: ') }}</label>
+
+                                    <div class="col-md-6">
+
+                                        <select id="day" name="day"
+                                            class="form-select @error('day') is-invalid @enderror">
+                                            <option value=""
+                                                {{ old('day',$product->day) == '' ? 'selected' : '' }}>Seleccione un Día...</option>
+                                            <option value="Dia 1"
+                                                {{ old('day',$product->day) == 'Dia 1' ? 'selected' : '' }}>Día 1</option>
+                                            <option value="Dia 2"
+                                                {{ old('day',$product->day) == 'Dia 2' ? 'selected' : '' }}>Día 2</option>
+                                            <option value="Dia 3"
+                                                {{ old('day',$product->day) == 'Dia 3' ? 'selected' : '' }}>Día 3</option>
+                                            <option value="Dia 4"
+                                                {{ old('day',$product->day) == 'Dia 4' ? 'selected' : '' }}>Día 4</option>
+                                            <option value="Dia 5"
+                                                {{ old('day',$product->day) == 'Dia 5' ? 'selected' : '' }}>Día 5</option>
+                                            <option value="Dia 6"
+                                                {{ old('day',$product->day) == 'Dia 6' ? 'selected' : '' }}>Día 6</option>
+                                            <option value="Dia 7"
+                                                {{ old('day',$product->day) == 'Dia 7' ? 'selected' : '' }}>Día 7</option>
+                                            <option value="Dia 8"
+                                                {{ old('day',$product->day) == 'Dia 8' ? 'selected' : '' }}>Día 8</option>
+                                            <option value="Dia 9"
+                                                {{ old('day',$product->day) == 'Dia 9' ? 'selected' : '' }}>Día 9</option>
+                                            <option value="Dia 10"
+                                                {{ old('day',$product->day) == 'Dia 10' ? 'selected' : '' }}>Día 10</option>
+                                                    
+                                        </select>
+
+                                        @error('day')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="category"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Asignar Categoría: ') }}</label>
+
+                                    <div class="col-md-6">
+
+                                        <select id="category" name="category"
+                                            class="form-select @error('category') is-invalid @enderror">
+                                            <option value=""
+                                                {{ old('category',$product->category) == '' ? 'selected' : '' }}>Seleccione una Categoria...</option>
+                                            <option value="Algo Para Ti"
+                                                {{ old('category',$product->category) == 'Algo Para Ti' ? 'selected' : '' }}>Algo Para Ti</option>
+                                            <option value="Ponencia"
+                                                {{ old('category',$product->category) == 'Ponencia' ? 'selected' : '' }}>Ponencia</option>
+                                            <option value="Historia De Vida"
+                                                {{ old('category',$product->category) == 'Historia De Vida' ? 'selected' : '' }}>Historia De Vida</option>
+                                            
+                                        </select>
+
+                                        @error('category')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="events_id"
                                         class="col-md-4 col-form-label text-md-end">{{ __('Asignar Evento: *') }}</label>
 
                                     <div class="col-md-6">
 
-                                        <select id="event" name="event"
-                                            class="form-select @error('event') is-invalid @enderror" required>
+                                        <select id="events_id" name="events_id"
+                                            class="form-select @error('events_id') is-invalid @enderror" required>
                                             @foreach ($events as $event)
                                                 <option value="{{$event->id}}"
-                                                {{ old('event') == $product->event ? 'selected' : '' }}>{{$event->id}} - {{ date('d/m/Y', strtotime($event->dateStart)) }} -> {{$event->title}}</option>
+                                                {{ old('events_id',$product->events_id) == $event->id ? 'selected' : '' }}>{{$event->id}} - {{ date('d/m/Y', strtotime($event->dateStart)) }} -> {{$event->title}}</option>
                                             @endforeach
                                         </select>
 
-                                        @error('event')
+                                        @error('events_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

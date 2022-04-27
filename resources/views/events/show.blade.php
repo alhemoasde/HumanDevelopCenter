@@ -32,7 +32,7 @@
                     </li>
                     <li class="list-group-item" style="text-align: justify;">
                         <label for="message"><strong>Descripción:</strong></label>
-                        <p id="message">{{ $event->descripion }}</p>
+                        <p id="message">{{ $event->description }}</p>
                     </li>
                     <div class="row">
                         <li class="list-group-item col-sm-6">
@@ -71,14 +71,9 @@
                                     <th width="5%">No.</th>
                                     <th width="5%">Creado</th>
                                     <th width="5%">Tipo</th>
-                                    {{-- <th width="15%">Evento</th> --}}
-                                    {{-- <th >Codigo</th> --}}
                                     <th width="20%">Nombre</th>
                                     <th width="20%">Descripción</th>
-                                    {{-- <th >Precio Compra</th> --}}
                                     <th width="5%">Precio Venta</th>
-                                    {{-- <th >Enlace Pago</th> --}}
-                                    <th width="5%">Video</th>
                                     <th width="5%">Poster</th>
                                     <th width="5%">Estado</th>
                                     <th width="10%">Opción</th>
@@ -90,18 +85,9 @@
                                         <td class="text-center"></td>
                                         <td>{{ date('d/m/Y', strtotime($product->created_at)) }}</td>
                                         <td>{{ $product->type }}</td>
-                                        {{-- <td>{{ $product->enventByProduct($product->id)->title }}</td> --}}
-                                        {{-- <td>{{ $product->codec }}</td> --}}
                                         <td>{{ $product->name }}</td>
                                         <td style="text-align: justify;">{{ \Str::limit($product->description, 70) }}</td>
-                                        {{-- <td>{{ $product->priceBuy }}</td> --}}
                                         <td>{{ $product->priceSell }}</td>
-                                        {{-- <td><a href="{{ $product->paymentLink }}" target="_black">{{ $product->paymentLink }}</a></td> --}}
-                                        <td>
-                                            <video width="40px" height="40px">
-                                                <source src="{{ asset('/public/storage/'.$product->video) }}" type="video/mp4">
-                                            </video>
-                                        </td>
                                         <td>
                                             <img src="{{ asset('/public/storage/'.$product->poster)}}" width="50px" height="50px" alt="Portada del Producto">
                                         </td>

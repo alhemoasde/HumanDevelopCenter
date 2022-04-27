@@ -1,0 +1,126 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Videos;
+use App\Http\Requests\StoreVideosRequest;
+use App\Http\Requests\UpdateVideosRequest;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Product;
+
+class VideosController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $videos = Videos::all();
+        return view('videos.index', compact('videos'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $products = Product::where('status','=','1')->get();
+        return view('videos.create', compact('products'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreVideosRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreVideosRequest $request)
+    {
+        $video = Videos::create($request->all());
+
+        if($request->file('url')){
+            $video ->url = $request->file('url')->store('videos','public');
+            $video->save();
+        }
+
+        /* if($request->file('poster')){
+            $video ->poster = $request->file('poster')->store('posters','public');
+            $video->save();
+        }
+ */
+        return redirect()->route('videos.index')->with('status', 'Datos enviados satisfactoriamente.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Videos  $video
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Videos $video)
+    {
+        return view('videos.show', compact('video'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Video  $video
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Videos $video)
+    {
+        $products = Product::where('status','=','1')->get();
+        return view('videos.edit', compact(['video','products']));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateVideosRequest  $request
+     * @param  \App\Models\Videos  $video
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateVideosRequest $request, Videos $video)
+    {
+        if($video->url != ''){
+            Storage::disk('public')->delete($video->url);
+            $video->url ='';
+            $video->update();
+        }
+
+        $video->update($request->all());
+
+        if($request->file('url')){
+            $video ->url = $request->file('url')->store('videos','public');
+            $video->save();
+        }
+
+        return redirect()->route('videos.index')->with('status', 'Video actualizado satisfactoriamente.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Videos  $video
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Videos $video)
+    {
+        if($video->url != ''){
+            Storage::disk('public')->delete($video->url);
+            $video->url ='';
+            $video->update();
+
+            $video->delete();
+
+            return redirect()->route('videos.index')
+                        ->with('status','Video eliminado satisfactoriamente.');
+
+        }
+    }
+}

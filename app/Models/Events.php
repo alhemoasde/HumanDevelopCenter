@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-use App\Models\Product;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,7 +23,7 @@ class Events extends Model
      */
     protected $fillable = [
         'title',
-        'descripion',
+        'description',
         'dateStart',
         'hourStart',
         'dateFinish',
@@ -44,15 +43,15 @@ class Events extends Model
     /**
      * Obtener los productos de un Evento.
      */
-    public function listProductByEvent()
+    public function products()
     {
-        return $this->hasMany(Product::class, 'event', 'id');
+        return $this->hasMany(Product::class);
     }
 
     /**
      * Obtener los productos de un Evento.
      */
     public function productsByEvent($event){
-        return $products = Product::where('event','=',$event->id)->get();
+        return $products = Product::where('events_id','=',$event->id)->get();
     }
 }

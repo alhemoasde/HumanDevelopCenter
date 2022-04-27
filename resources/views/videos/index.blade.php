@@ -6,17 +6,17 @@
 @endsection
 
 @section('content')
-    <!-- ======= Event-list Section ======= -->
-    <section id="contact-list" class="section-bg">
+    <!-- ======= Videos-list Section ======= -->
+    <section id="videos-list" class="section-bg">
         <br>
         <br>
         <br>
         <br>
-        <div class="container" data-aos="fade-up">
-            <h1 class="display-6 text-center">::: Bandeja de Eventos :::</h1>
+        <div class="container-fluid" data-aos="fade-up">
+            <h1 class="display-6 text-center">::: Bandeja de Videos :::</h1>
             <div class="btn-group">
-                <a class="btn btn-outline-success" href="{{ route('events.create') }}">
-                    <i class="bi bi-plus-square-fill"> Crear Evento</i>
+                <a class="btn btn-outline-success" href="{{ route('videos.create') }}">
+                    <i class="bi bi-plus-square-fill"> Crear Video</i>
                 </a>
             </div>
             <div class="my-3">
@@ -27,46 +27,49 @@
                 @endif
             </div>
             <br>
-            <table id="events-list" class="table table-bordered shadow-lg mt-4">
+            <table id="video-list" class="table table-bordered shadow-lg mt-4">
                 <thead>
                     <tr class="table-dark text-center">
                         <th width="5%">No.</th>
                         <th width="5%">Creado</th>
-                        <th width="20%">Titulo</th>
+                        <th width="30%">Titulo</th>
                         <th width="35%">Descripción</th>
-                        <th width="5%">Fecha Inicio</th>
-                        <th width="5%">Hora Inicio</th>
-                        <th width="5%">Fecha Fin</th>
-                        <th width="5%">Hora Fin</th>
+                        <th width="10%">Url</th>
                         <th width="5%">Estado</th>
                         <th width="10%">Opción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($events as $event)
+                    @foreach ($videos as $video)
                         <tr>
                             <td class="text-center"></td>
-                            <td>{{ date('d/m/Y', strtotime($event->created_at)) }}</td>
-                            <td>{{ $event->title }}</td>
-                            <td style="text-align: justify;">{{ \Str::limit($event->description, 70) }}</td>
-                            <td>{{ date('d/m/Y', strtotime($event->dateStart)) }}</td>
-                            <td>{{ date('H:i A', strtotime($event->hourStart)) }}</td>
-                            <td>{{ date('d/m/Y', strtotime($event->dateFinish)) }}</td>
-                            <td>{{ date('H:i A', strtotime($event->hourFinish)) }}</td>
-                            <td>{{ $event->status }}</td>
+                            <td>{{ date('d/m/Y', strtotime($video->created_at)) }}</td>
+                            
+                            <td>{{ $video->title }}</td>
+                            
+                            <td style="text-align: justify;">{{ \Str::limit($video->description, 70) }}</td>
+                            
+                            <td class="text-center">
+                                <video width="80" height="80" class="img-thumbnail">
+                                    <source src="{{ asset('/storage/'.$video->url) }}" type="video/mp4">
+                                    Tu navegador no admite el elemento <code>video</code>.
+                                </video>
+                            </td>
+                            
+                            <td>{{ $video->status == 1 ? 'Activo' : 'Inactivo'}}</td>
 
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a class="btn btn-outline-secondary" href="{{ route('events.show', $event->id) }}">
+                                    <a class="btn btn-outline-secondary" href="{{ route('videos.show', $video->id) }}">
                                         <i class="bi bi-eye-fill"></i>
                                     </a>
-                                    <a class="btn btn-outline-success" href="{{ route('events.edit', $event->id) }}">
+                                    <a class="btn btn-outline-success" href="{{ route('videos.edit', $video->id) }}">
                                         <i class="bi bi-vector-pen"></i>
                                     </a>
-                                    <form action="{{ route('events.destroy', $event) }}" method="POST">
+                                    <form action="{{ route('videos.destroy', $video) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onclick="return confirm('¿Desea eliminar el Evento?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                        <button type="submit" onclick="return confirm('¿Desea eliminar el Video?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
                                     </form>
                                 </div>
 
@@ -77,9 +80,10 @@
             </table>
             <br>
             <br>
-        </div>    
+            
+        </div>
     </section>
-    <!-- End Event-list Section -->
+    <!-- End Videos-list Section -->
 @endsection
 
 @section('js')
@@ -89,7 +93,7 @@
     <script>
         $(document).ready(function() {
             /* inicializando libreria requiere ID tabla */
-            var t = $('#events-list').DataTable({
+            var t = $('#video-list').DataTable({
                 "order": [
                     /* Ordenamiento predeterminado indice en base cero*/
                     [1, "desc"]

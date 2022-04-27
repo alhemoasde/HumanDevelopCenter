@@ -40,8 +40,9 @@
                         {{-- <th >Precio Compra</th> --}}
                         <th width="5%">Precio Venta</th>
                         {{-- <th >Enlace Pago</th> --}}
-                        <th width="5%">Video</th>
+                        {{-- <th width="5%">Video</th> --}}
                         <th width="5%">Poster</th>
+                        <th width="5%">Día</th>
                         <th width="5%">Estado</th>
                         <th width="10%">Opción</th>
                     </tr>
@@ -52,21 +53,23 @@
                             <td class="text-center"></td>
                             <td>{{ date('d/m/Y', strtotime($product->created_at)) }}</td>
                             <td>{{ $product->type }}</td>
-                            <td>{{ $product->enventByProduct($product->event)->title }}</td>
+                            {{-- <td>{{ $product->enventByProduct($product->events_id)->title }}</td> --}}
+                            <td>{{ $product->event->title }}</td>
                             {{-- <td>{{ $product->codec }}</td> --}}
                             <td>{{ $product->name }}</td>
                             <td style="text-align: justify;">{{ \Str::limit($product->description, 70) }}</td>
                             {{-- <td>{{ $product->priceBuy }}</td> --}}
                             <td>{{ $product->priceSell }}</td>
                             {{-- <td><a href="{{ $product->paymentLink }}" target="_black">{{ $product->paymentLink }}</a></td> --}}
-                            <td>
+                            {{-- <td>
                                 <video width="40px" height="40px">
                                     <source src="{{ asset('/public/storage/'.$product->video) }}" type="video/mp4">
                                 </video>
+                            </td> --}}
+                            <td class="text-center">
+                                <img class="img-fluid img-thumbnail" src="{{ asset('/storage/'.$product->poster)}}" width="50px" height="50px" alt="Portada del Producto">
                             </td>
-                            <td>
-                                <img src="{{ asset('/public/storage/'.$product->poster)}}" width="50px" height="50px" alt="Portada del Producto">
-                            </td>
+                            <td>{{ $product->day }}</td>
                             <td>{{ $product->status == 1 ? 'Activo' : 'Inactivo'}}</td>
 
                             <td class="text-center">

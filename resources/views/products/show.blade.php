@@ -32,12 +32,12 @@
                         <p id="description">{{ $product->description }}</p>
                     </li>
                     
-                    <li class="list-group-item col-sm-6">
+                    <li class="list-group-item">
                         <label for="codec"><strong>Codigo:</strong></label>
                         <p id="codec">{{ $product->codec }}</p>
                     </li>
 
-                    <div class="row">
+                    <div class="row col-sm-12">
                         <li class="list-group-item col-sm-6">
                             <label for="priceBuy"><strong>Precio de Compra:</strong></label>
                             <p id="priceBuy">{{ $product->priceBuy }}</p>
@@ -49,27 +49,37 @@
                         </li>
                     </div>
 
-                    <li class="list-group-item col-sm-6">
+                    <li class="list-group-item">
                         <label for="paymentLink"><strong>Enlace Unico de Pago:</strong></label>
                         <p id="paymentLink"> <a href="{{ $product->paymentLink }}">{{ $product->paymentLink }}</a></p>
                     </li>
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <li class="list-group-item col-sm-6">
                             <label for="video"><strong>Video:</strong></label>
                             <video id="video" src="{{ asset('/public/storage/'.$product->video) }}" width="60px" height="60px"></video>
                         </li>
-                        <li class="list-group-item col-sm-6">
-                            <label for="poster"><strong>Poster:</strong></label>
-                            <img id="poster" src="{{ asset('/public/storage/'.$product->poster)}}" width="60px" height="60px" alt="Portada del Producto">
-                        </li>
-                    </div>
-                    <li class="list-group-item col-sm-6">
-                        <label for="event"><strong>Evento:</strong></label>
-                        <p id="event">:: {{ $product->enventByProduct($product->id)->title }} ::
-                            Fecha Inicio: {{ date('d/m/Y', strtotime($product->enventByProduct($product->id)->dateStart)) }}</p>
+                        
+                    </div> --}}
+
+                    <li class="list-group-item">
+                        <label for="poster"><strong>Poster:</strong></label>
+                        <img id="poster" src="{{ asset('/public/storage/'.$product->poster)}}" width="60px" height="60px" alt="Portada del Producto">
                     </li>
-                    <li class="list-group-item col-sm-6">
+                    <li class="list-group-item">
+                        <label for="day"><strong>Día:</strong></label>
+                        <p id="day">{{ $product->day }}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <label for="category"><strong>Categoría:</strong></label>
+                        <p id="category">{{ $product->category }}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <label for="events_id"><strong>Evento:</strong></label>
+                        <p id="events_id">:: {{ $product->enventByProduct($product->events_id)->title }} :: <br>
+                            Fecha Inicio: {{ date('d/m/Y', strtotime($product->enventByProduct($product->events_id)->dateStart)) }}</p>
+                    </li>
+                    <li class="list-group-item">
                         <label for="type"><strong>Tipo:</strong></label>
                         <p id="type">{{ $product->type }}</p>
                     </li>
