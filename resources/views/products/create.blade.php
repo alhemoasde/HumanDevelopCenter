@@ -2,10 +2,15 @@
 
 @section('title', 'Product')
 
+@section('css')
+<link href="{{ asset('/assets/vendor/bootstrap-select/css/bootstrap-select.min.css') }}"
+        rel="stylesheet">
+@endsection
+
 @section('content')
 
     <!-- ======= Product-create Section ======= -->
-    <section id="login" class="section-bg">
+    <section id="product" class="section-bg">
         <br>
         <br>
         <br>
@@ -313,10 +318,32 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="row mb-3">
+                                    <label for="videos"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Asignar Videos del Producto: ') }}</label>
 
+                                    <div class="col-md-6">
+
+                                        <select id="videos" data-style="btn-secondary" name="videos[]" size="6" class="selectpicker form-select-lg mb-3 @error('videos') is-invalid @enderror" 
+                                        data-live-search="true" aria-label="Selector de videos" multiple title="Seleccione uno o mas videos." required>
+                                            
+                                            @foreach ( $videos as $video )
+                                            <option value="{{$video->id}}" data-tokens="{{$video->id}}"
+                                            {{ old('videos') == $video->id ? 'selected' : '' }}>{{$video->id}} {{$video->title}}</option>    
+                                            @endforeach
+                                        </select>
+                                        @error('videos')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <hr>
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-primary submint-cdh">
                                             <i class="bi bi-send-check-fill"> {{ __('Guardar Producto') }} </i>
                                         </button>
                                     </div>
@@ -333,4 +360,11 @@
         <br>
     </section>
     <!-- End Events-create Section -->
+@endsection
+
+@section('js')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="{{ asset('/assets/vendor/bootstrap-select/js/bootstrap-select.min.js')}}"> </script>
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/i18n/defaults-*.min.js"></script>
 @endsection

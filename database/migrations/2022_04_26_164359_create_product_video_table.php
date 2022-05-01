@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePruductVideoTable extends Migration
+class CreateProductVideoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePruductVideoTable extends Migration
      */
     public function up()
     {
-        Schema::create('pruduct_video', function (Blueprint $table) {
+        Schema::create('product_video', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id')->comment('Identificador unico del Producto');
-            $table->unsignedBigInteger('video_id')->comment('Identificador unico del Video');
+            $table->unsignedBigInteger('videos_id')->comment('Identificador unico del Video');
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');
+            $table->foreign('videos_id')->references('id')->on('videos')->onDelete('cascade');
         });
     }
 
@@ -31,6 +31,6 @@ class CreatePruductVideoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pruduct_video');
+        Schema::dropIfExists('product_video');
     }
 }

@@ -56,6 +56,6 @@ class Product extends Model
      */
     public function videos()
     {
-        return$this->belongsToMany(Videos::class);
+        return $this->belongsToMany(Videos::class,'product_video')->withPivot('videos_id');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Events;
+use App\Models\Videos;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +31,8 @@ class ProductController extends Controller
     {
         $events = Events::where('status','=','Programado')
         ->orWhere('status','=','En Desarrollo')->get();
-        return view('products.create', compact('events'));
+        $videos = Videos::where('status','=','1')->get();
+        return view('products.create', compact(['events','videos']));
     }
 
     /**
@@ -41,7 +43,10 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+        /* dd($request->videos); */
+        
         $product = Product::create($request->all());
+        $product->videos()->sync($request->videos);
 
        /*  if($request->file('video')){
             $product ->video = $request->file('video')->store('videos','public');
@@ -64,6 +69,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $product->videos;
         return view('products.show', compact('product'));
     }
 
@@ -77,7 +83,9 @@ class ProductController extends Controller
     {
         $events = Events::where('status','=','Programado')
         ->orWhere('status','=','En Desarrollo')->get();
-        return view('products.edit', compact(['product','events']));
+        $videos = Videos::where('status','=','1')->get();
+        $product->videos;
+        return view('products.edit', compact(['product','events','videos']));
     }
 
     /**
@@ -102,6 +110,7 @@ class ProductController extends Controller
         }
         
         $product->update($request->all());
+        $product->videos()->sync($request->videos);
 
         /* if($request->file('video')){
             $product ->video = $request->file('video')->store('videos','public');
