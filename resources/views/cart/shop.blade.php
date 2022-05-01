@@ -22,7 +22,7 @@
                     @foreach ($products as $pro)
                         <div class="col-lg-3">
                             <div class="card" style="margin-bottom: 20px; height: auto;">
-                                <img src="{{ asset('/storage/'.$pro->poster) }}" class="card-img-top mx-auto"
+                                <img src="{{ asset('/public/storage/'.$pro->poster) }}" class="card-img-top mx-auto"
                                     style="height: 150px; width: 150px;display: block;" alt="{{ $pro->name }}">
                                 <div class="card-body">
                                     <a href="">
@@ -34,7 +34,7 @@
                                         <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                         <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
                                         <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
-                                        <input type="hidden" value="{{ asset('/storage/'.$pro->poster) }}" id="img" name="img">
+                                        <input type="hidden" value="{{ asset('/public/storage/'.$pro->poster) }}" id="img" name="img">
                                         {{-- <input type="hidden" value="{{ $pro->slug }}" id="slug" name="slug"> --}}
                                         <input type="hidden" value="1" id="quantity" name="quantity">
                                         <div class="card-footer" style="background-color: white;">

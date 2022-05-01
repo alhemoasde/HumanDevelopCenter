@@ -51,7 +51,7 @@
                             
                             <td class="text-center">
                                 <video width="80" height="80" class="img-thumbnail">
-                                    <source src="{{ asset('/storage/'.$video->url) }}" type="video/mp4">
+                                    <source src="{{ asset('/public/storage/'.$video->url) }}" type="video/mp4">
                                     Tu navegador no admite el elemento <code>video</code>.
                                 </video>
                             </td>
