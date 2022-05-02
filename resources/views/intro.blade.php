@@ -9,10 +9,11 @@
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
         <h1 class="mb-4 pb-0">Explorando las<br><span>Raíces de una Sanación</span> Verdadera</h1>
         <p class="mb-4 pb-0">2 - 6 Mayo de 2022, Gran ciclo de conferencias. ¡Cinco días para encontrar lo mejor de tí!</p>
-        <video id="myVideo" width="800" preload="auto" poster="/img/video1IntroCamilaMontes.png" controls loop autoplay>
-            <source src="/video-intro/0.InvitacionCamila.mp4" type="video/mp4">
+        <iframe id="myVideo" width="800" height="450" src="https://www.youtube-nocookie.com/embed/0pKWOWwgm2g?modestbranding=0&amp;showinfo=1&amp;rel=0&amp;controls=0&amp;autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        {{-- <video id="myVideo" width="800" preload="auto" poster="/img/video1IntroCamilaMontes.png" controls loop autoplay>
+            <source src="https://youtu.be/0pKWOWwgm2g" type="video/mp4">
             Tu navegador no admite el elemento <code>video</code>.
-        </video>
+        </video> --}}
         <!-- Optional: some overlay text to describe the video -->
         <div class="content">
             <a href="{{ route('subscribers.create') }}" class="about-btn scrollto">¡Suscribete Ahora!</a>
