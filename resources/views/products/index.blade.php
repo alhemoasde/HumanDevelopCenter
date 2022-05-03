@@ -27,71 +27,73 @@
                 @endif
             </div>
             <br>
-            <table id="product-list" class="table table-bordered shadow-lg mt-4">
-                <thead>
-                    <tr class="table-dark text-center">
-                        <th width="5%">No.</th>
-                        <th width="5%">Creado</th>
-                        <th width="5%">Tipo</th>
-                        <th width="15%">Evento</th>
-                        {{-- <th >Codigo</th> --}}
-                        <th width="20%">Nombre</th>
-                        <th width="20%">Descripción</th>
-                        {{-- <th >Precio Compra</th> --}}
-                        <th width="5%">Precio Venta</th>
-                        {{-- <th >Enlace Pago</th> --}}
-                        {{-- <th width="5%">Video</th> --}}
-                        <th width="5%">Poster</th>
-                        <th width="5%">Día</th>
-                        <th width="5%">Estado</th>
-                        <th width="10%">Opción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($products as $product)
-                        <tr>
-                            <td class="text-center"></td>
-                            <td>{{ date('d/m/Y', strtotime($product->created_at)) }}</td>
-                            <td>{{ $product->type }}</td>
-                            {{-- <td>{{ $product->enventByProduct($product->events_id)->title }}</td> --}}
-                            <td>{{ $product->event->title }}</td>
-                            {{-- <td>{{ $product->codec }}</td> --}}
-                            <td>{{ $product->name }}</td>
-                            <td style="text-align: justify;">{{ \Str::limit($product->description, 70) }}</td>
-                            {{-- <td>{{ $product->priceBuy }}</td> --}}
-                            <td>{{ $product->priceSell }}</td>
-                            {{-- <td><a href="{{ $product->paymentLink }}" target="_black">{{ $product->paymentLink }}</a></td> --}}
-                            {{-- <td>
-                                <video width="40px" height="40px">
-                                    <source src="{{ asset('/public/storage/'.$product->video) }}" type="video/mp4">
-                                </video>
-                            </td> --}}
-                            <td class="text-center">
-                                <img class="img-fluid img-thumbnail" src="{{ asset('/public/storage/'.$product->poster)}}" width="50px" height="50px" alt="Portada del Producto">
-                            </td>
-                            <td>{{ $product->day }}</td>
-                            <td>{{ $product->status == 1 ? 'Activo' : 'Inactivo'}}</td>
-
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a class="btn btn-outline-secondary" href="{{ route('products.show', $product->id) }}">
-                                        <i class="bi bi-eye-fill"></i>
-                                    </a>
-                                    <a class="btn btn-outline-success" href="{{ route('products.edit', $product->id) }}">
-                                        <i class="bi bi-vector-pen"></i>
-                                    </a>
-                                    <form action="{{ route('products.destroy', $product) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('¿Desea eliminar el Producto?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
-                                    </form>
-                                </div>
-
-                            </td>
+            <div class="table-responsive">
+                <table id="product-list" class="table table-bordered shadow-lg mt-4">
+                    <thead>
+                        <tr class="table-dark text-center">
+                            <th width="5%">No.</th>
+                            <th width="5%">Creado</th>
+                            <th width="5%">Tipo</th>
+                            <th width="15%">Evento</th>
+                            {{-- <th >Codigo</th> --}}
+                            <th width="20%">Nombre</th>
+                            <th width="20%">Descripción</th>
+                            {{-- <th >Precio Compra</th> --}}
+                            <th width="5%">Precio Venta</th>
+                            {{-- <th >Enlace Pago</th> --}}
+                            {{-- <th width="5%">Video</th> --}}
+                            <th width="5%">Poster</th>
+                            <th width="5%">Día</th>
+                            <th width="5%">Estado</th>
+                            <th width="10%">Opción</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($products as $product)
+                            <tr>
+                                <td class="text-center"></td>
+                                <td>{{ date('d/m/Y', strtotime($product->created_at)) }}</td>
+                                <td>{{ $product->type }}</td>
+                                {{-- <td>{{ $product->enventByProduct($product->events_id)->title }}</td> --}}
+                                <td>{{ $product->event->title }}</td>
+                                {{-- <td>{{ $product->codec }}</td> --}}
+                                <td>{{ $product->name }}</td>
+                                <td style="text-align: justify;">{{ \Str::limit($product->description, 70) }}</td>
+                                {{-- <td>{{ $product->priceBuy }}</td> --}}
+                                <td>{{ $product->priceSell }}</td>
+                                {{-- <td><a href="{{ $product->paymentLink }}" target="_black">{{ $product->paymentLink }}</a></td> --}}
+                                {{-- <td>
+                                    <video width="40px" height="40px">
+                                        <source src="{{ asset('/public/storage/'.$product->video) }}" type="video/mp4">
+                                    </video>
+                                </td> --}}
+                                <td class="text-center">
+                                    <img class="img-fluid img-thumbnail" src="{{ asset('/public/storage/'.$product->poster)}}" width="50px" height="50px" alt="Portada del Producto">
+                                </td>
+                                <td>{{ $product->day }}</td>
+                                <td>{{ $product->status == 1 ? 'Activo' : 'Inactivo'}}</td>
+
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-outline-secondary" href="{{ route('products.show', $product->id) }}">
+                                            <i class="bi bi-eye-fill"></i>
+                                        </a>
+                                        <a class="btn btn-outline-success" href="{{ route('products.edit', $product->id) }}">
+                                            <i class="bi bi-vector-pen"></i>
+                                        </a>
+                                        <form action="{{ route('products.destroy', $product) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar el Producto?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                        </form>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
             <br>
             <br>
         </div>

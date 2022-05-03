@@ -34,8 +34,8 @@
 
                     <li class="list-group-item">
                         <label for="myVideo"><strong>Video:</strong></label>
-                        <video id="myVideo" width="800" preload="auto" poster="/img/video1IntroCamilaMontes.png" controls>
-                            <source src="{{ asset('/storage/'.$video->url) }}" type="video/mp4">
+                        <video class="ratio ratio-4x3" id="myVideo" width="800" preload="auto" poster="/img/video1IntroCamilaMontes.png" controls>
+                            <source src="{{ asset('/public/storage/'.$video->url) }}" type="video/mp4">
                             Tu navegador no admite el elemento <code>video</code>.
                         </video>
                     </li>

@@ -27,46 +27,48 @@
                 @endif
             </div>
             <br>
-            <table id="subscriptor-list" class="table table-bordered shadow-lg mt-4">
-                <thead>
-                    <tr class="table-dark text-center">
-                        <th width="5%">No.</th>
-                        <th width="5%">Creado</th>
-                        <th width="35%">Nombre</th>
-                        <th width="40%">Email</th>
-                        <th width="5%">Estado</th>
-                        <th width="10%">Opción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($subscribers as $subscriber)
-                        <tr>
-                            <td class="text-center"></td>
-                            <td>{{ date('d/m/Y', strtotime($subscriber->created_at)) }}</td>
-                            <td>{{ $subscriber->name }}</td>
-                            <td>{{ $subscriber->email }}</td>
-                            <td>{{ $subscriber->status == 1 ? 'Activo' : 'Inactivo'}}</td>
-
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a class="btn btn-outline-secondary" href="{{ route('subscribers.show', $subscriber->id) }}">
-                                        <i class="bi bi-eye-fill"></i>
-                                    </a>
-                                    <a class="btn btn-outline-success" href="{{ route('subscribers.edit', $subscriber->id) }}">
-                                        <i class="bi bi-vector-pen"></i>
-                                    </a>
-                                    <form action="{{ route('subscribers.destroy', $subscriber) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('¿Desea eliminar el Suscriptor?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
-                                    </form>
-                                </div>
-
-                            </td>
+            <div class="table-responsive">
+                <table id="subscriptor-list" class="table table-bordered shadow-lg mt-4">
+                    <thead>
+                        <tr class="table-dark text-center">
+                            <th width="5%">No.</th>
+                            <th width="5%">Creado</th>
+                            <th width="35%">Nombre</th>
+                            <th width="40%">Email</th>
+                            <th width="5%">Estado</th>
+                            <th width="10%">Opción</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($subscribers as $subscriber)
+                            <tr>
+                                <td class="text-center"></td>
+                                <td>{{ date('d/m/Y', strtotime($subscriber->created_at)) }}</td>
+                                <td>{{ $subscriber->name }}</td>
+                                <td>{{ $subscriber->email }}</td>
+                                <td>{{ $subscriber->status == 1 ? 'Activo' : 'Inactivo'}}</td>
+
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-outline-secondary" href="{{ route('subscribers.show', $subscriber->id) }}">
+                                            <i class="bi bi-eye-fill"></i>
+                                        </a>
+                                        <a class="btn btn-outline-success" href="{{ route('subscribers.edit', $subscriber->id) }}">
+                                            <i class="bi bi-vector-pen"></i>
+                                        </a>
+                                        <form action="{{ route('subscribers.destroy', $subscriber) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar el Suscriptor?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                        </form>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
             <br>
             <br>
         </div>

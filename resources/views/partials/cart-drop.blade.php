@@ -42,7 +42,7 @@
         <a class="btn btn-secondary btn-sm" href="{{ route('cart.index') }}">
            <i class="bi bi-eye-fill"> Ver Carrito</i> <i class="bi bi-arrow-right-square-fill"></i>
         </a>
-        <a class="btn btn-success btn-sm" href="">
+        <a class="btn btn-success btn-sm" href="{{route('cart.checkout')}}">
             <i class="bi bi-paypal"> Procesar Pago</i> <i class="bi bi-arrow-right-square-fill"></i>
         </a>
     </div>

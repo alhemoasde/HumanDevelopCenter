@@ -23,12 +23,12 @@
     <p>¡Abrazo inmenso de <strong style="color: green;"> bienvenida</strong>!</p>
     <p>Empecemos: ¿Qué es <strong style="color: red;"> Sanar </strong> o <strong style="color: red;">Estar Sano? </strong></p>
     <div class="text-center">
-        <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
+        <div class="hero-container ratio ratio-4x3" data-aos="zoom-in" data-aos-delay="100">
             <iframe width="800" height="450" src="https://www.youtube-nocookie.com/embed/zb_q8-tn4I4?modestbranding=0&amp;showinfo=1&amp;rel=0&amp;controls=0&amp;autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            {{-- <video id="myVideo" width="600" preload="auto" poster="/img/video1IntroCamilaMontes.png" controls loop autoplay>
+            <!-- <video id="myVideo" width="600" preload="auto" poster="/img/video1IntroCamilaMontes.png" controls loop autoplay>
                 <source src="https://www.youtube.com/watch?v=zb_q8-tn4I4">
                 Tu navegador no admite el elemento <code>video</code>.
-            </video> --}}
+            </video> -->
         </div>
     </div>
     <br>

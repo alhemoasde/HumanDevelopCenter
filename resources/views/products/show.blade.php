@@ -59,13 +59,13 @@
                         <p id="paymentLink"> <a href="{{ $product->paymentLink }}">{{ $product->paymentLink }}</a></p>
                     </li>
 
-                    {{-- <div class="row">
+                    <!-- <div class="row">
                         <li class="list-group-item col-sm-6">
                             <label for="video"><strong>Video:</strong></label>
                             <video id="video" src="{{ asset('/public/storage/'.$product->video) }}" width="60px" height="60px"></video>
                         </li>
                         
-                    </div> --}}
+                    </div> -->
 
                     <li class="list-group-item">
                         <label for="poster"><strong>Poster:</strong></label>
@@ -98,57 +98,59 @@
             <div class="pull-left">
                 <h1 class="display-4" style="text-align: center"> :: Videos Asignados al Producto ::</h1>
             </div>
-            <table id="video-list" class="table table-bordered shadow-lg mt-4">
-                <thead>
-                    <tr class="table-dark text-center">
-                        <th width="5%">No.</th>
-                        <th width="5%">Creado</th>
-                        <th width="30%">Titulo</th>
-                        <th width="35%">Descripción</th>
-                        <th width="10%">Url</th>
-                        <th width="5%">Estado</th>
-                        <th width="10%">Opción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($product->videos as $video)
-                        <tr>
-                            <td class="text-center"></td>
-                            <td>{{ date('d/m/Y', strtotime($video->created_at)) }}</td>
-                            
-                            <td>{{ $video->title }}</td>
-                            
-                            <td style="text-align: justify;">{{ \Str::limit($video->description, 70) }}</td>
-                            
-                            <td class="text-center">
-                                <video width="80" height="80" class="img-thumbnail">
-                                    <source src="{{ asset('/public/storage/'.$video->url) }}" type="video/mp4">
-                                    Tu navegador no admite el elemento <code>video</code>.
-                                </video>
-                            </td>
-                            
-                            <td>{{ $video->status == 1 ? 'Activo' : 'Inactivo'}}</td>
-
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a class="btn btn-outline-secondary" href="{{ route('videos.show', $video->id) }}">
-                                        <i class="bi bi-eye-fill"></i>
-                                    </a>
-                                    <a class="btn btn-outline-success" href="{{ route('videos.edit', $video->id) }}">
-                                        <i class="bi bi-vector-pen"></i>
-                                    </a>
-                                    <form action="{{ route('videos.destroy', $video) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('¿Desea eliminar el Video?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
-                                    </form>
-                                </div>
-
-                            </td>
+            <div class="table-responsive">
+                <table id="video-list" class="table table-bordered shadow-lg mt-4">
+                    <thead>
+                        <tr class="table-dark text-center">
+                            <th width="5%">No.</th>
+                            <th width="5%">Creado</th>
+                            <th width="30%">Titulo</th>
+                            <th width="35%">Descripción</th>
+                            <th width="10%">Url</th>
+                            <th width="5%">Estado</th>
+                            <th width="10%">Opción</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($product->videos as $video)
+                            <tr>
+                                <td class="text-center"></td>
+                                <td>{{ date('d/m/Y', strtotime($video->created_at)) }}</td>
+                                
+                                <td>{{ $video->title }}</td>
+                                
+                                <td style="text-align: justify;">{{ \Str::limit($video->description, 70) }}</td>
+                                
+                                <td class="text-center">
+                                    <video width="80" height="80" class="img-thumbnail">
+                                        <source src="{{ asset('/public/storage/'.$video->url) }}" type="video/mp4">
+                                        Tu navegador no admite el elemento <code>video</code>.
+                                    </video>
+                                </td>
+                                
+                                <td>{{ $video->status == 1 ? 'Activo' : 'Inactivo'}}</td>
+
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-outline-secondary" href="{{ route('videos.show', $video->id) }}">
+                                            <i class="bi bi-eye-fill"></i>
+                                        </a>
+                                        <a class="btn btn-outline-success" href="{{ route('videos.edit', $video->id) }}">
+                                            <i class="bi bi-vector-pen"></i>
+                                        </a>
+                                        <form action="{{ route('videos.destroy', $video) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar el Video?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                        </form>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <br>
