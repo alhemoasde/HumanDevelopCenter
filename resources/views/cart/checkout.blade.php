@@ -1,3 +1,44 @@
-Logica para procesar el pago.... segun pasarelas
-Paypal 
-Mercadolibre
+@extends('index')
+
+@section('content')
+<!-- ======= Video-edit Section ======= -->
+<section id="checkout" class="section-bg">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container-fluid" data-aos="fade-up">
+            <div class="row justify-content-center">
+            <form class="row g-3">
+                <div class="col-auto">
+                    <label for="staticEmail2" class="visually-hidden">Email:</label>
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
+                </div>
+                <div class="col-auto">
+                    <label for="inputPassword2" class="visually-hidden">Password</label>
+                    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+                </div>
+            </form>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+</section>
+<!-- ======= Video-edit Section ======= -->
+@endsection

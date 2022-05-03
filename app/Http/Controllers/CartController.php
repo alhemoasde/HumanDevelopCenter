@@ -56,8 +56,8 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success_msg', 'Car is cleared!');
     }
 
-    public Function checkout(){
-        return redirect()->route('checkout');
+    public Function checkout(Request $request){
+        return view('cart.checkout');
     }
 
 }
