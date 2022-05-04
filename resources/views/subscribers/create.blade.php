@@ -45,7 +45,7 @@
                             
                             <div class="row text-center">
                                 <div class="col-md-2">
-                                    <img  src="/img/arbol.png" width="150%" height="auto" alt="Arbol de raices.">
+                                    <img class="img-fluid" src="/img/arbol.png" width="150%" height="auto" alt="Arbol de raices.">
                                 </div>
                                 <div class="col-md-10">
                                     <h4>Evento Virtual Gratuito</h4>

@@ -48,12 +48,12 @@ class CartController extends Controller
                     'value' => $request->quantity
                 ),
         ));
-        return redirect()->route('cart.index')->with('success_msg', 'Cart is Updated!');
+        return redirect()->route('cart.index')->with('success_msg', 'Carrito está actualizado!');
     }
 
     public function clear(){
         \Cart::clear();
-        return redirect()->route('cart.index')->with('success_msg', 'Car is cleared!');
+        return redirect()->route('cart.index')->with('success_msg', 'Carrito vacio!');
     }
 
     public Function checkout(Request $request){

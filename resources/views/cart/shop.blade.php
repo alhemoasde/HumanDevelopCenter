@@ -14,7 +14,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-7">
-                        <h4>Productos</h4>
+                        <h2 class="h2">:: Productos Disponibles ::</h2>
                     </div>
                 </div>
                 <hr>
@@ -22,13 +22,13 @@
                     @foreach ($products as $pro)
                         <div class="col-lg-3">
                             <div class="card" style="margin-bottom: 20px; height: auto;">
-                                <img src="{{ asset('/public/storage/'.$pro->poster) }}" class="card-img-top mx-auto"
+                                <img src="{{ asset('/storage/'.$pro->poster) }}" class="card-img-top mx-auto"
                                     style="height: 150px; width: 150px;display: block;" alt="{{ $pro->name }}">
                                 <div class="card-body">
                                     <a href="">
-                                        <h6 class="card-title">{{ $pro->name }}</h6>
+                                        <h4 class="card-title h4">{{ $pro->name }}</h4>
                                     </a>
-                                    <p>${{ $pro->priceSell }}</p>
+                                    <p> <strong>${{ $pro->priceSell }}</strong></p>
                                     <form action="{{ route('cart.store') }}" method="POST">
                                         {{ csrf_field() }}
                                         <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
