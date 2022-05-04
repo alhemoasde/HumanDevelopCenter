@@ -22,7 +22,7 @@
                     @foreach ($products as $pro)
                         <div class="col-lg-3">
                             <div class="card" style="margin-bottom: 20px; height: auto;">
-                                <img src="{{ asset('/storage/'.$pro->poster) }}" class="card-img-top mx-auto"
+                                <img src="{{ asset('/public/storage/'.$pro->poster) }}" class="card-img-top mx-auto"
                                     style="height: 150px; width: 150px;display: block;" alt="{{ $pro->name }}">
                                 <div class="card-body">
                                     <a href="">
