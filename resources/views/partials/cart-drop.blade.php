@@ -42,9 +42,24 @@
         <a class="btn btn-secondary btn-sm" href="{{ route('cart.index') }}">
            <i class="bi bi-eye-fill"> Ver Carrito</i> <i class="bi bi-arrow-right-square-fill"></i>
         </a>
-        <a class="btn btn-success btn-sm" href="{{route('cart.checkout')}}">
+        <!-- <a class="btn btn-success btn-sm" href="{{route('cart.checkout')}}">
             <i class="bi bi-paypal"> Procesar Pago</i> <i class="bi bi-arrow-right-square-fill"></i>
-        </a>
+        </a> -->
+        <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
+            data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68" 
+            data-epayco-amount="50"
+            data-epayco-name="Vestido Mujer Primavera" 
+            data-epayco-description="Vestido Mujer Primavera"
+            data-epayco-currency="usd" 
+            data-epayco-country="co" 
+            data-epayco-test="true"
+            data-epayco-invoice="ABC123"
+            data-epayco-external="true" 
+            data-epayco-response="https://ejemplo.com/respuesta.html"
+            data-epayco-confirmation="https://ejemplo.com/confirmacion" 
+            data-epayco-methodconfirmation="get">
+            data-epayco-autoclick="true"                           
+        </script>
     </div>
 @else
     <li class="list-group-item"><i class="bi bi-arrow-repeat"> Carrito Vacio...</i></li>

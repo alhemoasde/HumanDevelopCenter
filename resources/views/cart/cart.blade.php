@@ -48,36 +48,28 @@
 
                 @foreach ($cartCollection as $item)
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-lg-3">
+                        <div class="col-md-5">
                             <img src="{{ $item->attributes->image }}" class="img-thumbnail" width="200" height="200">
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <div class="col-md-5">
                             <b><a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a></b><br>
-                                <b>Price: </b>${{ $item->price }} USD<br>
+                                <b>Precio: </b>${{ $item->price }} USD<br>
                                 <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }} USD<br>
                                 {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-lg-3 mb-3">
-                            <div class="btn-group" role="group" aria-label="Opciones">
+                        <div class="col-md-2">
                                 <form action="{{ route('cart.update') }}" method="POST">
                                     {{ csrf_field() }}
-                                    {{-- <div class="form-group row"> --}}
-                                        
-                                        <button class="btn btn-secondary btn-sm"><i class="bi bi-arrow-repeat"></i></button><br>
-                                        <input type="hidden"  
-                                            value="{{ $item->id }}" id="id" name="id">
-                                        <input type="number" class="form-control text-center" style="width: 40%"
-                                            value="{{ $item->quantity }}" id="quantity" name="quantity">
-                                            
-                                            
-                                    {{-- </div> --}}
+                                    
+                                    <input type="hidden" value="{{ $item->id }}" id="id" name="id">  
+                                    <input type="number" class="form-control text-center" style="width: 70%;" value="{{ $item->quantity }}" id="quantity" name="quantity">
+                                    <button class="btn btn-outline-secondary" style="width: 70%;"><i class="bi bi-arrow-repeat"></i></button>
                                 </form>
                                 <form action="{{ route('cart.remove') }}" method="POST">
                                     {{ csrf_field() }}
                                     <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                    <button class="btn btn-secondary btn-sm"><i class="bi bi-trash-fill"></i></button>
+                                    <button class="btn btn-outline-secondary" style="width: 70%;"><i class="bi bi-trash-fill"></i></button>
                                 </form>
-                            </div>
                         </div>
                     </div>
          
@@ -93,15 +85,43 @@
             @if (count($cartCollection) > 0)
                 <div class="col-lg-5">
                     <div class="card">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><b>Artículo(s) </b>${{ \Cart::getTotal() }} USD</li>
-                            <li class="list-group-item"><b>Transporte: </b>0 USD</li>
-                            <li class="list-group-item"><b>Total Impuestos </b>0 USD</li>
-                            <li class="list-group-item"><b>Total: </b>${{ \Cart::getTotal() }} USD</li>
-                        </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <b>Artículo(s) </b>
+                            <span class="badge bg-dark rounded-pill">{{ \Cart::getTotalQuantity() }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <b>Transporte: </b>
+                            <span class="badge bg-dark rounded-pill">0</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <b>Impuestos: </b>
+                            <span class="badge bg-dark rounded-pill">0</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <b>Total: </b>
+                            <span class="badge bg-danger rounded-pill">$ {{ \Cart::getTotal() }} USD</span>
+                        </li>
+                    </ul>
+                    <img class="img-fluid img-thumbnail" src="img/ePayco-Medios-de-Pago.png" alt="Medios de pago disponibles.">  
                     </div>
                     <br><a href="/shop" class="btn btn-dark"><i class="bi bi-basket-fill"> Continuar Comprando</i></a>
-                    <a href="/checkout" class="btn btn-success"><i class="bi bi-paypal"> Procesar Pago</i></a>
+                    <!-- <a href="/checkout" class="btn btn-success"><i class="bi bi-paypal"> Procesar Pago</i></a> -->
+                    <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
+                        data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68" 
+                        data-epayco-amount="{{ \Cart::getTotal() }}"
+                        data-epayco-name="Centro de Desarrollo Humano" 
+                        data-epayco-description="Compra Producto Digital"
+                        data-epayco-currency="usd" 
+                        data-epayco-country="co" 
+                        data-epayco-test="true"
+                        data-epayco-invoice="ABC123"
+                        data-epayco-external="true" 
+                        data-epayco-response="http://localhost:8000/checkout"
+                        data-epayco-confirmation="http://localhost:8000/checkout" 
+                        data-epayco-methodconfirmation="get">
+                        data-epayco-autoclick="true"                           
+                    </script>
                 </div>
             @endif
         </div>
