@@ -16,7 +16,11 @@ class CartController extends Controller
 
     public function cart()  {
         $cartCollection = \Cart::getContent();
-        //dd($cartCollection);
+        $requestModel = new Request();
+        $ip = isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
+        $geoLocationData = $requestModel-> this->getLocation($ip);
+        /* dd($ip); */
+        dd($geoLocationData);
         return view('cart.cart')->with(['cartCollection' => $cartCollection]);
     }
     public function remove(Request $request){
@@ -58,6 +62,18 @@ class CartController extends Controller
 
     public Function checkout(Request $request){
         return view('cart.checkout');
+    }
+
+    public function getLocation($ip)
+    {
+        $ch = curl_init('http://ipwhois.app/json/' . $ip);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $json = curl_exec($ch);
+        curl_close($ch);
+        // Decode JSON response
+        $ipWhoIsResponse = json_decode($json, true);
+        // Country code output, field "country_code"
+        return $ipWhoIsResponse;
     }
 
 }

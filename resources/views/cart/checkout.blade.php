@@ -4,6 +4,9 @@
     <!-- ======= checkout Section ======= -->
     <section id="checkout" class="section-bg">
         <br>
+        <br>
+        <br>
+        <br>
         <div class="container-fluid" data-aos="fade-up">
             <div class="row justify-content-center">
                 <form class="row g-3">
@@ -14,7 +17,6 @@
                         <div id="emailHelp" class="form-text">Por favor indique su correo electronico.</div>
                     </div>
                     </div>
-                    
                 </form>
             </div>
             <br>
