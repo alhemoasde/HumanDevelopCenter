@@ -18,10 +18,11 @@ class CartController extends Controller
         $cartCollection = \Cart::getContent();
         $requestModel = new Request();
         $ip = isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
-        /* $geoLocationData = $requestModel-> this->getLocation($ip); */
+        /* $geoLocationData = $requestModel->($this->getLocation($ip)); */
         /* dd($ip); */
-        dd($this->getLocation($ip));
-        /* dd($geoLocationData); */
+        $l=$this->getLocation($ip);
+        dd($l->{'currency_code'});
+        
         return view('cart.cart')->with(['cartCollection' => $cartCollection]);
     }
     public function remove(Request $request){
