@@ -18,7 +18,7 @@ class CartController extends Controller
         $cartCollection = \Cart::getContent();
         $ip = isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
         dump($this->getLocation($ip));
-        return view('cart.cart')->with(['cartCollection' => $cartCollection]);
+        return view('cart.cart')->with(['cartCollection' => $cartCollection, 'ipInfo'=>$this->getLocation($ip)]);
     }
     public function remove(Request $request){
         \Cart::remove($request->id);

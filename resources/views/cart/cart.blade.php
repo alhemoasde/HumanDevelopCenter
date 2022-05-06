@@ -45,7 +45,7 @@
                     <h4>No hay productos en su carrito!</h4><br>
                     <a href="/shop" class="btn btn-dark">Continuar Comprando</a>
                 @endif
-
+                
                 @foreach ($cartCollection as $item)
                     <div class="row">
                         <div class="col-md-5">
@@ -55,6 +55,7 @@
                             <b><a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a></b><br>
                                 <b>Precio: </b>${{ $item->price }} USD<br>
                                 <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }} USD<br>
+                                {{$ipInfo['country_code']}}
                                 {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
                         </div>
                         <div class="col-md-2">
