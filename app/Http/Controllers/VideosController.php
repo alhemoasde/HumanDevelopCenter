@@ -40,12 +40,16 @@ class VideosController extends Controller
      */
     public function store(StoreVideosRequest $request)
     {
-        $video = Videos::create($request->all());
+        if(isset($request->urlText)){
+            $video = Videos::create(['url' => 'videos/'.$request->urlText] + $request->all());
+        }else{
+            $video = Videos::create($request->all());
+        }
 
         if($request->file('url')){
             $video ->url = $request->file('url')->store('videos','public');
             $video->save();
-        }
+        } 
 
         /* if($request->file('poster')){
             $video ->poster = $request->file('poster')->store('posters','public');
@@ -87,13 +91,17 @@ class VideosController extends Controller
      */
     public function update(UpdateVideosRequest $request, Videos $video)
     {
-        if($video->url != ''){
+        if(($video->url != '' && isset($request->urlText)) || ($video->url != '' && $request->file('url'))){
             Storage::disk('public')->delete($video->url);
             $video->url ='';
             $video->update();
         }
 
-        $video->update($request->all());
+        if(isset($request->urlText)){
+            $video->update(['url' => 'videos/'.$request->urlText] + $request->all());
+        }else{
+            $video->update($request->all());
+        }
 
         if($request->file('url')){
             $video ->url = $request->file('url')->store('videos','public');

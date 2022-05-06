@@ -93,6 +93,27 @@
                                     </div>
                                 </div>
 
+                                <div class="row mb-3">
+                                    <label for="urlText"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Nombre del Archivo en Disco: ') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="urlText" type="text"
+                                            class="form-control @error('urlText') is-invalid @enderror" name="urlText"
+                                            value="{{ old('urlText') }}" autocomplete="urlText" autofocus>
+                                            <div id="urlTextHelp" class="form-text alert alert-warning" role="alert">
+                                                Si el tamaño del archivo supera las <strong> 500MB </strong>, por favor carguelo utilizando el servicio de FTP del hosting en: <br>
+                                                <b> public\storage\videos </b> y registre en este campo el nombre del archivo con su extensión.
+                                            </div>
+
+                                        @error('urlText')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 {{-- <div class="row mb-3">
                                     <label for="poster"
                                         class="col-md-4 col-form-label text-md-end">{{ __('Poster: *') }}</label>

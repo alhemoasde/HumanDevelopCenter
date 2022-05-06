@@ -83,7 +83,7 @@
                                             <input id="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror" name="email"
                                                 value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                                <div id="nameHelp" class="form-text">Tu correo electrónico es el canal más idóneo para enviarte información de mucho valor.</div>
+                                                <div id="emailHelp" class="form-text">Tu correo electrónico es el canal más idóneo para enviarte información de mucho valor.</div>
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

@@ -26,7 +26,8 @@ class UpdateVideosRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'min:10', 'max:100'],
             'description' => ['required', 'string', 'max:2000'],
-            'url' => "required|mimes:mp4|max:500000",
+            'url' => "nullable|mimes:mp4|max:500000",
+            'url-text' => ['nullable', 'string', 'min:10', 'max:100'],
         ];
     }
 }

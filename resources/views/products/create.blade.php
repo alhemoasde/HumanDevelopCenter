@@ -99,7 +99,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3" >
                                     <div class="row mb-3">
                                         <label for="priceBuy"
                                             class="col-md-4 col-form-label text-md-end">{{ __('Precio de Compra: ') }}</label>
@@ -119,7 +118,7 @@
 
                                     <div class="row mb-3">
                                         <label for="priceSell"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Precio de Venta: *') }}</label>
+                                            class="col-md-4 col-form-label text-md-end h4 text-info">{{ __('Precio de Venta en Pesos (COP): *') }}</label>
 
                                         <div class="col-md-6">
                                             <input id="priceSell" type="number" min="1" step="any"
@@ -135,7 +134,23 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                    <div class="row mb-3">
+                                        <label for="priceSellUSD"
+                                            class="col-md-4 col-form-label text-md-end h4 text-info">{{ __('Precio de Venta en Dolar (USD): *') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="priceSellUSD" type="number" min="1" step="any"
+                                                class="form-control @error('priceSellUSD') is-invalid @enderror"
+                                                name="priceSellUSD" value="{{ old('priceSellUSD') }}" required
+                                                autocomplete="priceSellUSD" autofocus>
+
+                                            @error('priceSellUSD')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
 
                                 <div class="row mb-3">
                                     <label for="paymentLink"
