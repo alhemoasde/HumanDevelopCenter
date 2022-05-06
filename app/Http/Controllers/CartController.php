@@ -73,7 +73,7 @@ class CartController extends Controller
     {
         $ip = isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
         $arrayIp = [
-            "ip" => "190.158.204.31",
+            "ip" => "127.0.0.1",
             "success" => true,
             "type" => "IPv4",
             "continent" => "South America",

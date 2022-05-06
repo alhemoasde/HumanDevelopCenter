@@ -55,7 +55,7 @@
                             <b><a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a></b><br>
                                 <b>Precio: </b>${{ $item->price }} {{$ipInfo['currency_code']}}<br>
                                 <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }} {{$ipInfo['currency_code']}}<br>
-                                {{$ipInfo['country_code']}}
+                                :: Info IP :: {{$ipInfo['ip']}}
                                 {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
                         </div>
                         <div class="col-md-2">
