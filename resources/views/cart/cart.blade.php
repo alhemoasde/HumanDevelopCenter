@@ -53,8 +53,8 @@
                         </div>
                         <div class="col-md-5">
                             <b><a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a></b><br>
-                                <b>Precio: </b>${{ $item->price }} USD<br>
-                                <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }} USD<br>
+                                <b>Precio: </b>${{ $item->price }} {{$ipInfo['currency_code']}}<br>
+                                <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }} {{$ipInfo['currency_code']}}<br>
                                 {{$ipInfo['country_code']}}
                                 {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
                         </div>
@@ -93,15 +93,15 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <b>Transporte: </b>
-                            <span class="badge bg-dark rounded-pill">0</span>
+                            <span class="badge bg-dark rounded-pill">0 {{$ipInfo['currency_code']}}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <b>Impuestos: </b>
-                            <span class="badge bg-dark rounded-pill">0</span>
+                            <span class="badge bg-dark rounded-pill">0 {{$ipInfo['currency_code']}}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <b>Total: </b>
-                            <span class="badge bg-danger rounded-pill">$ {{ \Cart::getTotal() }} USD</span>
+                            <span class="badge bg-danger rounded-pill">$ {{ \Cart::getTotal() }} {{$ipInfo['currency_code']}}</span>
                         </li>
                     </ul>
                     <img class="img-fluid img-thumbnail" src="img/ePayco-Medios-de-Pago.png" alt="Medios de pago disponibles.">  

@@ -29,6 +29,7 @@ class UpdateProductRequest extends FormRequest
             'description' => ['string', 'min:25','max:1000'],
             'priceBuy' => ['nullable','numeric'],
             'priceSell' => ['required', 'numeric', 'min:1'],
+            'priceSellUSD' => ['nullable', 'numeric', 'min:1'],
             'paymentLink' => ['nullable','string', 'min:5','max:255'],
             'poster' => "image|mimes:jpeg,png|max:3000",
             'type' => ['required','string', 'min:5', 'max:100'],

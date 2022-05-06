@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('description', 1000)->nullable()->comment('Descripción del producto.');
             $table->decimal('priceBuy', $precision = 8, $scale = 2)->nullable()->comment('Valor de adquisición del producto.');
             $table->decimal('priceSell', $precision = 8, $scale = 2)->comment('Valor de venta del producto.');
+            $table->decimal('priceSellUSD', $precision = 8, $scale = 2)->comment('Valor de venta del producto en dolares.');
             $table->string('paymentLink', 255)->nullable()->comment('Link de pago de la pasarela seleccionada.');
             $table->string('type', 100)->comment('Tipo de producto Digital o Fisico.');
             $table->string('poster', 100)->nullable()->comment('URL de acceso a la imagen de portada del producto.');

@@ -28,6 +28,7 @@ class Product extends Model
         'description',
         'priceBuy',
         'priceSell',
+        'priceSellUSD',
         'paymentLink',
         'type',
         'poster',
