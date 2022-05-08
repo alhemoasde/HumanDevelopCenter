@@ -76,7 +76,7 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Teléfono: *') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="name" type="text"
+                                        <input id="name" type="tel"
                                             class="form-control @error('telephone') is-invalid @enderror" name="telephone"
                                             value="{{ old('telephone') }}" required autocomplete="telephone" autofocus>
 

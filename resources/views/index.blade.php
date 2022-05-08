@@ -58,7 +58,7 @@
                                     <a class="nav-link scrollto" href="{{ route('bussiness.index') }}">Datos Negocio</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('contacts.index') }}">Usuarios</a>
+                                    <a href="{{ route('users.index') }}">Usuarios</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('events.index') }}">Eventos</a>

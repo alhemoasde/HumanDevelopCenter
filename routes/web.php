@@ -38,6 +38,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::resource('users', App\Http\Controllers\UserController::class)->middleware('auth')->except('show');
+Route::get('/speaker/{id}', [App\Http\Controllers\UserController::class, 'showProfile'])->name('users.show');
+
 Route::resource('contacts', App\Http\Controllers\ContactsController::class)->except(['create','store','edit','update','destroy'])->middleware('auth');
 Route::get('/contacts-create', [App\Http\Controllers\ContactsController::class, 'create'])->name('contacts.create');
 Route::post('/contacts-store', [App\Http\Controllers\ContactsController::class, 'store'])->name('contacts.store');
