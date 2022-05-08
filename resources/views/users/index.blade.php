@@ -246,7 +246,7 @@
                                           <td class="text-center">
                                               <div class="btn-group">
                                                   <a class="btn btn-outline-secondary"
-                                                      href="{{ route('/speaker', 'id='.$user->id) }}">
+                                                      href="{{ route('users.show', $user->id) }}">
                                                       <i class="bi bi-eye-fill"></i>
                                                   </a>
                                                   <a class="btn btn-outline-success"

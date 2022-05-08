@@ -15,9 +15,9 @@
 |
 */
 
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +31,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('intro');
+    $users = User::where('profile','=','Speaker')
+    ->where('status','=','1')->get();
+    return view('intro', compact('users'));
 });
 
 Auth::routes();

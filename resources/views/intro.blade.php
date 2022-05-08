@@ -28,6 +28,7 @@
 <br>
 </section>
 <!-- End Hero Section -->
+
 <!-- ======= About Section ======= -->
 <section id="about">
     <div class="container" data-aos="fade-up">
@@ -49,19 +50,38 @@
     </div>
 </section>
 <!-- End About Section -->
-{{-- <script>
-var video = document.getElementById("myVideo");
-var btn = document.getElementById("myBtn");
 
-function myFunction() {
-  if (video.paused) {
-    video.play();
-    btn.innerHTML = "Pausar";
-  } else {
-    video.pause();
-    btn.innerHTML = "Ver";
-  }
-}
-</script> --}}
+<!-- ======= Speakers Section ======= -->
+<section id="speakers">
+    <div class="container" data-aos="fade-up">
+      <div class="section-header">
+        <h2>Oradores del Evento</h2>
+        <p><i class="bi bi-align-start"></i> Estos son algunos de nuestros ponentes <i class="bi bi-align-end"></i></p>
+      </div>
+
+      <div class="row">
+      @foreach ($users as $user)
+          
+        <div class="col-lg-4 col-md-6">
+          <div class="speaker" data-aos="fade-up" data-aos-delay="100">
+            <img src="{{asset('/storage/'.$user->photography)}}" alt="{{$user->name}}" class="rounded img-fluid">
+            <div class="details">
+              <h3><a href="{{route('users.show', $user->id)}}">{{ $user->name }}</a></h3>
+              <p>{{ $user->famousPhrase }}</p>
+              <div class="social">
+                <a href="https://twitter.com/{{ $user->accountTwitter }}" target="_blank" ><i class="bi bi-twitter"></i></a>
+                <a href="https://www.facebook.com/{{ $user->accountFacabook }}" target="_blank" ><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/{{ $user->accountInstagram }}" target="_blank" ><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/{{ $user->accountLinkedin }}" target="_blank" ><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+    </div>
+
+  </section>
+  <!-- End Speakers Section -->
 @endsection
 
