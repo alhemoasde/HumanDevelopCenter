@@ -108,21 +108,46 @@
                     </div>
                     <br><a href="/shop" class="btn btn-dark"><i class="bi bi-basket-fill"> Continuar Comprando</i></a>
                     <!-- <a href="/checkout" class="btn btn-success"><i class="bi bi-paypal"> Procesar Pago</i></a> -->
-                    <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
-                        data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68" 
-                        data-epayco-amount="{{ \Cart::getTotal() }}"
-                        data-epayco-name="Centro de Desarrollo Humano" 
-                        data-epayco-description="Compra Producto Digital"
-                        data-epayco-currency="usd" 
-                        data-epayco-country="co" 
-                        data-epayco-test="true"
-                        data-epayco-invoice="ABC123"
-                        data-epayco-external="true" 
-                        data-epayco-response="http://localhost:8000/checkout"
-                        data-epayco-confirmation="http://localhost:8000/checkout" 
-                        data-epayco-methodconfirmation="get">
-                        data-epayco-autoclick="true"                           
-                    </script>
+                    <!-- Vertically centered Modal -->
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#verticalycentered">
+                    <i class="bi bi-paypal"> Procesar Pago</i>
+                    </button>
+                    <div class="modal fade" id="verticalycentered" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title">Datos para Checkout</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            input email para capturar el correo.... OJO
+                            <div class="collapse" id="bottonEpayco">
+                                <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
+                                    data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68" 
+                                    data-epayco-amount="{{ \Cart::getTotal() }}"
+                                    data-epayco-name="Centro de Desarrollo Humano" 
+                                    data-epayco-description="Compra Producto Digital"
+                                    data-epayco-currency="usd" 
+                                    data-epayco-country="co" 
+                                    data-epayco-test="true"
+                                    data-epayco-invoice="ABC123"
+                                    data-epayco-external="true" 
+                                    data-epayco-response="http://localhost:8000/checkout"
+                                    data-epayco-confirmation="http://localhost:8000/checkout" 
+                                    data-epayco-methodconfirmation="get">
+                                    data-epayco-autoclick="true"                           
+                                </script>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" data-bs-toggle="collapse" href="#bottonEpayco" class="btn btn-primary">Continuar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- End Vertically centered Modal-->
+                    
                 </div>
             @endif
         </div>
