@@ -40,22 +40,22 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('users', App\Http\Controllers\UserController::class)->middleware('auth')->except('show');
+Route::resource('users', App\Http\Controllers\UserController::class)->middleware('admin')->except('show');
 Route::get('/speaker/{id}', [App\Http\Controllers\UserController::class, 'showProfile'])->name('users.show');
 
-Route::resource('contacts', App\Http\Controllers\ContactsController::class)->except(['create','store','edit','update','destroy'])->middleware('auth');
+Route::resource('contacts', App\Http\Controllers\ContactsController::class)->except(['create','store','edit','update','destroy'])->middleware('admin');
 Route::get('/contacts-create', [App\Http\Controllers\ContactsController::class, 'create'])->name('contacts.create');
 Route::post('/contacts-store', [App\Http\Controllers\ContactsController::class, 'store'])->name('contacts.store');
 
-Route::resource('bussiness', App\Http\Controllers\BussinessController::class)->middleware('auth')->except('destroy','show');
+Route::resource('bussiness', App\Http\Controllers\BussinessController::class)->middleware('admin')->except('destroy','show');
 
-Route::resource('events', App\Http\Controllers\EventsController::class)->middleware('auth');
+Route::resource('events', App\Http\Controllers\EventsController::class)->middleware('admin');
 
-Route::resource('products', App\Http\Controllers\ProductController::class)->middleware('auth');
+Route::resource('products', App\Http\Controllers\ProductController::class)->middleware('admin');
 
-Route::resource('videos', App\Http\Controllers\VideosController::class)->middleware('auth');
+Route::resource('videos', App\Http\Controllers\VideosController::class)->middleware('admin');
 
-Route::resource('subscribers', App\Http\Controllers\SubscriberController::class)->except(['create','store'])->middleware('auth');
+Route::resource('subscribers', App\Http\Controllers\SubscriberController::class)->except(['create','store'])->middleware('admin');
 Route::get('/subscriber-create', [App\Http\Controllers\SubscriberController::class, 'create'])->name('subscribers.create');
 Route::get('/subscriber-welcome', [App\Http\Controllers\SubscriberController::class, 'welcome'])->name('subscribers.welcome');
 Route::post('/subscriber-store', [App\Http\Controllers\SubscriberController::class, 'store'])->name('subscribers.store');

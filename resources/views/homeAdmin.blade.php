@@ -1,0 +1,1 @@
+Dasboard los Administradores vista tipo youtube para la reproducción de videos.

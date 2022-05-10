@@ -7,7 +7,7 @@
     <br>
     <br>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -19,6 +19,9 @@
                     @endif
 
                     {{ __('Estamos trabajando para ofrecerte el mejor contenido.!') }}
+
+                    <p>Dasboard los Clientes vista tipo youtube para la reproducción de videos.</p>
+
                 </div>
             </div>
         </div>
