@@ -52,7 +52,7 @@
                             <img src="{{ $item->attributes->image }}" class="img-thumbnail" width="200" height="200">
                         </div>
                         <div class="col-md-5">
-                            <b><a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a></b><br>
+                            <b><a href="/shop/{{ $item->attributes->slug }}" class="itemsName">{{ $item->name }}</a></b><br>
                                 <b>Precio: </b>${{ $item->price }} {{$ipInfo['currency_code']}}<br>
                                 <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }} {{$ipInfo['currency_code']}}<br>
                                 :: Info IP :: {{$ipInfo['ip']}}
@@ -120,28 +120,47 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                            input email para capturar el correo.... OJO
-                            <div class="collapse" id="bottonEpayco">
+                            <div class="row">
+                                <div class="col">
+                                    <!-- Name input -->
+                                    <div class="form-outline">
+                                    <label class="form-label" for="checkoutName">Nombre:</label>
+                                    <input type="text" id="checkoutName" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <!-- Email input -->
+                                    <div class="form-outline">
+                                    <label class="form-label" for="checkoutEmail">Correo Electrónico: *</label>    
+                                    <input type="email" id="checkoutEmail" class="form-control" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="collapse text-center" id="bottonEpayco">
                                 <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
                                     data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68" 
                                     data-epayco-amount="{{ \Cart::getTotal() }}"
                                     data-epayco-name="Centro de Desarrollo Humano" 
-                                    data-epayco-description="Compra Producto Digital"
-                                    data-epayco-currency="usd" 
+                                    data-epayco-description="Compra Productos Digitales CDH"
+                                    data-epayco-currency="{{$ipInfo['currency_code']}}" 
                                     data-epayco-country="co" 
                                     data-epayco-test="true"
-                                    data-epayco-invoice="ABC123"
+                                    data-epayco-invoice=""
                                     data-epayco-external="true" 
                                     data-epayco-response="http://localhost:8000/checkout"
                                     data-epayco-confirmation="http://localhost:8000/checkout" 
-                                    data-epayco-methodconfirmation="get">
-                                    data-epayco-autoclick="true"                           
+                                    data-epayco-methodconfirmation="get"
+                                    data-epayco-autoclick="false"
+                                    data-epayco-email-billing=""
+                                    data-epayco-name-billing=""
+                                    >
                                 </script>
                             </div>
                             </div>
                             <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" data-bs-toggle="collapse" href="#bottonEpayco" class="btn btn-primary">Continuar</button>
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> -->
+                            <button id="bottonCheckout" type="button" data-bs-toggle="collapse" href="#bottonEpayco" onclick="checkout();" class="btn btn-primary">Continuar</button>
                             </div>
                         </div>
                         </div>
@@ -153,4 +172,25 @@
         </div>
         <br><br>
     </div>
+@endsection
+@section('js')
+<script>
+    function checkout() {
+        var x = document.getElementsByClassName('epayco-button');
+        const email = document.getElementById("checkoutEmail").value;
+        const name = document.getElementById("checkoutName").value;
+        var today = new Date();
+        const d = new Date();
+        let time = d.getTime();
+        const huella = email+'-'+time;
+        console.log(huella);
+        for (var i = 0; i < x.length; i++) {
+            x[i+1].setAttribute("data-epayco-email-billing", email);
+            x[i+1].setAttribute("data-epayco-name-billing", name);
+            x[i+1].setAttribute("data-epayco-invoice", 'CDH'+'-'+today.getFullYear()+'-'+Math.floor(Math.random() * 1000));
+            console.log(x[i+1].getAttribute('data-epayco-invoice'));
+        }
+        
+    }
+</script>
 @endsection

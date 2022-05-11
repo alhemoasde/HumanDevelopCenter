@@ -66,6 +66,7 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
+        dd($request);
         return view('cart.checkout');
     }
 
