@@ -139,6 +139,7 @@
                     </div>
                 </li>
             @endguest
+            {{-- <a class="buy-tickets scrollto" href="{{ route('donation') }}">Donaciones</a> --}}
             <a class="buy-tickets scrollto" href="{{ route('shop') }}">Comprar</a>
         </div>
     </header>

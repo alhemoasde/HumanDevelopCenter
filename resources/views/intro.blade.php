@@ -5,7 +5,6 @@
 @section('content')
 <!-- ======= Hero Section ======= -->
 <section id="hero">
-    
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
         <h1 class="mb-4 pb-0">Explorando las<br><span>Raíces de una Sanación</span> Verdadera</h1>
         <p class="mb-4 pb-0">2 - 6 Mayo de 2022, Gran ciclo de conferencias. ¡Cinco días para encontrar lo mejor de tí!</p>
@@ -20,6 +19,20 @@
         <div class="content">
             <a href="{{ route('subscribers.create') }}" class="about-btn scrollto">¡Suscribete Ahora!</a>
         </div>
+        <div class="content">
+          <label for="email" style="color: white;"><i class="bi bi-envelope-check-fill"></i> Email:</label>
+          <input class="about-btn" onchange="chargeEmail()" type="email" name="email" id="email" placeholder="Correo electrónico...">
+          <a id="btView" name="btView" href="{{ route('player','') }}" class="about-btn scrollto"><i class="bi bi-play-circle-fill"> Ver Mis Videos</i></a>
+        </div>
+        <script>
+          function chargeEmail(){
+            btnViewVideo = document.getElementById('btView');
+            inputEmail = document.getElementById('email');
+            hrefRoute = '{{ route('player','') }}';
+            console.log(inputEmail.value);
+            btnViewVideo.setAttribute('href', hrefRoute+'/'+inputEmail.value);
+          }
+        </script>
     </div>
     <br>
 <br>

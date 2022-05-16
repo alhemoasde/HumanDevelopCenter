@@ -1621,3 +1621,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 10px;
   }
 }
+
+
+/*--------------------------------------------------------------
+# Dashboard Cliente
+--------------------------------------------------------------*/
+#dashboard-cliente .ratio-4x3{
+  --bs-aspect-ratio: 58% !important;
+}
+
+#dashboard-cliente .ratio-1x1{
+  --bs-aspect-ratio: 63% !important;
+}

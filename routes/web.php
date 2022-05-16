@@ -17,7 +17,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Models\User;
+use phpDocumentor\Reflection\Types\Boolean;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,9 +38,16 @@ Route::get('/', function () {
     return view('intro', compact('users'));
 });
 
+Route::get('/donation', function(){
+    return view('donation');
+});
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('admin');
+
+Route::get('/player/{email}', [App\Http\Controllers\HomeController::class, 'indexSuscriptor'])->name('player');
 
 Route::resource('users', App\Http\Controllers\UserController::class)->middleware('admin')->except('show');
 Route::get('/speaker/{id}', [App\Http\Controllers\UserController::class, 'showProfile'])->name('users.show');
@@ -72,3 +81,9 @@ Route::post('/update', [App\Http\Controllers\CartController::class, 'update'])->
 Route::post('/remove', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
 Route::post('/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('cart.clear');
 Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
+
+
+Route::post('/response/{ref_payco}', function(Request $request){
+    dd($request->ref_payco);
+    return response('Confirmación Recibida', 200)->header('success', true);
+});
