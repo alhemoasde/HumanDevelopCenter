@@ -53,8 +53,8 @@
                         </div>
                         <div class="col-md-5">
                             <b><a href="/shop/{{ $item->attributes->slug }}" class="itemsName">{{ $item->name }}</a></b><br>
-                                <b>Precio: </b>${{ $item->price }} {{$ipInfo['currency_code']}}<br>
-                                <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }} {{$ipInfo['currency_code']}}<br>
+                                <b>Precio: </b>${{ $item->price }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}<br>
+                                <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}<br>
                                 :: Info IP :: {{$ipInfo['ip']}}
                                 {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
                         </div>
@@ -101,7 +101,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <b>Total: </b>
-                            <span class="badge bg-danger rounded-pill">$ {{ \Cart::getTotal() }} {{$ipInfo['currency_code']}}</span>
+                            <span class="badge bg-danger rounded-pill">$ {{ \Cart::getTotal() }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}</span>
                         </li>
                     </ul>
                     <img class="img-fluid img-thumbnail" src="img/ePayco-Medios-de-Pago.png" alt="Medios de pago disponibles.">  
@@ -143,13 +143,13 @@
                                     data-epayco-amount="{{ \Cart::getTotal() }}"
                                     data-epayco-name="Centro de Desarrollo Humano" 
                                     data-epayco-description="Compra Productos Digitales CDH"
-                                    data-epayco-currency="{{$ipInfo['currency_code']}}" 
+                                    data-epayco-currency="{{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}" 
                                     data-epayco-country="co" 
                                     data-epayco-test="true"
                                     data-epayco-invoice=""
                                     data-epayco-external="true" 
-                                    data-epayco-response="http://localhost:8000/checkout"
-                                    data-epayco-confirmation="http://localhost:8000/checkout" 
+                                    data-epayco-response=""
+                                    data-epayco-confirmation="" 
                                     data-epayco-methodconfirmation="get"
                                     data-epayco-autoclick="false"
                                     data-epayco-email-billing=""
