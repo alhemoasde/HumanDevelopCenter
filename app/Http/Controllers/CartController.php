@@ -11,8 +11,7 @@ class CartController extends Controller
     public function shop()
     {
         $products = Product::all();
-        /* dd($products); */
-        return view('cart.shop')->with(['products' => $products]);
+        return view('cart.shop')->with(['products' => $products, 'ipInfo' => $this->getLocation()]);
     }
 
     public function cart()

@@ -256,26 +256,26 @@
                                             class="form-select @error('day') is-invalid @enderror">
                                             <option value=""
                                                 {{ old('day') == '' ? 'selected' : '' }}>Seleccione un Día...</option>
-                                            <option value="Dia 1"
-                                                {{ old('day') == 'Dia 1' ? 'selected' : '' }}>Día 1</option>
-                                            <option value="Dia 2"
-                                                {{ old('day') == 'Dia 2' ? 'selected' : '' }}>Día 2</option>
-                                            <option value="Dia 3"
-                                                {{ old('day') == 'Dia 3' ? 'selected' : '' }}>Día 3</option>
-                                            <option value="Dia 4"
-                                                {{ old('day') == 'Dia 4' ? 'selected' : '' }}>Día 4</option>
-                                            <option value="Dia 5"
-                                                {{ old('day') == 'Dia 5' ? 'selected' : '' }}>Día 5</option>
-                                            <option value="Dia 6"
-                                                {{ old('day') == 'Dia 6' ? 'selected' : '' }}>Día 6</option>
-                                            <option value="Dia 7"
-                                                {{ old('day') == 'Dia 7' ? 'selected' : '' }}>Día 7</option>
-                                            <option value="Dia 8"
-                                                {{ old('day') == 'Dia 8' ? 'selected' : '' }}>Día 8</option>
-                                            <option value="Dia 9"
-                                                {{ old('day') == 'Dia 9' ? 'selected' : '' }}>Día 9</option>
-                                            <option value="Dia 10"
-                                                {{ old('day') == 'Dia 10' ? 'selected' : '' }}>Día 10</option>    
+                                            <option value="Dia_1"
+                                                {{ old('day') == 'Dia_1' ? 'selected' : '' }}>Día 1</option>
+                                            <option value="Dia_2"
+                                                {{ old('day') == 'Dia_2' ? 'selected' : '' }}>Día 2</option>
+                                            <option value="Dia_3"
+                                                {{ old('day') == 'Dia_3' ? 'selected' : '' }}>Día 3</option>
+                                            <option value="Dia_4"
+                                                {{ old('day') == 'Dia_4' ? 'selected' : '' }}>Día 4</option>
+                                            <option value="Dia_5"
+                                                {{ old('day') == 'Dia_5' ? 'selected' : '' }}>Día 5</option>
+                                            <option value="Dia_6"
+                                                {{ old('day') == 'Dia_6' ? 'selected' : '' }}>Día 6</option>
+                                            <option value="Dia_7"
+                                                {{ old('day') == 'Dia_7' ? 'selected' : '' }}>Día 7</option>
+                                            <option value="Dia_8"
+                                                {{ old('day') == 'Dia_8' ? 'selected' : '' }}>Día 8</option>
+                                            <option value="Dia_9"
+                                                {{ old('day') == 'Dia_9' ? 'selected' : '' }}>Día 9</option>
+                                            <option value="Dia_10"
+                                                {{ old('day') == 'Dia_10' ? 'selected' : '' }}>Día 10</option>    
                                         </select>
 
                                         @error('day')

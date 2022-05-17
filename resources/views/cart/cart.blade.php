@@ -53,8 +53,8 @@
                         </div>
                         <div class="col-md-5">
                             <b><a href="/shop/{{ $item->attributes->slug }}" class="itemsName">{{ $item->name }}</a></b><br>
-                                <b>Precio: </b>${{ $item->price }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}<br>
-                                <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}<br>
+                                <b>Precio: </b>${{ number_format($item->price, 2, '.',',') }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}<br>
+                                <b>Sub Total: </b>${{ number_format(\Cart::get($item->id)->getPriceSum(), 2, '.',',') }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}<br>
                                 :: Info IP :: {{$ipInfo['ip']}}
                                 {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
                         </div>
@@ -89,7 +89,7 @@
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <b>Artículo(s) </b>
-                            <span class="badge bg-dark rounded-pill">{{ \Cart::getTotalQuantity() }}</span>
+                            <span class="badge bg-dark rounded-pill">{{ number_format(\Cart::getTotalQuantity(), 2, '.', ',') }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <b>Transporte: </b>
@@ -101,7 +101,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <b>Total: </b>
-                            <span class="badge bg-danger rounded-pill">$ {{ \Cart::getTotal() }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}</span>
+                            <span class="badge bg-danger rounded-pill">$ {{ number_format(\Cart::getTotal(), 2, '.', ',') }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}</span>
                         </li>
                     </ul>
                     <img class="img-fluid img-thumbnail" src="img/ePayco-Medios-de-Pago.png" alt="Medios de pago disponibles.">  
