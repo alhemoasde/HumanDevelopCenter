@@ -116,4 +116,19 @@ class CartController extends Controller
             return $arrayIp;
         }
     }
+
+    public function getDataResponsePago(Request $request)
+    {
+        /* $ch = curl_init('http://ipwhois.app/json/' . $ip);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); */
+        $json = curl_exec($request->ref_payco);
+        curl_close($ch);
+        // Decode JSON response
+        $epaycoResponse = json_decode($json, true);
+        // Country code output, field "country_code"
+        if(isset($epaycoResponse)){
+            return $epaycoResponse;
+        }
+    }
+
 }

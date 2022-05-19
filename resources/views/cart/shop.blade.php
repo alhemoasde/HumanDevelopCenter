@@ -3,8 +3,8 @@
 
 
 @section('content')
-<section  style="background-color: #eee;">
-    <div class="container py-5" style="margin-top: 80px">
+<section id="shop">
+    <div class="container-fluid" style="margin-top: 80px">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Inicio</a></li>
@@ -16,24 +16,27 @@
                 <hr>
                 <h2 class="text-center h2">:: Productos Disponibles ::</h2>
                 <hr>
-                <ul class="nav nav-tabs" id="tabProduct" role="tablist">
+                <ul class="nav nav-tabs nav-pills mb-3" id="tabProduct" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#dia1" type="button" role="tab" aria-controls="home" aria-selected="true">Día 1</button>
+                        <button class="nav-link active" id="dia1-tab" data-bs-toggle="tab" data-bs-target="#dia1" type="button" role="tab" aria-controls="dia_1" aria-selected="true"><i class="bi bi-tree-fill"></i> Día 1</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#dia2" type="button" role="tab" aria-controls="profile" aria-selected="false">Día 2</button>
+                        <button class="nav-link" id="dia2-tab" data-bs-toggle="tab" data-bs-target="#dia2" type="button" role="tab" aria-controls="dia_2" aria-selected="false"><i class="bi bi-tree-fill"></i> Día 2</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#dia3" type="button" role="tab" aria-controls="contact" aria-selected="false">Día 3</button>
+                        <button class="nav-link" id="dia3-tab" data-bs-toggle="tab" data-bs-target="#dia3" type="button" role="tab" aria-controls="dia_3" aria-selected="false"><i class="bi bi-tree-fill"></i> Día 3</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#dia4" type="button" role="tab" aria-controls="contact" aria-selected="false">Día 4</button>
+                        <button class="nav-link" id="dia4-tab" data-bs-toggle="tab" data-bs-target="#dia4" type="button" role="tab" aria-controls="dia_4" aria-selected="false"><i class="bi bi-tree-fill"></i> Día 4</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#dia5" type="button" role="tab" aria-controls="contact" aria-selected="false">Día 5</button>
+                        <button class="nav-link" id="dia5-tab" data-bs-toggle="tab" data-bs-target="#dia5" type="button" role="tab" aria-controls="dia_5" aria-selected="false"><i class="bi bi-tree-fill"></i> Día 5</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#dia5" type="button" role="tab" aria-controls="contact" aria-selected="false">Día 5</button>
+                        <button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="todos" aria-selected="false"><i class="bi bi-person-video3"></i> Todos</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="donation-tab" data-bs-toggle="tab" data-bs-target="#donation" type="button" role="tab" aria-controls="donacion" aria-selected="false"><i class="bi bi-cash-coin"></i> Donaciones</button>
                     </li>
                 </ul>
                 <br>
@@ -43,7 +46,7 @@
                             @foreach ($products as $pro)
                                 @if($pro->day === 'Dia_1')
                                     <div class="card" style="margin-bottom: 20px; height: auto;">
-                                        <img src="{{ asset('/public/storage/'.$pro->poster) }}" class="card-img-top mx-auto" style="height: 150px; width: 150px;display: block;" alt="{{ $pro->name }}">
+                                        <img src="{{ asset('/storage/'.$pro->poster) }}" class="card-img-top mx-auto" style="height: 150px; width: 150px;display: block;" alt="{{ $pro->name }}">
                                         <div class="card-body">
                                             <p class="lead mb-0"><a href=""><h4 class="card-title h5">{{ $pro->name }}</h4></a></p>
                                             <!-- <div class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
@@ -91,25 +94,25 @@
                     @foreach ($products as $pro)
                         @if($pro->day === 'Dia_1')
                         <div class="row">
-                            <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-                                <div class="card">
+                            <div class="col-sm-12 col-md-3">
+                                <div class="card" style="margin-bottom: 5px; background: radial-gradient(#e96868a8, rgb(239 230 230 / 0%));">
                                     <div class="d-flex justify-content-between p-3">
                                         <p class="lead mb-0"> <strong> {{ $pro->name }} </strong></p>
                                         <div
                                         class="bg-danger rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                                        style="width: 35px; height: 35px;">
+                                        style="width: 45px; height: 45px;">
                                         <p class="text-white mb-0 small">{{$pro->day}}</p>
                                         </div>
                                     </div>
-                                    <img src="{{ asset('/public/storage/'.$pro->poster) }}"
-                                        class="card-img-top" alt="{{ $pro->name }}" />
+                                    <img src="{{ asset('/storage/'.$pro->poster) }}"
+                                        class="card-img-top img-fluid img-thumbnail" alt="{{ $pro->name }}" />
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-3">
-                                            <p class="text-left h2"> <strong>${{ number_format($pro->priceSell,2,'.',',') }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}</strong></p>
+                                            <p class="text-left h3"> <strong>${{ number_format($pro->priceSell,2,'.',',') }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}</strong></p>
                                         </div>
                                         <div class="d-flex justify-content-between">
-                                            <p class="small"><a data-bs-toggle="collapse" href="#listVideo{{$pro->id}}" class="btn btn-sm btn-info h4 text-white"><i class="bi bi-eye-fill"></i> Videos</a></p>
-                                            <p><span class="small text-info fw-bold h4">{{$pro->videos->count()}}</span></p>
+                                            <p class="small"><a data-bs-toggle="collapse" href="#listVideo{{$pro->id}}" class="btn btn-sm btn-danger h4 text-white"><i class="bi bi-eye-fill"></i> Videos</a></p>
+                                            <p><span class="small text-danger fw-bold h4">{{$pro->videos->count()}}</span></p>
                                         </div>
                                         <div class="d-flex justify-content-between mb-2">
                                             <div class="collapse card text-center" id="listVideo{{$pro->id}}">
@@ -122,15 +125,26 @@
                                                 @endforeach
                                             </div>
                                         </div>
+
                                     </div>
-                                    <div class="card-footer" style="background-color: white;">
-                                        <div class="row">
-                                            <button class="btn btn-secondary btn-sm" class="tooltip-test" title="Agregar al Carrito">
-                                                <i class="bi bi-cart-plus-fill"></i> Agregar al Carrito
-                                            </button>
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                    {{ csrf_field() }}
+                                        <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
+                                        <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
+                                        <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
+                                        <input type="hidden" value="{{ asset('/public/storage/'.$pro->poster) }}" id="img" name="img">
+                                        {{-- <input type="hidden" value="{{ $pro->slug }}" id="slug" name="slug"> --}}
+                                        <input type="hidden" value="1" id="quantity" name="quantity">
+                                        <div class="card-footer" style="background-color: white;">
+                                            <div class="row">
+                                                <button class="btn btn-dark btn-sm" class="tooltip-test" title="Agregar al Carrito">
+                                                    <i class="bi bi-cart-plus-fill"></i> Agregar al Carrito
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
+                                <br>
                             </div>
                             
                         </div>
