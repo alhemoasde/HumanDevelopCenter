@@ -24,7 +24,7 @@ class Videos extends Model
     protected $fillable = [
         'title',
         'description',
-        'user_id',
+        'users_id',
         'url',       
         'status',
     ];
@@ -42,7 +42,7 @@ class Videos extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class,'users_id');
     }
 
 }

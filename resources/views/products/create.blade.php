@@ -326,7 +326,7 @@
                                             @endforeach
                                         </select>
 
-                                        @error('event')
+                                        @error('events_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

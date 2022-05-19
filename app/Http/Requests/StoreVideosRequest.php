@@ -28,6 +28,7 @@ class StoreVideosRequest extends FormRequest
             'description' => ['required', 'string', 'max:2000'],
             'url' => "nullable|mimes:mp4|max:500000",
             'urlText' => ['nullable', 'string', 'min:10', 'max:100'],
+            'users_id'  => ['required', 'exists:users,id'],
         ];
     }
 }
