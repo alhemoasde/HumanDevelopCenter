@@ -150,7 +150,7 @@
                                     data-epayco-external="true" 
                                     data-epayco-response=""
                                     data-epayco-confirmation="" 
-                                    data-epayco-methodconfirmation="get"
+                                    data-epayco-methodconfirmation="post"
                                     data-epayco-autoclick="false"
                                     data-epayco-email-billing=""
                                     data-epayco-name-billing=""
@@ -179,16 +179,14 @@
         var x = document.getElementsByClassName('epayco-button');
         const email = document.getElementById("checkoutEmail").value;
         const name = document.getElementById("checkoutName").value;
-        var today = new Date();
-        const d = new Date();
-        let time = d.getTime();
-        const huella = email+'-'+time;
+        const today = new Date();
+        let time = today.getTime();
+        let huella = 'CDH'+'-'+today.getFullYear()+'-'+Math.floor(Math.random() * 1000)+time;
         console.log(huella);
         for (var i = 0; i < x.length; i++) {
             x[i+1].setAttribute("data-epayco-email-billing", email);
             x[i+1].setAttribute("data-epayco-name-billing", name);
-            x[i+1].setAttribute("data-epayco-invoice", 'CDH'+'-'+today.getFullYear()+'-'+Math.floor(Math.random() * 1000));
-            console.log(x[i+1].getAttribute('data-epayco-invoice'));
+            x[i+1].setAttribute("data-epayco-invoice", huella);
         }
         
     }
