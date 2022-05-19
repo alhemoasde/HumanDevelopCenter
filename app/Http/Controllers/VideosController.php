@@ -7,6 +7,7 @@ use App\Http\Requests\StoreVideosRequest;
 use App\Http\Requests\UpdateVideosRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
+use App\Models\User;
 
 class VideosController extends Controller
 {
@@ -29,7 +30,8 @@ class VideosController extends Controller
     public function create()
     {
         $products = Product::where('status','=','1')->get();
-        return view('videos.create', compact('products'));
+        $speakers = User::where('status','=','1')->where('profile','=','Speaker')->get();
+        return view('videos.create', compact('speakers'));
     }
 
     /**
