@@ -30,8 +30,8 @@ class VideosController extends Controller
     public function create()
     {
         $products = Product::where('status','=','1')->get();
-        $speakers = User::where('status','=','1')->where('profile','=','Speaker')->get();
-        return view('videos.create', compact('speakers'));
+        $users = User::where('status','=','1')->where('profile','=','Speaker')->get();
+        return view('videos.create', compact('users'));
     }
 
     /**
