@@ -215,7 +215,7 @@
 
                                     <div class="col-md-6">
                                         <input id="poster" type="file"
-                                            class="form-control @error('poster') is-invalid @enderror" name="poster" required>
+                                            class="form-control @error('poster') is-invalid @enderror" name="poster" >
 
                                         @error('poster')
                                             <span class="invalid-feedback" role="alert">
