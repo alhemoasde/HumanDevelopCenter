@@ -30,7 +30,7 @@ class CreateProductsTable extends Migration
             $table->boolean('status')->default(true)->comment('Estado del Producto 0= inactivo 1 = Activo');
             $table->timestamps();
 
-            $table->foreign('events_id')->references('id')->on('events');
+            $table->foreign('events_id')->references('id')->on('Events');
         });
     }
 
