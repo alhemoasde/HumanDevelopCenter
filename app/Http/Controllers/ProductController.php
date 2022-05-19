@@ -103,7 +103,7 @@ class ProductController extends Controller
             $product->update();
         } */
 
-        if($product->poster != ''){
+        if($product->poster != '' && $request->file('poster')){
             Storage::disk('public')->delete($product->poster);
             $product->poster ='';
             $product->update();
