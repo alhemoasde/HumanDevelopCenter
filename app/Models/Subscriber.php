@@ -20,4 +20,12 @@ class Subscriber extends Model
         'status',
     ];
 
+    /**
+     * Obtener las transacciones de un Subscriber.
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
 }

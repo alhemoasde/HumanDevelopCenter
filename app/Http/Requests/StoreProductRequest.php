@@ -34,7 +34,7 @@ class StoreProductRequest extends FormRequest
             'poster' => "image|mimes:jpeg,png|max:3000",
             'type' => ['required','string', 'min:5', 'max:100'],
             'events_id'  => ['required', 'exists:events,id'],
-            'day' => ['nullable','string', 'min:5', 'max:100'],
+            'day' => ['nullable','string', 'min:5', 'max:20'],
             'category' => ['nullable','string', 'min:5', 'max:100'],
         ];
     }

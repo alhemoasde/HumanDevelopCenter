@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('paymentLink', 255)->nullable()->comment('Link de pago de la pasarela seleccionada.');
             $table->string('type', 100)->comment('Tipo de producto Digital o Fisico.');
             $table->string('poster', 100)->nullable()->comment('URL de acceso a la imagen de portada del producto.');
-            $table->string('day', 100)->nullable()->comment('Dia al que pertenece el producto.');
+            $table->string('day', 20)->nullable()->comment('Dia al que pertenece el producto.');
             $table->string('category', 100)->nullable()->comment('Categoria a la que pertenece el producto.');
             $table->boolean('status')->default(true)->comment('Estado del Producto 0= inactivo 1 = Activo');
             $table->timestamps();

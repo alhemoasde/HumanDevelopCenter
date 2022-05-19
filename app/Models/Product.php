@@ -38,7 +38,7 @@ class Product extends Model
     ];
 
     /**
-     * Obtener Evento por producto.
+     * Obtener Evento.
      */
     public function event()
     {
@@ -46,17 +46,25 @@ class Product extends Model
     }
 
     /**
-     * Obtener Evento por producto.
+     * Obtener Evento.
      */
     public function enventByProduct($eventId){
         return Events::find($eventId);
     }
 
     /**
-     * Obtener todos los videos de un producto digital 1..n
+     * Obtener todos los videos de un producto.
      */
     public function videos()
     {
         return $this->belongsToMany(Videos::class,'product_video')->withPivot('videos_id');
+    }
+
+    /**
+     * Obtener las transacciones de un producto.
+     */
+    public function transactions()
+    {
+        return$this->belongsToMany(Transaction::class,'product_transaction')->withPivot('transaction_id');
     }
 }
