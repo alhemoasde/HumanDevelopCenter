@@ -29,7 +29,6 @@ class VideosController extends Controller
      */
     public function create()
     {
-        $products = Product::where('status','=','1')->get();
         $users = User::where('status','=','1')->where('profile','=','Speaker')->get();
         return view('videos.create', compact('users'));
     }
@@ -80,8 +79,8 @@ class VideosController extends Controller
      */
     public function edit(Videos $video)
     {
-        $products = Product::where('status','=','1')->get();
-        return view('videos.edit', compact(['video','products']));
+        $users = User::where('status','=','1')->where('profile','=','Speaker')->get();
+        return view('videos.edit', compact(['video','users']));
     }
 
     /**

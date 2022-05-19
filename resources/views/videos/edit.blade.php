@@ -155,6 +155,27 @@
                                     </div>
                                 </div> --}}
 
+                                <div class="row mb-3">
+                                    <label for="users_id"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Reasignar Ponente: *') }}</label>
+
+                                    <div class="col-md-6">
+
+                                        <select id="users_id" name="users_id"
+                                            class="form-select @error('users_id') is-invalid @enderror" required>
+                                            @foreach ($users as $user)
+                                                <option value="{{$user->id}}"
+                                                {{ old('user', $user->id) == $user->id ? 'selected' : '' }}>{{$user->id}} -> {{$user->name}}</option>
+                                            @endforeach
+                                        </select>
+
+                                        @error('users_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
 
                                 <div class="row mb-3">
                                     <label for="status"
