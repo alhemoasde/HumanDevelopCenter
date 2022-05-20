@@ -70,7 +70,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-center">
-                                                    <img src="{{ asset('/storage/' . $pro->poster) }}"
+                                                    <img src="{{ asset('/public/storage/' . $pro->poster) }}"
                                                         class="card-img-top mx-autoimg-fluid img-thumbnail"
                                                         style="height: 180px; width: 180px; border-radius: 19px;"
                                                         alt="{{ $pro->name }}"/>
@@ -150,7 +150,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-center">
-                                                    <img src="{{ asset('/storage/' . $pro->poster) }}"
+                                                    <img src="{{ asset('/public/storage/' . $pro->poster) }}"
                                                         class="card-img-top mx-autoimg-fluid img-thumbnail"
                                                         style="height: 180px; width: 180px; border-radius: 19px;"
                                                         alt="{{ $pro->name }}"/>
@@ -231,7 +231,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-center">
-                                                    <img src="{{ asset('/storage/' . $pro->poster) }}"
+                                                    <img src="{{ asset('/public/storage/' . $pro->poster) }}"
                                                         class="card-img-top mx-autoimg-fluid img-thumbnail"
                                                         style="height: 180px; width: 180px; border-radius: 19px;"
                                                         alt="{{ $pro->name }}"/>
@@ -312,7 +312,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-center">
-                                                    <img src="{{ asset('/storage/' . $pro->poster) }}"
+                                                    <img src="{{ asset('/public/storage/' . $pro->poster) }}"
                                                         class="card-img-top mx-autoimg-fluid img-thumbnail"
                                                         style="height: 180px; width: 180px; border-radius: 19px;"
                                                         alt="{{ $pro->name }}"/>
@@ -393,7 +393,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-center">
-                                                    <img src="{{ asset('/storage/' . $pro->poster) }}"
+                                                    <img src="{{ asset('/public/storage/' . $pro->poster) }}"
                                                         class="card-img-top mx-autoimg-fluid img-thumbnail"
                                                         style="height: 180px; width: 180px; border-radius: 19px;"
                                                         alt="{{ $pro->name }}"/>
@@ -473,7 +473,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-center">
-                                                    <img src="{{ asset('/storage/' . $pro->poster) }}"
+                                                    <img src="{{ asset('/public/storage/' . $pro->poster) }}"
                                                         class="card-img-top mx-autoimg-fluid img-thumbnail"
                                                         style="height: 180px; width: 180px; border-radius: 19px;"
                                                         alt="{{ $pro->name }}"/>
