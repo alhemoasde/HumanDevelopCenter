@@ -1633,3 +1633,30 @@ h1, h2, h3, h4, h5, h6 {
 #dashboard-cliente .ratio-1x1{
   --bs-aspect-ratio: 63% !important;
 }
+
+/*--------------------------------------------------------------
+# Shop Section
+--------------------------------------------------------------*/
+#shop .nav-tabs {
+  text-align: center;
+  margin: auto;
+  display: block;
+  border-bottom: 0;
+  margin-bottom: 30px;
+}
+#shop .nav-tabs li {
+  display: inline-block;
+  margin-bottom: 0;
+}
+#shop .nav-tabs button {
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  background-color: #0e1b4d;
+  color: #fff;
+  padding: 10px 30px;
+}
+#shop .nav-tabs button.active {
+  background-color: #f82249;
+  color: #fff;
+}
