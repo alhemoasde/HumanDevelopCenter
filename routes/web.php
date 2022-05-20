@@ -83,7 +83,7 @@ Route::post('/clear', [App\Http\Controllers\CartController::class, 'clear'])->na
 Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
 
 
-Route::post('/response/{ref_payco}', function(Request $request){
-    dd($request->ref_payco);
+Route::post('/response/{ref_payco}', function($ref_payco){
+    dd($ref_payco);
     return response('Confirmación Recibida', 200)->header('success', true);
 });

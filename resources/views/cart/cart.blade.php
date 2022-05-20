@@ -150,7 +150,6 @@
                                     data-epayco-external="true" 
                                     data-epayco-response=""
                                     data-epayco-confirmation="" 
-                                    data-epayco-methodconfirmation="post"
                                     data-epayco-autoclick="false"
                                     data-epayco-email-billing=""
                                     data-epayco-name-billing=""
