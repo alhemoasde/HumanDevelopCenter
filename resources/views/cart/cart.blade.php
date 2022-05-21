@@ -138,7 +138,7 @@
                                                 <!-- Name input -->
                                                 <div class="form-outline">
                                                     <label class="form-label" for="checkoutName">Nombre:</label>
-                                                    <input type="text" id="checkoutName" class="form-control"
+                                                    <input type="text" id="checkoutName" name="checkoutName" class="form-control"
                                                         value="{{ old('checkoutName') }}" required />
                                                 </div>
                                             </div>

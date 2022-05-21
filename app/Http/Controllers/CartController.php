@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Transaction;
-use Illuminate\Support\Facades\Http;
+use App\Models\Subscriber;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomUserNew;
 
 class CartController extends Controller
 {
@@ -136,6 +138,11 @@ class CartController extends Controller
         return view('cart.checkout', compact(['ref_payco']));
     }
 
+    /**
+     * Metodo que permite consultar en Epayco los resultados de una transacción.
+     * @param  Parametro enviado como respuest desde Epayco.co $ref_payco
+     * @return Información de respuesta en formato JSON $dataResponse
+     */
     public function getDataResponsePago($ref_payco)
     {
         $ch = curl_init('https://secure.epayco.co/validation/v1/reference/'.$ref_payco);
@@ -147,6 +154,11 @@ class CartController extends Controller
         return $dataResponse['data'];
     }
 
+    /**
+     * Metodo que permite guardar los principales datos del carrito de compras.
+     * @param  \App\Http\Requests\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function saveCart(Request $request){
         $transaction = Transaction::create([
             'invoice_cart' => $request->invoice_cart,
@@ -160,6 +172,16 @@ class CartController extends Controller
         }
         $transaction->products()->sync($products);
         $transaction->save();
+        
+        // Se verifica si el comprador existe como suscriptor, si no se crea. 
+        $subscriberExist = Subscriber::where('email','=',$request->checkoutEmail)->first();
+        if(!isset($subscriberExist)){
+            Subscriber::create([
+                'name' => $request->checkoutName,
+                'email' => $request->checkoutEmail,
+            ]);
+            Mail::to($request->checkoutEmail)->send(new WelcomUserNew());   
+        }
         return view('cart.saveCart');
     }
 
