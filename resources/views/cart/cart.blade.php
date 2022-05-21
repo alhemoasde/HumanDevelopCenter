@@ -164,16 +164,19 @@
                                     <div class="modal-footer">
                                         <div class="collapse text-center" id="bottonEpayco">
                                             <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
-                                                                                        data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68"
-                                                                                        data-epayco-amount="{{ \Cart::getTotal() }}"
-                                                                                        data-epayco-name="Centro de Desarrollo Humano"
-                                                                                        data-epayco-description="Compra Productos Digitales CDH"
-                                                                                        data-epayco-currency="{{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}"
-                                                                                        data-epayco-country="co" data-epayco-test="true"
-                                                                                        data-epayco-invoice="{{ $invoice }}" data-epayco-external="false"
-                                                                                        data-epayco-response="http://127.0.0.1:8000/checkout"
-                                                                                        data-epayco-confirmation="" data-epayco-autoclick="false"
-                                                                                        data-epayco-email-billing="" data-epayco-name-billing=""></script>
+                                                    data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68"
+                                                    data-epayco-amount="{{ \Cart::getTotal() }}"
+                                                    data-epayco-name="Centro de Desarrollo Humano"
+                                                    data-epayco-description="Compra Productos Digitales CDH"
+                                                    data-epayco-currency="{{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}"
+                                                    data-epayco-country="co" 
+                                                    data-epayco-test="true"
+                                                    data-epayco-invoice="{{ $invoice }}" 
+                                                    data-epayco-external="false"
+                                                    data-epayco-response="https://laboratorioparaelconocimiento.com/checkout"
+                                                    data-epayco-confirmation="" data-epayco-autoclick="false"
+                                                    data-epayco-email-billing="" data-epayco-name-billing="">
+                                            </script>                                    
                                         </div>
                                         <div class="bottonCheckout">
                                             <button id="bottonCheckout" type="submit" data-bs-toggle="collapse"
