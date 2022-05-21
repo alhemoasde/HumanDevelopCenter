@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Http;
 
 class CartController extends Controller
 {
@@ -18,8 +19,9 @@ class CartController extends Controller
     public function cart()
     {
         $cartCollection = \Cart::getContent();
-        
-        return view('cart.cart')->with(['cartCollection' => $cartCollection, 'ipInfo' => $this->getLocation()]);
+        $year = date("Y");
+        $invoice = 'CDH'.substr(str_shuffle('CentroDeDesarrolloHumano'), 0, 16).$year.random_int(100,1000000);
+        return view('cart.cart')->with(['cartCollection' => $cartCollection, 'ipInfo' => $this->getLocation(), 'invoice' => $invoice]);
     }
     public function remove(Request $request)
     {
@@ -29,7 +31,6 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-
         \Cart::add(array(
             'id' => $request->id,
             'name' => $request->name,
@@ -62,12 +63,6 @@ class CartController extends Controller
     {
         \Cart::clear();
         return redirect()->route('cart.index')->with('success_msg', 'Carrito vacio!');
-    }
-
-    public function checkout(Request $request)
-    {
-        $ref_payco = $request->ref_payco;
-        return view('cart.checkout', compact('ref_payco'));
     }
 
     public function getLocation()
@@ -118,17 +113,54 @@ class CartController extends Controller
         }
     }
 
-    public function getDataResponsePago(Request $request)
+    public function checkout(Request $request)
     {
-        /* $ch = curl_init('http://ipwhois.app/json/' . $ip);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); */
-        /* $json = curl_exec($request->ref_payco);
-        curl_close($ch); */
+        $ref_payco = $this->getDataResponsePago($request->ref_payco);
+        $transaction = Transaction::where('invoice_cart','=',$ref_payco['x_id_invoice'])->first();
+        
+        if(isset($transaction)){
+            $transaction->update([
+                'ref_transaction' => $request->ref_payco,
+                'date_transaccion' => $ref_payco['x_transaction_date'],
+                'transaction_id' => $ref_payco['x_transaction_id'],
+                'autorizacion' => $ref_payco['x_approval_code'],
+                'transaction_state' => $ref_payco['x_transaction_state'],
+                'response_reason_text' => $ref_payco['x_response_reason_text'],
+                'amount' => $ref_payco['x_amount_ok'],
+                'currency_code' => $ref_payco['x_currency_code'],
+                'customer_ip' => $ref_payco['x_customer_ip'],
+                'signature' => $ref_payco['x_signature'],
+            ]);
+        } 
+        \Cart::clear();
+        return view('cart.checkout', compact(['ref_payco']));
+    }
+
+    public function getDataResponsePago($ref_payco)
+    {
+        $ch = curl_init('https://secure.epayco.co/validation/v1/reference/'.$ref_payco);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $json = curl_exec($ch);
+        curl_close($ch);
         // Decode JSON response
-        $ref_payco = 'd47b9225211daacb8ab2fe0f';
-        $epaycoResponse = $response = Http::get('https://secure.epayco.co/validation/v1/reference/'.$ref_payco);
-        // Country code output, field "country_code"
-        dd($epaycoResponse);
+        $dataResponse = json_decode($json, true);
+        return $dataResponse['data'];
+    }
+
+    public function saveCart(Request $request){
+        $transaction = Transaction::create([
+            'invoice_cart' => $request->invoice_cart,
+            'subscriber_email' => $request->checkoutEmail,
+            'amountTotalCart' => $request->amountTotalCart,
+        ]);
+        $cartCollection = \Cart::getContent();
+        $products=array();
+        foreach($cartCollection as $item){
+            array_push($products,$item->id);
+        }
+        $transaction->products()->sync($products);
+        $transaction->save();
+        return view('cart.saveCart');
     }
 
 }

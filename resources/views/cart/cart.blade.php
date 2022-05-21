@@ -1,4 +1,3 @@
-{{-- @extends('layouts.app') --}}
 @extends('index')
 
 @section('content')
@@ -45,35 +44,40 @@
                     <h4>No hay productos en su carrito!</h4><br>
                     <a href="/shop" class="btn btn-dark">Continuar Comprando</a>
                 @endif
-                
+
                 @foreach ($cartCollection as $item)
                     <div class="row">
                         <div class="col-md-5">
                             <img src="{{ $item->attributes->image }}" class="img-thumbnail" width="200" height="200">
                         </div>
                         <div class="col-md-5">
-                            <b><a href="/shop/{{ $item->attributes->slug }}" class="itemsName">{{ $item->name }}</a></b><br>
-                                <b>Precio: </b>${{ number_format($item->price, 2, '.',',') }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}<br>
-                                <b>Sub Total: </b>${{ number_format(\Cart::get($item->id)->getPriceSum(), 2, '.',',') }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}<br>
-                                :: Info IP :: {{$ipInfo['ip']}}
-                                {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
+                            <b><a href="/shop/{{ $item->attributes->slug }}" class="itemsName">{{ $item->id }} -
+                                    {{ $item->name }}</a></b><br>
+                            <b>Precio: </b>${{ number_format($item->price, 2, '.', ',') }}
+                            {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}<br>
+                            <b>Sub Total: </b>${{ number_format(\Cart::get($item->id)->getPriceSum(), 2, '.', ',') }}
+                            {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}<br>
+                            :: Info IP :: {{ $ipInfo['ip'] }}
+                            {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
                         </div>
                         <div class="col-md-2">
-                                <form action="{{ route('cart.update') }}" method="POST">
-                                    {{ csrf_field() }}
-                                    
-                                    <input type="hidden" value="{{ $item->id }}" id="id" name="id">  
-                                    <input type="number" class="form-control text-center" style="width: 70%;" value="{{ $item->quantity }}" id="quantity" name="quantity">
-                                    <button class="btn btn-outline-secondary" style="width: 70%;"><i class="bi bi-arrow-repeat"></i></button>
-                                </form>
-                                <form action="{{ route('cart.remove') }}" method="POST">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                    <button class="btn btn-outline-secondary" style="width: 70%;"><i class="bi bi-trash-fill"></i></button>
-                                </form>
+                            <form action="{{ route('cart.update') }}" method="POST">
+                                {{ csrf_field() }}
+
+                                <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                <input type="number" class="form-control text-center" style="width: 70%;"
+                                    value="{{ $item->quantity }}" id="quantity" name="quantity">
+                                <button class="btn btn-outline-secondary" style="width: 70%;"><i
+                                        class="bi bi-arrow-repeat"></i></button>
+                            </form>
+                            <form action="{{ route('cart.remove') }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                <button class="btn btn-outline-secondary" style="width: 70%;"><i
+                                        class="bi bi-trash-fill"></i></button>
+                            </form>
                         </div>
                     </div>
-         
                     <hr>
                 @endforeach
                 @if (count($cartCollection) > 0)
@@ -86,86 +90,102 @@
             @if (count($cartCollection) > 0)
                 <div class="col-lg-5">
                     <div class="card">
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <b>Artículo(s) </b>
-                            <span class="badge bg-dark rounded-pill">{{ number_format(\Cart::getTotalQuantity(), 2, '.', ',') }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <b>Transporte: </b>
-                            <span class="badge bg-dark rounded-pill">0 {{$ipInfo['currency_code']}}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <b>Impuestos: </b>
-                            <span class="badge bg-dark rounded-pill">0 {{$ipInfo['currency_code']}}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <b>Total: </b>
-                            <span class="badge bg-danger rounded-pill">$ {{ number_format(\Cart::getTotal(), 2, '.', ',') }} {{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}</span>
-                        </li>
-                    </ul>
-                    <img class="img-fluid img-thumbnail" src="img/ePayco-Medios-de-Pago.png" alt="Medios de pago disponibles.">  
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <b>Artículo(s) </b>
+                                <span
+                                    class="badge bg-dark rounded-pill">{{ number_format(\Cart::getTotalQuantity(), 2, '.', ',') }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <b>Transporte: </b>
+                                <span class="badge bg-dark rounded-pill">0 {{ $ipInfo['currency_code'] }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <b>Impuestos: </b>
+                                <span class="badge bg-dark rounded-pill">0 {{ $ipInfo['currency_code'] }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <b>Total: </b>
+                                <span class="badge bg-danger rounded-pill">$
+                                    {{ number_format(\Cart::getTotal(), 2, '.', ',') }}
+                                    {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}</span>
+                            </li>
+                        </ul>
+                        <img class="img-fluid img-thumbnail" src="img/ePayco-Medios-de-Pago.png"
+                            alt="Medios de pago disponibles.">
                     </div>
                     <br><a href="/shop" class="btn btn-dark"><i class="bi bi-basket-fill"> Continuar Comprando</i></a>
                     <!-- <a href="/checkout" class="btn btn-success"><i class="bi bi-paypal"> Procesar Pago</i></a> -->
                     <!-- Vertically centered Modal -->
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                    <i class="bi bi-paypal"> Procesar Pago</i>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#verticalycentered">
+                        <i class="bi bi-paypal"> Procesar Pago</i>
                     </button>
                     <div class="modal fade" id="verticalycentered" tabindex="-1">
                         <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title">Datos para Checkout</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            <div class="row">
-                                <div class="col">
-                                    <!-- Name input -->
-                                    <div class="form-outline">
-                                    <label class="form-label" for="checkoutName">Nombre:</label>
-                                    <input type="text" id="checkoutName" class="form-control" required/>
+                            <form id="saveCart" method="POST" action="{{ route('saveCart') }}" target="/shop">
+                                @csrf
+                                @method('post')
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Datos para Checkout</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <!-- Name input -->
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="checkoutName">Nombre:</label>
+                                                    <input type="text" id="checkoutName" class="form-control"
+                                                        value="{{ old('checkoutName') }}" required />
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <!-- Email input -->
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="checkoutEmail">Correo Electrónico:
+                                                        *</label>
+                                                    <input type="email" id="checkoutEmail" name="checkoutEmail"
+                                                        value="{{ old('checkoutEmail') }}" class="form-control"
+                                                        required />
+                                                </div>
+                                            </div>
+                                            <input type="hidden" id="invoice_cart" name="invoice_cart"
+                                                value="{{ $invoice }}">
+                                            <input type="hidden" id="amountTotalCart" name="amountTotalCart"
+                                                value="{{ Cart::getTotal() }}">
+                                            <input type="hidden" id="product_cart" name="cartCollection"
+                                                value="{{ $cartCollection }}">
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="collapse text-center" id="bottonEpayco">
+                                            <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
+                                                                                        data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68"
+                                                                                        data-epayco-amount="{{ \Cart::getTotal() }}"
+                                                                                        data-epayco-name="Centro de Desarrollo Humano"
+                                                                                        data-epayco-description="Compra Productos Digitales CDH"
+                                                                                        data-epayco-currency="{{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}"
+                                                                                        data-epayco-country="co" data-epayco-test="true"
+                                                                                        data-epayco-invoice="{{ $invoice }}" data-epayco-external="false"
+                                                                                        data-epayco-response="http://127.0.0.1:8000/checkout"
+                                                                                        data-epayco-confirmation="" data-epayco-autoclick="false"
+                                                                                        data-epayco-email-billing="" data-epayco-name-billing=""></script>
+                                        </div>
+                                        <div class="bottonCheckout">
+                                            <button id="bottonCheckout" type="submit" data-bs-toggle="collapse"
+                                                href="#bottonEpayco" onclick="checkout(); hiddenBooton();" class="btn btn-primary">
+                                                Continuar</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <!-- Email input -->
-                                    <div class="form-outline">
-                                    <label class="form-label" for="checkoutEmail">Correo Electrónico: *</label>    
-                                    <input type="email" id="checkoutEmail" class="form-control" required/>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="collapse text-center" id="bottonEpayco">
-                                <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
-                                    data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68" 
-                                    data-epayco-amount="{{ \Cart::getTotal() }}"
-                                    data-epayco-name="Centro de Desarrollo Humano" 
-                                    data-epayco-description="Compra Productos Digitales CDH"
-                                    data-epayco-currency="{{$ipInfo['currency_code']!=='COP'?'USD':'COP'}}" 
-                                    data-epayco-country="co" 
-                                    data-epayco-test="true"
-                                    data-epayco-invoice=""
-                                    data-epayco-external="true" 
-                                    data-epayco-response=""
-                                    data-epayco-confirmation="" 
-                                    data-epayco-autoclick="false"
-                                    data-epayco-email-billing=""
-                                    data-epayco-name-billing=""
-                                    >
-                                </script>
-                            </div>
-                            </div>
-                            <div class="modal-footer">
-                            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> -->
-                            <button id="bottonCheckout" type="button" data-bs-toggle="collapse" href="#bottonEpayco" onclick="checkout();" class="btn btn-primary">Continuar</button>
-                            </div>
-                        </div>
+                            </form>
                         </div>
                     </div>
                     <!-- End Vertically centered Modal-->
-                    
                 </div>
             @endif
         </div>
@@ -173,21 +193,18 @@
     </div>
 @endsection
 @section('js')
-<script>
-    function checkout() {
-        var x = document.getElementsByClassName('epayco-button');
-        const email = document.getElementById("checkoutEmail").value;
-        const name = document.getElementById("checkoutName").value;
-        const today = new Date();
-        let time = today.getTime();
-        let huella = 'CDH'+'-'+today.getFullYear()+'-'+Math.floor(Math.random() * 1000)+time;
-        console.log(huella);
-        for (var i = 0; i < x.length; i++) {
-            x[i+1].setAttribute("data-epayco-email-billing", email);
-            x[i+1].setAttribute("data-epayco-name-billing", name);
-            x[i+1].setAttribute("data-epayco-invoice", huella);
+    <script>
+        function checkout() {
+            var x = document.getElementsByClassName('epayco-button');
+            const email = document.getElementById("checkoutEmail").value;
+            const name = document.getElementById("checkoutName").value;
+            for (var i = 0; i < x.length; i++) {
+                x[i + 1].setAttribute("data-epayco-email-billing", email);
+                x[i + 1].setAttribute("data-epayco-name-billing", name);
+            }
         }
-        
-    }
-</script>
+    </script>
+@endsection
+
+@section('js')
 @endsection

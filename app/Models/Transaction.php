@@ -22,20 +22,23 @@ class Transaction extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'invoice_cart',
         'subscriber_email',
-        'valorTotalCarrito',
-        'fecha',
-        'id_factura',
-        'recibo',
+        'amountTotalCart',
+        'ref_transaction',
+        'date_transaccion',
+        'transaction_id',
         'autorizacion',
-        'estado',
-        'valortotal',
+        'transaction_state',
+        'response_reason_text',
+        'amount',
+        'currency_code',
+        'trmdia',
+        'customer_ip',
+        'signature',
         'iva_lineapagos',
         'ganancia_lineapagos',
         'ganancia_cliente',
-        'trmdia',
-        'moneda',
-        'ip_transaccion',
     ];
 
 
