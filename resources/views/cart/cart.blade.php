@@ -180,7 +180,7 @@
                                         </div>
                                         <div class="bottonCheckout">
                                             <button id="bottonCheckout" type="submit" data-bs-toggle="collapse"
-                                                href="#bottonEpayco" onclick="checkout(); hiddenBooton();" class="btn btn-primary">
+                                                href="#bottonEpayco" onclick="checkout();" class="btn btn-primary">
                                                 Continuar</button>
                                         </div>
                                     </div>
