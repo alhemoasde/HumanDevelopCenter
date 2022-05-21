@@ -12,12 +12,20 @@ use App\Mail\WelcomUserNew;
 class CartController extends Controller
 {
 
+    /**
+     * Permite cargar la vista resumen productos disponibles.
+     * @return \Illuminate\Http\Response
+     */
     public function shop()
     {
         $products = Product::all();
         return view('cart.shop')->with(['products' => $products, 'ipInfo' => $this->getLocation()]);
     }
 
+    /**
+     * Permite cargar la vista resumen del carrito de compras.
+     * @return \Illuminate\Http\Response
+     */
     public function cart()
     {
         $cartCollection = \Cart::getContent();
@@ -25,12 +33,23 @@ class CartController extends Controller
         $invoice = 'CDH'.substr(str_shuffle('CentroDeDesarrolloHumano'), 0, 16).$year.random_int(100,1000000);
         return view('cart.cart')->with(['cartCollection' => $cartCollection, 'ipInfo' => $this->getLocation(), 'invoice' => $invoice]);
     }
+
+    /**
+     * Permite remover productos del carrito.
+     * @param  \App\Http\Requests\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function remove(Request $request)
     {
         \Cart::remove($request->id);
         return redirect()->route('cart.index')->with('success_msg', '¡Item eliminado!');
     }
 
+    /**
+     * Permite añadir productos al carrito.
+     * @param  \App\Http\Requests\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function add(Request $request)
     {
         \Cart::add(array(
@@ -47,6 +66,13 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success_msg', 'Item Agregado a sú Carrito!');
     }
 
+    /**
+     * Permite actualizar los productos del carrito.
+     * Cantidad de articulos.
+     * Nuevos articulos.
+     * @param  \App\Http\Requests\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request)
     {
         \Cart::update(
@@ -61,12 +87,21 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success_msg', 'Carrito está actualizado!');
     }
 
+    /**
+     * Permite limpiar el carrito de compras.
+     * @param  \App\Http\Requests\Request  $request
+     * @return \Illuminate\Http\Response 
+     */
     public function clear()
     {
         \Cart::clear();
         return redirect()->route('cart.index')->with('success_msg', 'Carrito vacio!');
     }
 
+    /**
+     * Permite obtener la geolocalización del usuario en sesión 
+     * tomando como dato la ip desde donde se establece la concexión.
+     */
     public function getLocation()
     {
         $ip = isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
@@ -115,6 +150,12 @@ class CartController extends Controller
         }
     }
 
+    /**
+     * Permite guardar los datos de una transacción
+     * confirmada con la pasarela de pago..
+     * @param  \App\Http\Requests\Request  $request
+     * @return \Illuminate\Http\Response view cart.checkout con el resumen de la compra
+     */
     public function checkout(Request $request)
     {
         $ref_payco = $this->getDataResponsePago($request->ref_payco);
@@ -139,7 +180,7 @@ class CartController extends Controller
     }
 
     /**
-     * Metodo que permite consultar en Epayco los resultados de una transacción.
+     * Permite consultar en Epayco los resultados de una transacción.
      * @param  Parametro enviado como respuest desde Epayco.co $ref_payco
      * @return Información de respuesta en formato JSON $dataResponse
      */
@@ -155,7 +196,7 @@ class CartController extends Controller
     }
 
     /**
-     * Metodo que permite guardar los principales datos del carrito de compras.
+     * Permite guardar los principales datos del carrito de compras.
      * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */

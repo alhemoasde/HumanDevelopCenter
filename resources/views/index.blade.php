@@ -120,7 +120,8 @@
                     <a class="buy-tickets scrollto" href="{{ route('login') }}">Login</a>
                 @endif
                 @if (Route::has('register'))
-                    <a class="buy-tickets scrollto" href="{{ route('register') }}">Registro</a>
+                    {{-- <a class="buy-tickets scrollto" href="{{ route('register') }}">Registro</a> --}}
+                    <a class="buy-tickets scrollto" href="{{ route('subscribers.create') }}">¡Suscribirme!</a>
                 @endif
             @else
                 <li class="nav-item dropdown">
