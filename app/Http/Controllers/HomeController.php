@@ -29,7 +29,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('homeAdmin');
+        $transactions = Transaction::all();
+        return view('homeAdmin', compact('transactions'));
     }
 
     /**
