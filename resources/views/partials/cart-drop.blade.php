@@ -46,19 +46,20 @@
             <i class="bi bi-paypal"> Procesar Pago</i> <i class="bi bi-arrow-right-square-fill"></i>
         </a> -->
         <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
-            data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68" 
-            data-epayco-amount="50"
-            data-epayco-name="Vestido Mujer Primavera" 
-            data-epayco-description="Vestido Mujer Primavera"
-            data-epayco-currency="usd" 
+            data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68"
+            data-epayco-amount="{{ \Cart::getTotal() }}"
+            data-epayco-name="Centro de Desarrollo Humano"
+            data-epayco-description="Compra Productos Digitales CDH"
+            data-epayco-currency=""
             data-epayco-country="co" 
             data-epayco-test="true"
-            data-epayco-invoice="ABC123"
-            data-epayco-external="true" 
-            data-epayco-response="https://ejemplo.com/respuesta.html"
-            data-epayco-confirmation="https://ejemplo.com/confirmacion" 
-            data-epayco-methodconfirmation="get">
-            data-epayco-autoclick="true"                           
+            data-epayco-invoice="" 
+            data-epayco-external="false"
+            data-epayco-response="http://127.0.0.1:8000/checkout"
+            data-epayco-confirmation="" 
+            data-epayco-autoclick="false"
+            data-epayco-email-billing="" 
+            data-epayco-name-billing="">                           
         </script>
     </div>
 @else

@@ -281,6 +281,9 @@
                                         <input id="photography" type="file"
                                             class="form-control @error('photography') is-invalid @enderror"
                                             name="photography">
+                                            <div id="photographylTextHelp" class="form-text alert alert-warning" role="alert">
+                                                <i class="bi bi-exclamation-octagon-fill"></i> El tamaño de la imagen debe ser de ancho 640px y alto 480px <b>(640x480)</b> formatos admitidos <b>jpeg y png</b>.
+                                            </div>
 
                                         @error('photography')
                                             <span class="invalid-feedback" role="alert">
