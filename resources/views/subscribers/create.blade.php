@@ -10,10 +10,10 @@
         <br>
         <br>
         <br>
-        <div class="container" data-aos="fade-up">
+        <div class="container-fuid" data-aos="fade-up">
 
             <div class="row justify-content-center">
-                <div class="col-md-6">
+                <div class="col-sm-8 col-md-10">
                     <div class="card">
                         <div class="card-header text-center">{{ __('¡Suscribirte a nuestro evento! Este es el primer paso...') }}</div>
 

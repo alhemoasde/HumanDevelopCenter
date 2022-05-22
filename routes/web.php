@@ -48,6 +48,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('admin');
 
 Route::get('/player/{email}', [App\Http\Controllers\HomeController::class, 'indexSuscriptor'])->name('player');
+Route::get('/download/{id}', [App\Http\Controllers\HomeController::class, 'downloadProduct'])->name('download');
 
 Route::resource('users', App\Http\Controllers\UserController::class)->middleware('admin')->except('show');
 Route::get('/speaker/{id}', [App\Http\Controllers\UserController::class, 'showProfile'])->name('users.show');

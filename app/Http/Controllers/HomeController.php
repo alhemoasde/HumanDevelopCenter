@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Subscriber;
 use App\Models\Transaction;
+use App\Models\Videos;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\File\File;
+
 
 class HomeController extends Controller
 {
@@ -58,4 +62,17 @@ class HomeController extends Controller
         }
         return view('/home', compact(['subscriber','buyVideos']));
     }
+
+    /**
+     * Permite la descarga de un video
+     * @param Id App/Models/Videos
+     * @return Response File .mp4
+     */
+    public function downloadProduct(Request $request)
+    {
+        $video = Videos::find($request->id)->fresh();
+        return Storage::disk('public')->download($video->url,$video->title);
+    }
+
+
 }

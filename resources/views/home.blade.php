@@ -54,8 +54,9 @@
                                         aria-labelledby="Modal1Label" aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">{{ $video->title }}
+                                                <div class="modal-header" style="padding: 0rem 1rem !important;">
+                                                    <h5 class="modal-title text-center h3" id="exampleModalLabel"><i
+                                                            class="bi bi-badge-hd"></i> {{ $video->title }}
                                                     </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
@@ -69,15 +70,17 @@
                                                     </video>
                                                 </div>
 
-                                                <div class="text-center py-3">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-mdb-dismiss="modal">
-                                                        Descargar
+                                                <div class="text-center py-3" style="padding: 0.2rem 1rem !important;">
+                                                    <form action="{{ route('download', $video->id) }}">
+                                                        <button type="submit" class="btn btn-danger btn-sm">
+                                                            <i class="bi bi-cloud-download-fill"></i> Descargar
+                                                        </button>
+                                                    
+                                                    <button type="button" class="btn btn-secondary btn-sm"
+                                                        data-bs-dismiss="modal">
+                                                        <i class="bi bi-door-closed-fill"></i> Salir
                                                     </button>
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-mdb-dismiss="modal">
-                                                        Salir
-                                                    </button>
+                                                </form>
                                                 </div>
                                             </div>
                                         </div>
