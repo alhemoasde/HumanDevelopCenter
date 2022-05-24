@@ -45,11 +45,11 @@
 <!-- ======= About Section ======= -->
 <section id="about">
     <div class="container" data-aos="fade-up">
+      @foreach($events as $event)
         <div class="row">
             <div class="col-lg-6">
                 <h2>Un Algo Para Ti</h2>
-                <p>Es momento de ampliar conceptos, y darle claridad a temas que hemos comprado como verdad absoluta. Salud Vs. enfermedad, mitos y realidades
-                    Bienestar integral Vs. desarmonía, una opción de vida.</p>
+                <p>{{$event->description}}</p>
             </div>
             <div class="col-lg-3">
                 <h3>Donde</h3>
@@ -57,9 +57,10 @@
             </div>
             <div class="col-lg-3">
                 <h3>Cuando</h3>
-                <p>¡Valida tu agenda te esperamos!<br>2-6 Mayo 2022</p>
+                <p>¡Valida tu agenda te esperamos!<br>Del {{ date('d/m/Y', strtotime($event->dateStart)) }} al {{ date('d/m/Y', strtotime($event->dateFinish)) }}</p>
             </div>
         </div>
+      @endforeach
     </div>
 </section>
 <!-- End About Section -->
