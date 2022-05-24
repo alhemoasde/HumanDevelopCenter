@@ -164,7 +164,7 @@
                                     <div class="modal-footer">
                                         <div class="collapse text-center" id="bottonEpayco">
                                             <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
-                                                    data-epayco-key="913a0e8d59c3bfecc380c4ea114bc1ee"
+                                                    data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68"
                                                     data-epayco-amount="{{ \Cart::getTotal() }}"
                                                     data-epayco-name="Centro de Desarrollo Humano"
                                                     data-epayco-description="Compra Productos Digitales CDH"
