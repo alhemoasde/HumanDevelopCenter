@@ -7,7 +7,7 @@
 <section id="hero">
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
         <h1 class="mb-4 pb-0">Explorando las<br><span>Raíces de una Sanación</span> Verdadera</h1>
-        <p class="mb-4 pb-0">2 - 6 Mayo de 2022, Gran ciclo de conferencias. ¡Cinco días para encontrar lo mejor de tí!</p>
+        <p class="mb-4 pb-0">Gran ciclo de conferencias. ¡Cinco días para encontrar lo mejor de tí!</p>
         {{-- <div  class="ratio ratio-4x3"> --}}
             <iframe id="myVideo" width="800" height="450" src="https://www.youtube-nocookie.com/embed/0pKWOWwgm2g?modestbranding=0&amp;showinfo=1&amp;rel=0&amp;controls=0&amp;autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         {{-- </div> --}}
@@ -83,10 +83,37 @@
               <h3><a href="{{route('users.show', $user->id)}}">{{ $user->name }}</a></h3>
               <p>{{ $user->famousPhrase }}</p>
               <div class="social">
-                <a href="https://twitter.com/{{ $user->accountTwitter }}" target="_blank" ><i class="bi bi-twitter"></i></a>
+                @if (isset($user->telephone))
+                <a href="https://wa.me/{{ $str = ltrim ($user->telephone,'+') }}/?&text=%F0%9F%99%8B%E2%80%8D%E2%99%82%EF%B8%8F%C2%A1Hola!%20Me%20interesa%20conocer%20mas%20informaci%C3%B3n%20sobre%20su%20grandioso%20evento.%F0%9F%A4%9D" target="_blank"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://t.me/{{ $user->telephone }}" target="_blank"><i class="bi bi-telegram"></i></a>
+                @endif
+                @if (isset($user->accountTwitter))
+                <a href="https://www.twitter.com/{{ $user->accountTwitter }}" target="_blank" ><i class="bi bi-twitter"></i></a>
+                @endif
+                @if (isset($user->accountFacabook))
                 <a href="https://www.facebook.com/{{ $user->accountFacabook }}" target="_blank" ><i class="bi bi-facebook"></i></a>
+                @endif
+                @if (isset($user->accountInstagram))
                 <a href="https://www.instagram.com/{{ $user->accountInstagram }}" target="_blank" ><i class="bi bi-instagram"></i></a>
+                @endif
+                @if (isset($user->accountLinkedin))
                 <a href="https://www.linkedin.com/in/{{ $user->accountLinkedin }}" target="_blank" ><i class="bi bi-linkedin"></i></a>
+                @endif
+                @if (isset($user->accountTiktok))
+                <a href="https://www.tiktok.com/{{ '@'.$user->accountTiktok }}" target="_blank" ><i class="bi bi-tiktok"></i></a>
+                @endif
+                @if (isset($user->accountYouTube))
+                <a href="https://www.youtube.com/c/{{ $user->accountYouTube }}" target="_blank" ><i class="bi bi-youtube"></i></a>
+                @endif
+                @if (isset($user->email))
+                <a href="mailto:{{ $user->email }}" target="_blank" ><i class="bi bi-envelope-check-fill"></i></a>
+                @endif
+                @if (isset($user->web))
+                <a href="{{ $user->web }}" target="_blank" ><i class="bi bi-globe2"></i></a>
+                @endif
+                @if (isset($user->accountOther))
+                <a href="{{ $user->accountOther }}" target="_blank" ><i class="bi bi-hand-index-thumb-fill"></i></a>
+                @endif
               </div>
             </div>
           </div>

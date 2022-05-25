@@ -27,16 +27,19 @@ class UpdateUserRequest extends FormRequest
             'name' => ['required', 'string', 'min:10', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:100'],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
-            'telephone' => ['required', 'string', 'min:10', 'max:100'],
+            'telephone' => ['nullable', 'string', 'min:10', 'max:100'],
             'profile' => ['required','string', 'min:5', 'max:100'],
             'web' => ['nullable', 'string', 'min:5', 'max:100'],
             'accountTwitter' => ['nullable', 'string', 'min:5','max:100'],
             'accountFacabook' => ['nullable', 'string', 'min:5','max:100'],
             'accountInstagram' => ['nullable', 'string', 'min:5', 'max:100'],
             'accountLinkedin' => ['nullable', 'string', 'min:5', 'max:100'],
+            'accountTiktok' => ['nullable', 'string', 'min:5', 'max:100'],
+            'accountYouTube' => ['nullable', 'string', 'min:5', 'max:100'],
+            'accountOther' => ['nullable', 'string', 'min:5', 'max:100'],
             'famousPhrase' => ['nullable', 'string', 'min:5', 'max:255'],
             'biografhy' => ['nullable', 'string', 'min:5', 'max:2000'],
-            'photography' => "nullable|image|mimes:jpeg,png|dimensions:min_width=640,min_height=480|max:3000",
+            'photography' => "nullable|image|mimes:jpeg,png|max:3000",
         ];
     }
 }

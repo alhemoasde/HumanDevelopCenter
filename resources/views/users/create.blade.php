@@ -115,7 +115,10 @@
                                     <div class="col-md-6">
                                         <input style="text-align: center; !important" id="telephone" type="tel"
                                             class="form-control @error('telephone') is-invalid @enderror" name="telephone"
-                                            value="{{ old('telephone') }}" required autocomplete="telephone" autofocus>
+                                            value="{{ old('telephone') }}" autocomplete="telephone" autofocus>
+                                            <div id="telephoneTextHelp" class="form-text alert alert-warning" role="alert">
+                                                <i class="bi bi-exclamation-octagon-fill"></i> Este número será utilizado para generar el enlace a WhatsApp y Telegram</b>.
+                                            </div>
 
                                         @error('telephone')
                                             <span class="invalid-feedback" role="alert">
@@ -221,7 +224,7 @@
 
                                 <div class="row mb-3 speaker">
                                     <label for="accountFacabook"
-                                        class="col-md-4 col-form-label text-md-end">{{ __('Fanpage en Facabook:') }}</label>
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Fanpage en Facebook:') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="accountFacabook" type="text"
@@ -274,6 +277,63 @@
                                 </div>
 
                                 <div class="row mb-3 speaker">
+                                    <label for="accountTiktok"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Usuario de Tiktok:') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="accountTiktok" type="text"
+                                            class="form-control @error('accountTiktok') is-invalid @enderror"
+                                            name="accountTiktok" value="{{ old('accountTiktok') }}"
+                                            autocomplete="accountTiktok" autofocus>
+
+                                        @error('accountTiktok')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 speaker">
+                                    <label for="accountYouTube"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Usuario de YouTube:') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="accountYouTube" type="text"
+                                            class="form-control @error('accountYouTube') is-invalid @enderror"
+                                            name="accountYouTube" value="{{ old('accountYouTube') }}"
+                                            autocomplete="accountYouTube" autofocus>
+
+                                        @error('accountYouTube')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 speaker">
+                                    <label for="accountOther"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Otra Red Social:') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="accountOther" type="text"
+                                            class="form-control @error('accountOther') is-invalid @enderror"
+                                            name="accountOther" value="{{ old('accountOther') }}"
+                                            autocomplete="accountOther" autofocus>
+                                            <div id="accountOtherTextHelp" class="form-text alert alert-warning" role="alert">
+                                                <i class="bi bi-exclamation-octagon-fill"></i> Para enlazar cualquier otra red social, se debe indicar la Url completa.</b>.
+                                            </div>
+
+                                        @error('accountOther')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 speaker">
                                     <label for="photography"
                                         class="col-md-4 col-form-label text-md-end">{{ __('Fotografía: ') }}</label>
 
@@ -282,7 +342,7 @@
                                             class="form-control @error('photography') is-invalid @enderror"
                                             name="photography">
                                             <div id="photographylTextHelp" class="form-text alert alert-warning" role="alert">
-                                                <i class="bi bi-exclamation-octagon-fill"></i> El tamaño de la imagen debe ser de ancho 640px y alto 480px <b>(640x480)</b> formatos admitidos <b>jpeg y png</b>.
+                                                <i class="bi bi-exclamation-octagon-fill"></i> Se recomienda que tamaño de la imagen sea de ancho 640px y alto 480px <b>(640x480)</b> formatos admitidos <b>jpeg y png</b>.
                                             </div>
 
                                         @error('photography')
