@@ -60,14 +60,14 @@
                                     <i class="bi bi-whatsapp text-success"></i>
                                     <p class="mb-0"><a
                                             href="https://wa.me/{{ $str = ltrim ($user->telephone,'+') }}/?&text=%F0%9F%99%8B%E2%80%8D%E2%99%82%EF%B8%8F%C2%A1Hola!%20Me%20interesa%20conocer%20mas%20informaci%C3%B3n%20sobre%20su%20grandioso%20evento.%F0%9F%A4%9D" target="_blank"
-                                            class="facebook">{{ $user->telephone }}</a></p>
+                                            style="color: #1e941a;" class="facebook">¡Contactar Ahora!</a></p>
                                 </li>
 
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="bi bi-telegram" style="color: #3b5998;"></i>
                                     <p class="mb-0"><a
-                                            href="https://t.me/{{ $user->telephone }}" target="_blank"
-                                            class="facebook">{{ $user->telephone }}</a></p>
+                                            href="https://t.me/{{ $user->telephone }}" target="_blank" style="color: #3b5998;"
+                                            class="facebook">¡Contactar Ahora!</a></p>
                                 </li>
                                 @endif
                                 @if (isset($user->accountFacabook))
