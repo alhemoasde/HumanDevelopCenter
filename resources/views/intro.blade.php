@@ -103,7 +103,7 @@
                 <a href="https://www.tiktok.com/{{ '@'.$user->accountTiktok }}" target="_blank" ><i class="bi bi-tiktok"></i></a>
                 @endif
                 @if (isset($user->accountYouTube))
-                <a href="https://www.youtube.com/c/{{ $user->accountYouTube }}" target="_blank" ><i class="bi bi-youtube"></i></a>
+                <a href="https://www.youtube.com/channel/{{ $user->accountYouTube }}" target="_blank" ><i class="bi bi-youtube"></i></a>
                 @endif
                 @if (isset($user->email))
                 <a href="mailto:{{ $user->email }}" target="_blank" ><i class="bi bi-envelope-check-fill"></i></a>

@@ -113,7 +113,7 @@
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="bi bi-youtube text-danger"></i>
                                     <p class="mb-0"><a
-                                            href="https://www.youtube.com/c/{{ $user->accountYouTube }}"
+                                            href="https://www.youtube.com/channel/{{ $user->accountYouTube }}"
                                             class="linkedin">{{ $user->accountYouTube }}</a></p>
                                 </li>
                                 @endif
