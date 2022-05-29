@@ -28,9 +28,13 @@ class User extends Authenticatable
         'accountFacabook',
         'accountInstagram',
         'accountLinkedin',
+        'accountTiktok',
+        'accountYouTube',
+        'accountOther',
         'famousPhrase',
         'biografhy',
         'photography',
+        'status',
     ];
 
     /**

@@ -24,12 +24,12 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    @yield('css')
     <link href="{{ asset('/assets/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    @yield('css')
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
@@ -58,7 +58,7 @@
                                     <a class="nav-link scrollto" href="{{ route('bussiness.index') }}">Datos Negocio</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('contacts.index') }}">Usuarios</a>
+                                    <a href="{{ route('users.index') }}">Usuarios</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('events.index') }}">Eventos</a>
@@ -67,7 +67,10 @@
                                     <a href="{{ route('products.index') }}">Productos</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('contacts.index') }}">Suscriptores</a>
+                                    <a href="{{ route('videos.index') }}">Videos</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('subscribers.index') }}">Suscriptores</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('contacts.index') }}">Mensajes</a>
@@ -117,7 +120,8 @@
                     <a class="buy-tickets scrollto" href="{{ route('login') }}">Login</a>
                 @endif
                 @if (Route::has('register'))
-                    <a class="buy-tickets scrollto" href="{{ route('register') }}">Registro</a>
+                    {{-- <a class="buy-tickets scrollto" href="{{ route('register') }}">Registro</a> --}}
+                    <a class="buy-tickets scrollto" href="{{ route('subscribers.create') }}">¡Suscribirme!</a>
                 @endif
             @else
                 <li class="nav-item dropdown">
@@ -136,6 +140,7 @@
                     </div>
                 </li>
             @endguest
+            {{-- <a class="buy-tickets scrollto" href="{{ route('donation') }}">Donaciones</a> --}}
             <a class="buy-tickets scrollto" href="{{ route('shop') }}">Comprar</a>
         </div>
     </header>
@@ -145,7 +150,7 @@
         @yield('content')
         @guest
             <!-- ======= Subscribe Section ======= -->
-            <section id="subscribe">
+            {{-- <section id="subscribe">
                 <div class="container" data-aos="zoom-in">
                     <div class="section-header">
                         <h2>Boletín de Noticias</h2>
@@ -160,7 +165,7 @@
                         </div>
                     </form>
                 </div>
-            </section>
+            </section> --}}
             <!-- End Subscribe Section -->
         @endguest
     </main>
@@ -185,11 +190,13 @@
                         <h4>Enlaces Útiles</h4>
                         <ul>
                             <li><i class="bi bi-chevron-right"></i> <a href="/">Inicio</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Quienes Somos</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Servicios</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Condiciones de servicio</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Política de privacidad</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Preguntas Frecuentes</a></li>
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Quienes Somos</a></li> --}}
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Servicios</a></li> --}}
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Condiciones de servicio</a></li> --}}
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Política de privacidad</a></li> --}}
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Preguntas Frecuentes</a></li> --}}
+                            <li><i class="bi bi-chevron-right"></i> <a
+                                href="{{ route('contacts.create') }}">Contacto</a></li>
                         </ul>
                     </div>
 
@@ -200,10 +207,9 @@
                             </li>
                             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('login') }}">Ingresar</a> </li>
                             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('shop') }}">Tienda</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a
-                                    href="{{ route('contacts.create') }}">Contacto</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Galería</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="/">Blog</a></li>
+                            
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="/">Galería</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="/">Blog</a></li> --}}
                         </ul>
                     </div>
 
@@ -211,18 +217,18 @@
 
                         <h4>Datos de Contacto</h4>
                         <p>
-                            Carrera 77B #72A-42, CP. 111051 <br>
+                            {{-- Carrera 77B #72A-42, CP. 111051 <br> --}}
                             Bogotá D.C. - Colombia <br>
-                            <strong>Teléfono:</strong> (+57) 320 888 76 62 <br>
+                            <strong>Teléfono:</strong> (+57) 310 765 75 56 <br>
                             <strong>Correo:</strong> info@laboratorioparaelconocimiento.com <br>
                         </p>
 
-                        <div class="social-links">
+                        {{-- <div class="social-links">
                             <a href="/" class="twitter"><i class="bi bi-twitter"></i></a>
                             <a href="/" class="facebook"><i class="bi bi-facebook"></i></a>
                             <a href="/" class="instagram"><i class="bi bi-instagram"></i></a>
                             <a href="/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>
@@ -245,7 +251,6 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    @yield('js')
     <script src="{{ asset('/assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
@@ -253,6 +258,7 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('/js/main.js') }}"></script>
+    @yield('js')
 
 </body>
 

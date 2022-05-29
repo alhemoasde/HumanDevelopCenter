@@ -65,11 +65,11 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Descripción del Evento *:') }}</label>
 
                                     <div class="col-md-6">
-                                        <textarea id="descripion" rows="2" class="form-control @error('descripion') is-invalid @enderror" name="descripion"
-                                            autocomplete="descripion" autofocus
-                                            required>{{ old('descripion') }}</textarea>
+                                        <textarea id="description" rows="2" class="form-control @error('description') is-invalid @enderror" name="description"
+                                            autocomplete="description" autofocus
+                                            required>{{ old('description') }}</textarea>
 
-                                        @error('descripion')
+                                        @error('description')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

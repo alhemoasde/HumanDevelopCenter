@@ -26,55 +26,56 @@
                     </div>
                 @endif
             </div>
-            <br>
-            <table id="events-list" class="table table-bordered shadow-lg mt-4">
-                <thead>
-                    <tr class="table-dark text-center">
-                        <th width="5%">No.</th>
-                        <th width="5%">Creado</th>
-                        <th width="20%">Titulo</th>
-                        <th width="35%">Descripción</th>
-                        <th width="5%">Fecha Inicio</th>
-                        <th width="5%">Hora Inicio</th>
-                        <th width="5%">Fecha Fin</th>
-                        <th width="5%">Hora Fin</th>
-                        <th width="5%">Estado</th>
-                        <th width="10%">Opción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($events as $event)
-                        <tr>
-                            <td class="text-center"></td>
-                            <td>{{ date('d/m/Y', strtotime($event->created_at)) }}</td>
-                            <td>{{ $event->title }}</td>
-                            <td style="text-align: justify;">{{ \Str::limit($event->descripion, 70) }}</td>
-                            <td>{{ date('d/m/Y', strtotime($event->dateStart)) }}</td>
-                            <td>{{ date('H:i A', strtotime($event->hourStart)) }}</td>
-                            <td>{{ date('d/m/Y', strtotime($event->dateFinish)) }}</td>
-                            <td>{{ date('H:i A', strtotime($event->hourFinish)) }}</td>
-                            <td>{{ $event->status }}</td>
-
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a class="btn btn-outline-secondary" href="{{ route('events.show', $event->id) }}">
-                                        <i class="bi bi-eye-fill"></i>
-                                    </a>
-                                    <a class="btn btn-outline-success" href="{{ route('events.edit', $event->id) }}">
-                                        <i class="bi bi-vector-pen"></i>
-                                    </a>
-                                    <form action="{{ route('events.destroy', $event) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('¿Desea eliminar el Evento?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
-                                    </form>
-                                </div>
-
-                            </td>
+            <div class="table-responsive">
+                <table id="events-list" class="table table-bordered shadow-lg mt-4">
+                    <thead>
+                        <tr class="table-dark text-center">
+                            <th width="5%">No.</th>
+                            <th width="5%">Creado</th>
+                            <th width="20%">Titulo</th>
+                            <th width="35%">Descripción</th>
+                            <th width="5%">Fecha Inicio</th>
+                            <th width="5%">Hora Inicio</th>
+                            <th width="5%">Fecha Fin</th>
+                            <th width="5%">Hora Fin</th>
+                            <th width="5%">Estado</th>
+                            <th width="10%">Opción</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($events as $event)
+                            <tr>
+                                <td class="text-center"></td>
+                                <td>{{ date('d/m/Y', strtotime($event->created_at)) }}</td>
+                                <td>{{ $event->title }}</td>
+                                <td style="text-align: justify;">{{ \Str::limit($event->description, 70) }}</td>
+                                <td>{{ date('d/m/Y', strtotime($event->dateStart)) }}</td>
+                                <td>{{ date('H:i A', strtotime($event->hourStart)) }}</td>
+                                <td>{{ date('d/m/Y', strtotime($event->dateFinish)) }}</td>
+                                <td>{{ date('H:i A', strtotime($event->hourFinish)) }}</td>
+                                <td>{{ $event->status }}</td>
+
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-outline-secondary" href="{{ route('events.show', $event->id) }}">
+                                            <i class="bi bi-eye-fill"></i>
+                                        </a>
+                                        <a class="btn btn-outline-success" href="{{ route('events.edit', $event->id) }}">
+                                            <i class="bi bi-vector-pen"></i>
+                                        </a>
+                                        <form action="{{ route('events.destroy', $event) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar el Evento?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                        </form>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
             <br>
             <br>
         </div>    

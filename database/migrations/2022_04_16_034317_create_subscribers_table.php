@@ -15,7 +15,9 @@ class CreateSubscribersTable extends Migration
     {
         Schema::create('subscribers', function (Blueprint $table) {
             $table->id()->comment('Identificador unico del registro.');
+            $table->string('name', 100)->comment('Nombre del Suscriptor.');
             $table->string('email', 100)->unique()->comment('Correo electronico del suscriptor.');
+            $table->boolean('status')->default(true)->comment('Estado del Suscriptor 0= inactivo 1 = Activo');
             $table->timestamps();
         });
     }

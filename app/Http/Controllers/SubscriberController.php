@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscriber;
+use App\Mail\WelcomUserNew;
 use App\Http\Requests\StoreSubscriberRequest;
 use App\Http\Requests\UpdateSubscriberRequest;
+use Illuminate\Support\Facades\Mail;
 
 class SubscriberController extends Controller
 {
@@ -15,7 +17,8 @@ class SubscriberController extends Controller
      */
     public function index()
     {
-        //
+        $subscribers = Subscriber::all();
+        return view('subscribers.index', compact('subscribers'));
     }
 
     /**
@@ -25,7 +28,7 @@ class SubscriberController extends Controller
      */
     public function create()
     {
-        //
+        return view('subscribers.create');
     }
 
     /**
@@ -36,7 +39,9 @@ class SubscriberController extends Controller
      */
     public function store(StoreSubscriberRequest $request)
     {
-        //
+        Subscriber::create($request->all());
+        Mail::to($request->email)->send(new WelcomUserNew());
+        return redirect()->route('subscribers.welcome')->with('status', 'Suscripción realizada satisfactoriamente. Gracias');
     }
 
     /**
@@ -47,7 +52,7 @@ class SubscriberController extends Controller
      */
     public function show(Subscriber $subscriber)
     {
-        //
+        return view('subscribers.show', compact('subscriber'));
     }
 
     /**
@@ -58,7 +63,7 @@ class SubscriberController extends Controller
      */
     public function edit(Subscriber $subscriber)
     {
-        //
+        return view('subscribers.edit', compact('subscriber'));
     }
 
     /**
@@ -70,7 +75,8 @@ class SubscriberController extends Controller
      */
     public function update(UpdateSubscriberRequest $request, Subscriber $subscriber)
     {
-        //
+        $subscriber->update($request->all());
+        return redirect()->route('subscribers.index')->with('status', 'Suscriptor actualizado satisfactoriamente.');
     }
 
     /**
@@ -81,6 +87,12 @@ class SubscriberController extends Controller
      */
     public function destroy(Subscriber $subscriber)
     {
-        //
+        $subscriber->delete();
+        return redirect()->route('subscribers.index')
+                        ->with('status','Suscriptor eliminado satisfactoriamente.');
+    }
+
+    public function welcome(){
+        return view('subscribers.welcome');
     }
 }

@@ -1537,3 +1537,126 @@ h1, h2, h3, h4, h5, h6 {
   max-height: 250px;
   overflow-y: auto;
 }
+
+/*--------------------------------------------------------------
+# Product
+--------------------------------------------------------------*/
+#product {
+  padding: 60px;
+  background: url(../img/venue-info-bg.jpg) center center no-repeat;
+  opacity: 0.8;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+#product .card-header{
+  background: #16192b;
+  color: #fff;
+}
+
+#product:before {
+  content: "";
+  background: rgba(6, 12, 34, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+@media (min-width: 1024px) {
+  #product {
+    background-attachment: fixed;
+  }
+}
+
+#product .section-header h2, #product p {
+  color: #fff;
+}
+
+#loproductgin input {
+  border: 4;
+  padding: 9px 20px;
+  border-radius: 15px;
+  font-size: 14px;
+}
+
+@media (min-width: 767px) {
+  #product input {
+    min-width: auto;
+  }
+}
+
+#product button {
+  border: 0;
+  padding: 9px 25px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+#product .bootstrap-select{
+  width: 100%;
+}
+
+#product button.submint-cdh {
+  border: 0;
+  padding: 9px 25px;
+  cursor: pointer;
+  background: #f82249;
+  color: #fff;
+  transition: all 0.3s ease;
+  outline: none;
+  font-size: 14px;
+  border-radius: 50px;
+}
+
+#product button:hover {
+  background: #e0072f;
+  color: #fff;
+}
+
+@media (max-width: 460px) {
+  #product button {
+    margin-top: 10px;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Dashboard Cliente
+--------------------------------------------------------------*/
+#dashboard-cliente .ratio-4x3{
+  --bs-aspect-ratio: 58% !important;
+}
+
+#dashboard-cliente .ratio-1x1{
+  --bs-aspect-ratio: 63% !important;
+}
+
+/*--------------------------------------------------------------
+# Shop Section
+--------------------------------------------------------------*/
+#shop .nav-tabs {
+  text-align: center;
+  margin: auto;
+  display: block;
+  border-bottom: 0;
+  margin-bottom: 30px;
+}
+#shop .nav-tabs li {
+  display: inline-block;
+  margin-bottom: 0;
+}
+#shop .nav-tabs button {
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  background-color: #0e1b4d;
+  color: #fff;
+  padding: 10px 30px;
+}
+#shop .nav-tabs button.active {
+  background-color: #f82249;
+  color: #fff;
+}

@@ -2,10 +2,15 @@
 
 @section('title', 'Producto')
 
+@section('css')
+<link href="{{ asset('/assets/vendor/bootstrap-select/css/bootstrap-select.min.css') }}"
+        rel="stylesheet">
+@endsection
+
 @section('content')
 
     <!-- ======= Producto-edit Section ======= -->
-    <section id="login" class="section-bg">
+    <section id="product" class="section-bg">
         <br>
         <br>
         <br>
@@ -129,6 +134,24 @@
                                         </div>
                                     </div>
 
+                                    <div class="row mb-3">
+                                        <label for="priceSellUSD"
+                                            class="col-md-4 col-form-label text-md-end">{{ __('Precio de Venta en USD: *') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="priceSellUSD" type="number" min="1" step="any"
+                                                class="form-control @error('priceSellUSD') is-invalid @enderror"
+                                                name="priceSellUSD" value="{{ old('priceSellUSD', $product->priceSellUSD) }}" required
+                                                autocomplete="priceSellUSD" autofocus>
+
+                                            @error('priceSellUSD')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="row mb-3">
@@ -148,7 +171,7 @@
                                     </div>
                                 </div>
 
-                                @if ($product->video)
+                                {{-- @if ($product->video)
                                     <div class="row mb-3">
                                         <label for="videoOld"
                                             class="col-md-4 col-form-label text-md-end">{{ __('Video Actual:') }}</label>
@@ -157,9 +180,9 @@
                                             <img src="{{ asset('/public/storage/'.$product->video) }}" width="60px" height="60px" class="img-fluid">
                                         </div>
                                     </div>
-                                @endif
+                                @endif --}}
 
-                                <div class="row mb-3">
+                                {{-- <div class="row mb-3">
                                     <label for="video"
                                         class="col-md-4 col-form-label text-md-end">{{ __('Video:') }}</label>
 
@@ -173,7 +196,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 @if ($product->poster)
                                     <div class="row mb-3">
@@ -192,7 +215,7 @@
 
                                     <div class="col-md-6">
                                         <input id="poster" type="file"
-                                            class="form-control @error('poster') is-invalid @enderror" name="poster" required>
+                                            class="form-control @error('poster') is-invalid @enderror" name="poster">
 
                                         @error('poster')
                                             <span class="invalid-feedback" role="alert">
@@ -248,20 +271,39 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="event"
-                                        class="col-md-4 col-form-label text-md-end">{{ __('Asignar Evento: *') }}</label>
+                                    <label for="day"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Asignar Día: ') }}</label>
 
                                     <div class="col-md-6">
 
-                                        <select id="event" name="event"
-                                            class="form-select @error('event') is-invalid @enderror" required>
-                                            @foreach ($events as $event)
-                                                <option value="{{$event->id}}"
-                                                {{ old('event') == $product->event ? 'selected' : '' }}>{{$event->id}} - {{ date('d/m/Y', strtotime($event->dateStart)) }} -> {{$event->title}}</option>
-                                            @endforeach
+                                        <select id="day" name="day"
+                                            class="form-select @error('day') is-invalid @enderror">
+                                            <option value=""
+                                                {{ old('day',$product->day) == '' ? 'selected' : '' }}>Seleccione un Día...</option>
+                                            <option value="Dia_1"
+                                                {{ old('day',$product->day) == 'Dia_1' ? 'selected' : '' }}>Día 1</option>
+                                            <option value="Dia_2"
+                                                {{ old('day',$product->day) == 'Dia_2' ? 'selected' : '' }}>Día 2</option>
+                                            <option value="Dia_3"
+                                                {{ old('day',$product->day) == 'Dia_3' ? 'selected' : '' }}>Día 3</option>
+                                            <option value="Dia_4"
+                                                {{ old('day',$product->day) == 'Dia_4' ? 'selected' : '' }}>Día 4</option>
+                                            <option value="Dia_5"
+                                                {{ old('day',$product->day) == 'Dia_5' ? 'selected' : '' }}>Día 5</option>
+                                            <option value="Dia_6"
+                                                {{ old('day',$product->day) == 'Dia_6' ? 'selected' : '' }}>Día 6</option>
+                                            <option value="Dia_7"
+                                                {{ old('day',$product->day) == 'Dia_7' ? 'selected' : '' }}>Día 7</option>
+                                            <option value="Dia_8"
+                                                {{ old('day',$product->day) == 'Dia_8' ? 'selected' : '' }}>Día 8</option>
+                                            <option value="Dia_9"
+                                                {{ old('day',$product->day) == 'Dia_9' ? 'selected' : '' }}>Día 9</option>
+                                            <option value="Dia_10"
+                                                {{ old('day',$product->day) == 'Dia_10' ? 'selected' : '' }}>Día 10</option>
+                                                    
                                         </select>
 
-                                        @error('event')
+                                        @error('day')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -269,9 +311,93 @@
                                     </div>
                                 </div>
 
+                                <div class="row mb-3">
+                                    <label for="category"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Asignar Categoría: ') }}</label>
+
+                                    <div class="col-md-6">
+
+                                        <select id="category" name="category"
+                                            class="form-select @error('category') is-invalid @enderror">
+                                            <option value=""
+                                                {{ old('category',$product->category) == '' ? 'selected' : '' }}>Seleccione una Categoria...</option>
+                                            <option value="Algo Para Ti"
+                                                {{ old('category',$product->category) == 'Algo Para Ti' ? 'selected' : '' }}>Algo Para Ti</option>
+                                            <option value="Ponencia"
+                                                {{ old('category',$product->category) == 'Ponencia' ? 'selected' : '' }}>Ponencia</option>
+                                            <option value="Historia De Vida"
+                                                {{ old('category',$product->category) == 'Historia De Vida' ? 'selected' : '' }}>Historia De Vida</option>
+                                            
+                                        </select>
+
+                                        @error('category')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="events_id"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Asignar Evento: *') }}</label>
+
+                                    <div class="col-md-6">
+
+                                        <select id="events_id" name="events_id"
+                                            class="form-select @error('events_id') is-invalid @enderror" required>
+                                            @foreach ($events as $event)
+                                                <option value="{{$event->id}}"
+                                                {{ old('events_id',$product->events_id) == $event->id ? 'selected' : '' }}>{{$event->id}} - {{ date('d/m/Y', strtotime($event->dateStart)) }} -> {{$event->title}}</option>
+                                            @endforeach
+                                        </select>
+
+                                        @error('events_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row mb-3">
+                                    <label for="videosActual"
+                                        class="col-md-4 col-form-label text-md-end"><h6>Videos Asignados Actualmente:</h6></label>
+                                    <div class="col-md-6">
+                                        <ul>
+                                            @foreach ($product->videos as $vide)
+                                                <li>{{$vide->title}}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="videos"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Actualizar Videos del Producto: ') }}</label>
+                                        
+                                    <div class="col-md-6">
+                                        <select id="videos" data-style="btn-secondary" name="videos[]" size="6" class="selectpicker form-select-lg mb-3 @error('videos') is-invalid @enderror" 
+                                        data-live-search="true" aria-label="Selector de videos" multiple title="Seleccione uno o mas videos." required>
+                                            
+                                            @foreach ( $videos as $video )
+                                            <option value="{{$video->id}}" data-tokens="{{$video->id}}"
+                                                {{ $product->videos->contains($video) ? 'selected' : '' }}>{{$video->id}} {{$video->title}}</option>    
+                                            @endforeach
+                                        </select>
+                                        @error('videos')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <hr>
+
+                                
+
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-primary submint-cdh">
                                             <i class="bi bi-send-check-fill"> {{ __('Guardar Producto') }} </i>
                                         </button>
                                     </div>
@@ -288,4 +414,10 @@
         <br>
     </section>
     <!-- End Producto-edit Section -->
+@endsection
+@section('js')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="{{ asset('/assets/vendor/bootstrap-select/js/bootstrap-select.min.js')}}"> </script>
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/i18n/defaults-*.min.js"></script>
 @endsection
