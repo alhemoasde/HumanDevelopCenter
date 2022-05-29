@@ -78,7 +78,7 @@
           
         <div class="col-lg-4 col-md-6">
           <div class="speaker" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{asset('/public/storage/'.$user->photography)}}" alt="{{$user->name}}" class="rounded img-fluid">
+            <img data-src="{{asset('/storage/'.$user->photography)}}" alt="{{$user->name}}" class="rounded img-fluid lozad">
             <div class="details">
               <h3><a href="{{route('users.show', $user->id)}}">{{ $user->name }}</a></h3>
               <p>{{ $user->famousPhrase }}</p>
@@ -124,5 +124,12 @@
 
   </section>
   <!-- End Speakers Section -->
+@endsection
+@section('js')
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+    <script>
+        const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+        observer.observe();
+    </script>
 @endsection
 
