@@ -216,7 +216,7 @@
                             <!--  fila fin -->
                         </div>
                         <!-- fin tab-dia2 -->
-                        <div class="tab-pane fade" id="dia3" role="tabpanel" aria-labelledby="dia3-tab">Contenido dia 3
+                        <div class="tab-pane fade" id="dia3" role="tabpanel" aria-labelledby="dia3-tab">
                             <div class="row">
                                 @foreach ($products as $pro)
                                     @if ($pro->day === 'Dia_3')
@@ -297,7 +297,7 @@
                             <!--  fila fin -->
                         </div>
                         <!-- fin tab-dia3 -->
-                        <div class="tab-pane fade" id="dia4" role="tabpanel" aria-labelledby="dia4-tab">Contenido dia 4
+                        <div class="tab-pane fade" id="dia4" role="tabpanel" aria-labelledby="dia4-tab">
                             <div class="row">
                                 @foreach ($products as $pro)
                                     @if ($pro->day === 'Dia_4')
@@ -378,7 +378,7 @@
                             <!--  fila fin -->
                         </div>
                         <!-- fin tab-dia4 -->
-                        <div class="tab-pane fade" id="dia5" role="tabpanel" aria-labelledby="dia5-tab">Contenido dia 5
+                        <div class="tab-pane fade" id="dia5" role="tabpanel" aria-labelledby="dia5-tab">
                             <div class="row">
                                 @foreach ($products as $pro)
                                     @if ($pro->day === 'Dia_5')
@@ -459,7 +459,7 @@
                             <!--  fila fin -->
                         </div>
                         <!-- fin tab-dia5 -->
-                        <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all-tab">Todo el Contenido
+                        <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                             <div class="row">
                                 @foreach ($products as $pro)
                                         <div class="col-sm-12 col-md-4 col-lg-3 ">
@@ -544,7 +544,7 @@
                                 ========================================================================== -->
                             <div id="miepayco">
                                 <script defer type="text/javascript" src="https://mi-epayco.s3.amazonaws.com/embed.js"
-                                                                miepaycoUrl="https://nutrefacil.epayco.me"></script>
+                                                                miepaycoUrl="https://cdhumano.epayco.me"></script>
                             </div>
                             <!-- ================================================================== -->
                             <br>
