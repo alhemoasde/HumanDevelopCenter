@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscriber;
+use App\Models\Events;
 use App\Mail\WelcomUserNew;
 use App\Http\Requests\StoreSubscriberRequest;
 use App\Http\Requests\UpdateSubscriberRequest;
@@ -28,7 +29,8 @@ class SubscriberController extends Controller
      */
     public function create()
     {
-        return view('subscribers.create');
+        $event = Events::where('status','=','Programado')->where('active','=','1')->orWhere('status','=','En Desarrollo')->get();
+        return view('subscribers.create', compact('event'));
     }
 
     /**
