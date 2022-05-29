@@ -78,7 +78,7 @@
           
         <div class="col-lg-4 col-md-6">
           <div class="speaker" data-aos="fade-up" data-aos-delay="100">
-            <img data-src="{{asset('/storage/'.$user->photography)}}" alt="{{$user->name}}" class="rounded img-fluid lozad">
+            <img data-src="{{asset('/public/storage/'.$user->photography)}}" alt="{{$user->name}}" class="rounded img-fluid lozad">
             <div class="details">
               <h3><a href="{{route('users.show', $user->id)}}">{{ $user->name }}</a></h3>
               <p>{{ $user->famousPhrase }}</p>
