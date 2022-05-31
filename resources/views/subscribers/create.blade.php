@@ -65,7 +65,7 @@
 			
           <div class="subscribe-form">
             <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Nombre completo" autofocus required>
-			<div id="nameHelp" class="form-text"><i class="bi bi-award"></i> Tu nombre es muy importante queremos dirigirnos a ti con mucho respeto.</div>
+			<div id="nameHelp" class="form-text"><i class="bi bi-award"></i> Tu nombre es muy importante, queremos dirigirnos a ti con mucho respeto.</div>
 			
 			@error('name')
                                                 <span class="invalid-feedback" role="alert">

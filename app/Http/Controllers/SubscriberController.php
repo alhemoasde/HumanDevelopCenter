@@ -29,7 +29,7 @@ class SubscriberController extends Controller
      */
     public function create()
     {
-        $event = Events::where('status','=','Programado')->where('active','=','1')->orWhere('status','=','En Desarrollo')->get();
+        $event = Events::where('status','=','Programado')->where('active','=','1')->orWhere('status','=','En Desarrollo')->first();
         return view('subscribers.create', compact('event'));
     }
 
