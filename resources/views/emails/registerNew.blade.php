@@ -17,7 +17,7 @@
             </strong></p>
         <div class="text-center">
             <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
-                <a href="https://laboratorioparaelconocimiento.com/video-intro/0.Preeventomilena1.mp4" target="_blank"
+                <a href="https://youtube.com/watch?v=zb_q8-tn4I4&feature=share" target="_blank"
                     rel="noopener noreferrer">Ver Video No.2</a>
             </div>
         </div>
