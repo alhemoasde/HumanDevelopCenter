@@ -63,6 +63,8 @@ Route::resource('bussiness', App\Http\Controllers\BussinessController::class)->m
 
 Route::resource('events', App\Http\Controllers\EventsController::class)->middleware('admin');
 
+Route::resource('activitys', App\Http\Controllers\EventActivitysController::class)->middleware('admin');
+
 Route::resource('products', App\Http\Controllers\ProductController::class)->middleware('admin');
 
 Route::resource('videos', App\Http\Controllers\VideosController::class)->middleware('admin');

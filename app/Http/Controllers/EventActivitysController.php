@@ -13,9 +13,10 @@ class EventActivitysController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($event)
     {
-        //
+        $eventActivitys = EventActivitys::where('events_id','=',$event->id)->get();
+        return view('activitys.index', compact('eventActivitys'));
     }
 
     /**
