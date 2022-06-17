@@ -12,7 +12,7 @@
         <br>
         <br>
         <br>
-        <div class="container" data-aos="fade-up">
+        <div class="container-fluid" data-aos="fade-up">
             <h1 class="display-6 text-center">::: Bandeja de Actividades del Evento :::</h1>
             <div class="btn-group">
                 <a class="btn btn-outline-success" href="{{ route('events.create') }}">
@@ -62,16 +62,16 @@
 
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a class="btn btn-outline-secondary" href="{{ route('events.show', $event->id) }}">
+                                        <a class="btn btn-outline-secondary" href="{{ route('events.show', $eventActivity->id) }}">
                                             <i class="bi bi-eye-fill"></i>
                                         </a>
-                                        <a class="btn btn-outline-success" href="{{ route('events.edit', $event->id) }}">
+                                        <a class="btn btn-outline-success" href="{{ route('events.edit', $eventActivity->id) }}">
                                             <i class="bi bi-vector-pen"></i>
                                         </a>
-                                        <form action="{{ route('events.destroy', $event) }}" method="POST">
+                                        <form action="{{ route('events.destroy', $eventActivity) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el Evento?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar la actividad?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
                                         </form>
                                     </div>
 

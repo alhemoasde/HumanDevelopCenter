@@ -63,6 +63,9 @@
                                         <a class="btn btn-outline-success" href="{{ route('events.edit', $event->id) }}">
                                             <i class="bi bi-vector-pen"></i>
                                         </a>
+                                        <a class="btn btn-outline-dark" href="{{ route('activitys.index', $event->id) }}">
+                                            <i class="bi bi-card-checklist"></i>
+                                        </a>
                                         <form action="{{ route('events.destroy', $event) }}" method="POST">
                                             @csrf
                                             @method('DELETE')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EventActivitys;
+use App\Models\Events;
 use App\Http\Requests\StoreEventActivitysRequest;
 use App\Http\Requests\UpdateEventActivitysRequest;
 
@@ -10,10 +11,10 @@ class EventActivitysController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * @param \App\Models\Events $event
      * @return \Illuminate\Http\Response
      */
-    public function index($event)
+    public function index(Events $event)
     {
         $eventActivitys = EventActivitys::where('events_id','=',$event->id)->get();
         return view('activitys.index', compact('eventActivitys'));
@@ -26,7 +27,7 @@ class EventActivitysController extends Controller
      */
     public function create()
     {
-        //
+        return view('activitys.create');
     }
 
     /**
@@ -37,7 +38,13 @@ class EventActivitysController extends Controller
      */
     public function store(StoreEventActivitysRequest $request)
     {
-        //
+        EventActivitys::create( $request->all()
+        +[
+            'active' => true,
+        ]
+        );        
+            
+        return redirect()->route('events.index')->with('status', 'Actividad creada satisfactoriamente.');
     }
 
     /**
@@ -48,7 +55,7 @@ class EventActivitysController extends Controller
      */
     public function show(EventActivitys $eventActivitys)
     {
-        //
+        return view('activitys.show', compact('eventActivitys'));
     }
 
     /**
@@ -59,7 +66,7 @@ class EventActivitysController extends Controller
      */
     public function edit(EventActivitys $eventActivitys)
     {
-        //
+        return view('activitys.edit', compact('eventActivitys'));
     }
 
     /**
@@ -71,7 +78,8 @@ class EventActivitysController extends Controller
      */
     public function update(UpdateEventActivitysRequest $request, EventActivitys $eventActivitys)
     {
-        //
+        $eventActivitys->update($request->all());
+        return redirect()->route('events.index')->with('status', 'Actividad actualizada satisfactoriamente.');
     }
 
     /**
@@ -82,6 +90,8 @@ class EventActivitysController extends Controller
      */
     public function destroy(EventActivitys $eventActivitys)
     {
-        //
+        $eventActivitys->delete();
+        return redirect()->route('events.index')
+                        ->with('status','Actividad eliminada satisfactoriamente.');
     }
 }

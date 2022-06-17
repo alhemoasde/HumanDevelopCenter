@@ -84,6 +84,7 @@
                     {{-- <li><a class="nav-link scrollto" href="{{ route('shop') }}">Tienda</a></li> --}}
                     <li><a class="nav-link scrollto" href="#speakers">Conferencistas</a></li>
                     <li><a class="nav-link scrollto" href="#schedule">Evento</a></li>
+                    <li><a class="nav-link scrollto" href="/donation">Donar</a></li>
                     <li class="dropdown"><a href="{{ route('contacts.create') }}"><span>Contáctanos</span> <i
                                 class="bi bi-chevron-right"></i></a>
                         @auth
