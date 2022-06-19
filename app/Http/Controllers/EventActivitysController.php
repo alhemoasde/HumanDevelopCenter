@@ -25,9 +25,9 @@ class EventActivitysController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Events $event)
     {
-        return view('activitys.create');
+        return view('activitys.create', compact('event'));
     }
 
     /**

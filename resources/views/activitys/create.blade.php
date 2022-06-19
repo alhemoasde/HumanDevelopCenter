@@ -15,7 +15,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">{{ __('CREANDO UN EVENTO') }}</div>
+                        <div class="card-header">{{ __('CREAR ACTIVIDAD') }} {{$event->title}}</div>
 
                         <div class="card-body">
                             <div class="btn-group">
