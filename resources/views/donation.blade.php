@@ -14,7 +14,7 @@
     <div id="miepayco">
         <script defer type="text/javascript" 
             src="https://mi-epayco.s3.amazonaws.com/embed.js" 
-            miepaycoUrl="https://nutrefacil.epayco.me">
+            miepaycoUrl="https://cdhumano.epayco.me">
         </script> 
     </div>
     <!-- ================================================================== -->

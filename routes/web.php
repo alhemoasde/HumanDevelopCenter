@@ -17,10 +17,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Events;
-use phpDocumentor\Reflection\Types\Boolean;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +34,8 @@ use phpDocumentor\Reflection\Types\Boolean;
 Route::get('/', function () {
     $users = User::where('profile','=','Speaker')
     ->where('status','=','1')->get();
-    $events = Events::where('status','=','Programado')->where('active','=','1')->orWhere('status','=','En Desarrollo')->get();
-    return view('intro', compact(['users', 'events']));
+    $event = Events::where('status','=','Programado')->where('active','=','1')->orWhere('status','=','En Desarrollo')->first();
+    return view('intro', compact(['users', 'event']));
 });
 
 Route::get('/donation', function(){
@@ -63,6 +61,10 @@ Route::resource('bussiness', App\Http\Controllers\BussinessController::class)->m
 
 Route::resource('events', App\Http\Controllers\EventsController::class)->middleware('admin');
 
+Route::resource('eventActivitys', App\Http\Controllers\EventActivitysController::class)->except('index','create')->middleware('admin');
+Route::get('/activity-list/{event}', [App\Http\Controllers\EventActivitysController::class, 'index'])->name('activitys.index')->middleware('admin');
+Route::get('/activity-create/{event}', [App\Http\Controllers\EventActivitysController::class, 'create'])->name('activitys.create')->middleware('admin');
+
 Route::resource('products', App\Http\Controllers\ProductController::class)->middleware('admin');
 
 Route::resource('videos', App\Http\Controllers\VideosController::class)->middleware('admin');
@@ -84,6 +86,7 @@ Route::post('/update', [App\Http\Controllers\CartController::class, 'update'])->
 Route::post('/remove', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
 Route::post('/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('cart.clear');
 Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
+Route::get('/update-checkout/{ref_transaction}', [App\Http\Controllers\CartController::class, 'updateCheckout'])->name('updateCheckout')->middleware('admin');
 Route::post('/saveCart', [App\Http\Controllers\CartController::class, 'saveCart'])->name('saveCart');
 
 

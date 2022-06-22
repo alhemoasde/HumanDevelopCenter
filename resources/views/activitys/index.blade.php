@@ -6,17 +6,18 @@
 @endsection
 
 @section('content')
-    <!-- ======= Event-list Section ======= -->
-    <section id="contact-list" class="section-bg">
+    <!-- ======= Activitys-list Section ======= -->
+    <section id="activity-list" class="section-bg">
         <br>
         <br>
         <br>
         <br>
-        <div class="container" data-aos="fade-up">
-            <h1 class="display-6 text-center">::: Bandeja de Eventos :::</h1>
+        <div class="container-fluid" data-aos="fade-up">
+            <h1 class="display-6 text-center">::: Bandeja de Actividades :::<br>
+                <strong> {{$event->title}}</strong> </h1>
             <div class="btn-group">
-                <a class="btn btn-outline-success" href="{{ route('events.create') }}">
-                    <i class="bi bi-plus-square-fill"> Crear Evento</i>
+                <a class="btn btn-outline-success" href="{{ route('activitys.create', $event->id) }}">
+                    <i class="bi bi-plus-square-fill"> Crear Actividad</i>
                 </a>
             </div>
             <div class="my-3">
@@ -27,52 +28,54 @@
                 @endif
             </div>
             <div class="table-responsive">
-                <table id="events-list" class="table table-bordered shadow-lg mt-4">
+                <table id="activitys-list" class="table table-bordered shadow-lg mt-4">
                     <thead>
                         <tr class="table-dark text-center">
                             <th width="5%">No.</th>
                             <th width="5%">Creado</th>
-                            <th width="20%">Titulo</th>
-                            <th width="35%">Descripción</th>
+                            <th width="10%">Evento</th>
+                            <th width="15%">Orador</th>
+                            <th width="15%">Titulo</th>
+                            <th width="15%">Descripción</th>
                             <th width="5%">Fecha Inicio</th>
                             <th width="5%">Hora Inicio</th>
                             <th width="5%">Fecha Fin</th>
                             <th width="5%">Hora Fin</th>
+                            <th width="5%">Día</th>
                             <th width="5%">Estado</th>
-                            <th width="10%">Opción</th>
+                            <th width="5%">Opción</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($events as $event)
+                        @foreach ($eventActivitys as $eventActivity)
                             <tr>
                                 <td class="text-center"></td>
-                                <td>{{ date('d/m/Y', strtotime($event->created_at)) }}</td>
-                                <td>{{ $event->title }}</td>
-                                <td style="text-align: justify;">{{ \Str::limit($event->description, 70) }}</td>
-                                <td>{{ date('d/m/Y', strtotime($event->dateStart)) }}</td>
-                                <td>{{ date('g:i A', strtotime($event->hourStart)) }}</td>
-                                <td>{{ date('d/m/Y', strtotime($event->dateFinish)) }}</td>
-                                <td>{{ date('g:i A', strtotime($event->hourFinish)) }}</td>
-                                <td>{{ $event->status }}</td>
+                                <td>{{ date('d/m/Y', strtotime($eventActivity->created_at)) }}</td>
+                                <td style="text-align: justify;">{{ \Str::limit($eventActivity->event->title, 70) }}</td>
+                                <td style="text-align: justify;">{{ \Str::limit($eventActivity->user->name, 70) }}</td>
+                                <td>{{ $eventActivity->title }}</td>
+                                <td style="text-align: justify;">{{ \Str::limit($eventActivity->description, 70) }}</td>
+                                <td>{{ date('d/m/Y', strtotime($eventActivity->dateStart)) }}</td>
+                                <td>{{ date('g:i A', strtotime($eventActivity->hourStart)) }}</td>
+                                <td>{{ date('d/m/Y', strtotime($eventActivity->dateFinish)) }}</td>
+                                <td>{{ date('g:i A', strtotime($eventActivity->hoursFinish)) }}</td>
+                                <td>{{ $eventActivity->day }}</td>
+                                <td>{{ $eventActivity->status == 1 ? 'Activo' : 'Inactivo'}}</td>
 
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a class="btn btn-outline-secondary" href="{{ route('events.show', $event->id) }}" title="Ver">
+                                        <a class="btn btn-outline-secondary" href="{{ route('eventActivitys.show', $eventActivity->id) }}" title="Ver">
                                             <i class="bi bi-eye-fill"></i>
                                         </a>
-                                        <a class="btn btn-outline-success" href="{{ route('events.edit', $event->id) }}" title="Editar">
+                                        <a class="btn btn-outline-success" href="{{ route('eventActivitys.edit', $eventActivity->id) }}" title="Editar">
                                             <i class="bi bi-vector-pen"></i>
                                         </a>
-                                        <a class="btn btn-outline-dark" href="{{ route('activitys.index', $event->id) }}" title="Ver Actividades">
-                                            <i class="bi bi-card-checklist"></i>
-                                        </a>
-                                        <form action="{{ route('events.destroy', $event) }}" method="POST">
+                                        <form action="{{ route('eventActivitys.destroy', $eventActivity) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el Evento?')" class="btn btn-outline-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></button>
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar la actividad?')" class="btn btn-outline-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></button>
                                         </form>
                                     </div>
-
                                 </td>
                             </tr>
                         @endforeach
@@ -83,7 +86,7 @@
             <br>
         </div>    
     </section>
-    <!-- End Event-list Section -->
+    <!-- End Activitys-list Section -->
 @endsection
 
 @section('js')
@@ -93,7 +96,7 @@
     <script>
         $(document).ready(function() {
             /* inicializando libreria requiere ID tabla */
-            var t = $('#events-list').DataTable({
+            var t = $('#activitys-list').DataTable({
                 "order": [
                     /* Ordenamiento predeterminado indice en base cero*/
                     [1, "desc"]

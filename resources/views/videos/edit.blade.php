@@ -165,7 +165,7 @@
                                             class="form-select @error('users_id') is-invalid @enderror" required>
                                             @foreach ($users as $user)
                                                 <option value="{{$user->id}}"
-                                                {{ old('user', $user->id) == $user->id ? 'selected' : '' }}>{{$user->id}} -> {{$user->name}}</option>
+                                                {{ old('user', $video->user->id) == $user->id ? 'selected' : '' }}>{{$user->id}} -> {{$user->name}}</option>
                                             @endforeach
                                         </select>
 

@@ -35,9 +35,9 @@ class Events extends Model
     /**
      * Obtener las actividades de un Evento.
      */
-    public function listActivityByEvent()
+    public function eventActivitys()
     {
-        return $this->hasMany('App\Models\EventActivitys', 'id', 'event');
+        return $this->hasMany(EventActivitys::class);
     }
 
     /**

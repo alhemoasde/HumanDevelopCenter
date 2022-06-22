@@ -226,4 +226,32 @@ class CartController extends Controller
         return view('cart.saveCart');
     }
 
+    /**
+     * Permite actualizar los datos de una transacción
+     * confirmada con la pasarela de pago Epayco.
+     * @param  \App\Http\Requests\Request  $request
+     * @return \Illuminate\Http\Response view cart.checkout con el resumen de la compra
+     */
+    public function updateCheckout(Request $request)
+    {
+        $ref_payco = $this->getDataResponsePago($request->ref_transaction);
+        $transaction = Transaction::where('invoice_cart','=',$ref_payco['x_id_invoice'])->first();
+        
+        if(isset($transaction)){
+            $transaction->update([
+                'ref_transaction' => $request->ref_payco,
+                'date_transaccion' => $ref_payco['x_transaction_date'],
+                'transaction_id' => $ref_payco['x_transaction_id'],
+                'autorizacion' => $ref_payco['x_approval_code'],
+                'transaction_state' => $ref_payco['x_transaction_state'],
+                'response_reason_text' => $ref_payco['x_response_reason_text'],
+                'amount' => $ref_payco['x_amount_ok'],
+                'currency_code' => $ref_payco['x_currency_code'],
+                'customer_ip' => $ref_payco['x_customer_ip'],
+                'signature' => $ref_payco['x_signature'],
+            ]);
+        } 
+        
+    }
+
 }

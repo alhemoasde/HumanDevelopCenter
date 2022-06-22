@@ -34,7 +34,7 @@
                             <th width="20%">Autorizacion</th>
                             <th width="5%">Moneda</th>
                             <th width="20%">Estado</th>
-                            {{-- <th width="10%">Opción</th> --}}
+                            <th width="10%">Opción</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,23 +47,17 @@
                                 <td>{{ number_format($transaction->amountTotalCart, 2, '.', ',') }}</td>
                                 <td>{{ $transaction->autorizacion }}</td>
                                 <td>{{ $transaction->currency_code }}</td>
-                                <td>{{ $transaction->response_reason_text}}</td>
+                                <td>{{ $transaction->response_reason_text }}</td>
 
-                                {{-- <td class="text-center">
+                                <td class="text-center">
                                     <div class="btn-group">
-                                        <a class="btn btn-outline-secondary" href="{{ route('products.show', $product->id) }}">
-                                            <i class="bi bi-eye-fill"></i>
-                                        </a>
-                                        <a class="btn btn-outline-success" href="{{ route('products.edit', $product->id) }}">
-                                            <i class="bi bi-vector-pen"></i>
-                                        </a>
-                                        <form action="{{ route('products.destroy', $product) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el Producto?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
-                                        </form>
+                                        @if ($transaction->response_reason_text != 'Aprobada')
+                                            <a class="btn btn-outline-secondary" href="{{route('updateCheckout',$transaction->ref_transaction)}}" title="Actualizar">
+                                                <i class="bi bi-arrow-clockwise"></i>
+                                            </a>
+                                        @endif
                                     </div>
-                                </td> --}}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

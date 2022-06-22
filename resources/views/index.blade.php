@@ -84,6 +84,7 @@
                     {{-- <li><a class="nav-link scrollto" href="{{ route('shop') }}">Tienda</a></li> --}}
                     <li><a class="nav-link scrollto" href="#speakers">Conferencistas</a></li>
                     <li><a class="nav-link scrollto" href="#schedule">Evento</a></li>
+                    <li><a class="nav-link scrollto" href="/donation">Donar</a></li>
                     <li class="dropdown"><a href="{{ route('contacts.create') }}"><span>Contáctanos</span> <i
                                 class="bi bi-chevron-right"></i></a>
                         @auth
@@ -130,9 +131,12 @@
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('home') }}">
+                            <i class="bi bi-clipboard-data"></i> {{ __('Dashboard') }}
+                        </a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
-                            {{ __('Salir') }}
+                            <i class="bi bi-door-closed"></i> {{ __('Salir') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf

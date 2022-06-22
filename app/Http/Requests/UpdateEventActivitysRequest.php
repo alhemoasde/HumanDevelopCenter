@@ -24,15 +24,14 @@ class UpdateEventActivitysRequest extends FormRequest
     public function rules()
     {
         return [
-            'events_id'  => ['required', 'exists:events,id'],
             'users_id'  => ['required', 'exists:users,id'],
             'title' => ['required', 'string', 'min:10', 'max:100'],
             'description' => ['required', 'string', 'min:10', 'max:2000'],
             'dateStart' => ['required', 'date', 'after_or_equal:today'],
             'hourStart' => ['required'],
             'dateFinish' => ['required','date', 'after_or_equal:dateStart'],
-            'hourFinish' => ['required','after:hourStart'],
-            'day' => ['nullable','string', 'min:5', 'max:20'],
+            'hoursFinish' => ['required','after:hourStart'],
+            'day' => ['required','string', 'min:5', 'max:20'],
             'status' => ['required'],
         ];
     }
