@@ -50,26 +50,26 @@
                                 <td>{{ $event->title }}</td>
                                 <td style="text-align: justify;">{{ \Str::limit($event->description, 70) }}</td>
                                 <td>{{ date('d/m/Y', strtotime($event->dateStart)) }}</td>
-                                <td>{{ date('H:i A', strtotime($event->hourStart)) }}</td>
+                                <td>{{ date('g:i A', strtotime($event->hourStart)) }}</td>
                                 <td>{{ date('d/m/Y', strtotime($event->dateFinish)) }}</td>
-                                <td>{{ date('H:i A', strtotime($event->hourFinish)) }}</td>
+                                <td>{{ date('g:i A', strtotime($event->hourFinish)) }}</td>
                                 <td>{{ $event->status }}</td>
 
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a class="btn btn-outline-secondary" href="{{ route('events.show', $event->id) }}">
+                                        <a class="btn btn-outline-secondary" href="{{ route('events.show', $event->id) }}" title="Ver">
                                             <i class="bi bi-eye-fill"></i>
                                         </a>
-                                        <a class="btn btn-outline-success" href="{{ route('events.edit', $event->id) }}">
+                                        <a class="btn btn-outline-success" href="{{ route('events.edit', $event->id) }}" title="Editar">
                                             <i class="bi bi-vector-pen"></i>
                                         </a>
-                                        <a class="btn btn-outline-dark" href="{{ route('activitys.index', $event->id) }}">
+                                        <a class="btn btn-outline-dark" href="{{ route('activitys.index', $event->id) }}" title="Ver Actividades">
                                             <i class="bi bi-card-checklist"></i>
                                         </a>
                                         <form action="{{ route('events.destroy', $event) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el Evento?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar el Evento?')" class="btn btn-outline-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></button>
                                         </form>
                                     </div>
 

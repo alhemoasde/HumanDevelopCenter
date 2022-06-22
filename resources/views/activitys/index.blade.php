@@ -6,16 +6,17 @@
 @endsection
 
 @section('content')
-    <!-- ======= Event-list Section ======= -->
+    <!-- ======= Activitys-list Section ======= -->
     <section id="activity-list" class="section-bg">
         <br>
         <br>
         <br>
         <br>
         <div class="container-fluid" data-aos="fade-up">
-            <h1 class="display-6 text-center">::: Bandeja de Actividades del Evento :::</h1>
+            <h1 class="display-6 text-center">::: Bandeja de Actividades :::<br>
+                <strong> {{$event->title}}</strong> </h1>
             <div class="btn-group">
-                <a class="btn btn-outline-success" href="{{ route('events.create') }}">
+                <a class="btn btn-outline-success" href="{{ route('activitys.create', $event->id) }}">
                     <i class="bi bi-plus-square-fill"> Crear Actividad</i>
                 </a>
             </div>
@@ -27,7 +28,7 @@
                 @endif
             </div>
             <div class="table-responsive">
-                <table id="events-list" class="table table-bordered shadow-lg mt-4">
+                <table id="activitys-list" class="table table-bordered shadow-lg mt-4">
                     <thead>
                         <tr class="table-dark text-center">
                             <th width="5%">No.</th>
@@ -55,26 +56,26 @@
                                 <td>{{ $eventActivity->title }}</td>
                                 <td style="text-align: justify;">{{ \Str::limit($eventActivity->description, 70) }}</td>
                                 <td>{{ date('d/m/Y', strtotime($eventActivity->dateStart)) }}</td>
-                                <td>{{ date('H:i A', strtotime($eventActivity->hourStart)) }}</td>
+                                <td>{{ date('g:i A', strtotime($eventActivity->hourStart)) }}</td>
                                 <td>{{ date('d/m/Y', strtotime($eventActivity->dateFinish)) }}</td>
-                                <td>{{ date('H:i A', strtotime($eventActivity->hourFinish)) }}</td>
-                                <td>{{ $eventActivity->status }}</td>
+                                <td>{{ date('g:i A', strtotime($eventActivity->hoursFinish)) }}</td>
+                                <td>{{ $eventActivity->day }}</td>
+                                <td>{{ $eventActivity->status == 1 ? 'Activo' : 'Inactivo'}}</td>
 
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a class="btn btn-outline-secondary" href="{{ route('events.show', $eventActivity->id) }}">
+                                        <a class="btn btn-outline-secondary" href="{{ route('eventActivitys.show', $eventActivity->id) }}" title="Ver">
                                             <i class="bi bi-eye-fill"></i>
                                         </a>
-                                        <a class="btn btn-outline-success" href="{{ route('events.edit', $eventActivity->id) }}">
+                                        <a class="btn btn-outline-success" href="{{ route('eventActivitys.edit', $eventActivity->id) }}" title="Editar">
                                             <i class="bi bi-vector-pen"></i>
                                         </a>
-                                        <form action="{{ route('events.destroy', $eventActivity) }}" method="POST">
+                                        <form action="{{ route('eventActivitys.destroy', $eventActivity) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar la actividad?')" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar la actividad?')" class="btn btn-outline-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></button>
                                         </form>
                                     </div>
-
                                 </td>
                             </tr>
                         @endforeach
@@ -85,7 +86,7 @@
             <br>
         </div>    
     </section>
-    <!-- End Event-list Section -->
+    <!-- End Activitys-list Section -->
 @endsection
 
 @section('js')
@@ -95,7 +96,7 @@
     <script>
         $(document).ready(function() {
             /* inicializando libreria requiere ID tabla */
-            var t = $('#events-list').DataTable({
+            var t = $('#activitys-list').DataTable({
                 "order": [
                     /* Ordenamiento predeterminado indice en base cero*/
                     [1, "desc"]

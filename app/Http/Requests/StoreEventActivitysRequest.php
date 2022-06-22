@@ -31,8 +31,8 @@ class StoreEventActivitysRequest extends FormRequest
             'dateStart' => ['required', 'date', 'after_or_equal:today'],
             'hourStart' => ['required'],
             'dateFinish' => ['required','date', 'after_or_equal:dateStart'],
-            'hourFinish' => ['required','after:hourStart'],
-            'day' => ['nullable','string', 'min:5', 'max:20'],
+            'hoursFinish' => ['required','after:hourStart'],
+            'day' => ['required','string', 'min:5', 'max:20'],
         ];
     }
 }
