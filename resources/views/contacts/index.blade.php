@@ -13,39 +13,41 @@
     <br>
     <div class="container" data-aos="fade-up">
         <h1 class="display-6 text-center">::: Bandeja de Mensajes Recibidos :::</h1>
-        <table id="contacts-list" class="table table-bordered shadow-lg mt-4">
-            <thead>
-                <tr class="table-dark text-center">
-                    <th width="4%">No.</th>
-                    <th width="5%">Creado</th>
-                    <th width="16%">Nombre</th>
-                    <th width="20%">Email</th>
-                    <th width="20%">Asunto</th>
-                    <th width="25%">Mensaje</th>
-                    <th width="10%">Opción</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($contacts as $contact)
-                <tr>
-                    <td class="text-center"></td>
-                    <td>{{ date('d/m/Y',strtotime($contact->created_at)) }}</td>
-                    <td>{{ $contact->name }}</td>
-                    <td>{{ $contact->email }}</td>
-                    <td>{{ $contact->subject }}</td>
-                    <td style="text-align: justify;">{{ \Str::limit($contact->message, 70) }}</td>
-                    <td class="text-center">
-                    <div class="btn-group"> 
-                    <a class="btn btn-outline-secondary" href="{{ route('contacts.show',$contact->id) }}">
-                        <i class="bi bi-eye-fill"></i>
-                        </a>
-                    </div>
-                        
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table id="contacts-list" class="table table-bordered shadow-lg mt-4">
+                <thead>
+                    <tr class="table-dark text-center">
+                        <th width="4%">No.</th>
+                        <th width="5%">Creado</th>
+                        <th width="16%">Nombre</th>
+                        <th width="20%">Email</th>
+                        <th width="20%">Asunto</th>
+                        <th width="25%">Mensaje</th>
+                        <th width="10%">Opción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($contacts as $contact)
+                    <tr>
+                        <td class="text-center"></td>
+                        <td>{{ date('d/m/Y',strtotime($contact->created_at)) }}</td>
+                        <td>{{ $contact->name }}</td>
+                        <td>{{ $contact->email }}</td>
+                        <td>{{ $contact->subject }}</td>
+                        <td style="text-align: justify;">{{ \Str::limit($contact->message, 70) }}</td>
+                        <td class="text-center">
+                        <div class="btn-group"> 
+                        <a class="btn btn-outline-secondary" href="{{ route('contacts.show',$contact->id) }}">
+                            <i class="bi bi-eye-fill"></i>
+                            </a>
+                        </div>
+                            
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         <br>
         <br>
 </section>

@@ -15,29 +15,31 @@ class EventActivitys extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'date',
-        'hoursStart',
-        'noursFinish',
+        'events_id',
+        'users_id',
         'title',
         'description',
-        'speaker',
-        'event',
-
+        'dateStart',
+        'hourStart',
+        'dateFinish',
+        'hoursFinish',
+        'day',
+        'status',
     ];
 
     /**
-     * Obtener Evento por actividad.
+     * Obtener Evento.
      */
-    public function events()
+    public function event()
     {
-        return $this->belongsTo('App\Models\Events', 'event');
+        return $this->belongsTo(Events::class, 'events_id');
     }
 
     /**
-     * Obtener Speaker por actividad.
+     * Obtener Usuario Speaker.
      */
-    public function speaker()
+    public function user()
     {
-        return $this->belongsTo('App\Models\User', 'speaker');
+        return $this->belongsTo(User::class, 'users_id');
     }
 }

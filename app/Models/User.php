@@ -28,9 +28,13 @@ class User extends Authenticatable
         'accountFacabook',
         'accountInstagram',
         'accountLinkedin',
+        'accountTiktok',
+        'accountYouTube',
+        'accountOther',
         'famousPhrase',
         'biografhy',
         'photography',
+        'status',
     ];
 
     /**
@@ -55,8 +59,25 @@ class User extends Authenticatable
     /**
      * Obtener las actividades de un Ponente.
      */
-    public function listActivityBySpeaker()
+    public function eventActivitys()
     {
-        return $this->hasMany('App\Models\EventActivitys', 'id', 'speaker');
+        return $this->hasMany(EventActivitys::class);
     }
+
+    /**
+     * Obtener los videos de un Ponente.
+     */
+    public function videos()
+    {
+        return $this->hasMany(Videos::class,'users_id');
+    }
+
+    /**
+     * Obtener primer videos de un Ponente.
+     */
+    public function video($idUser)
+    {
+        return $video = Videos::where('users_id','=',$idUser)->first();
+    }
+
 }

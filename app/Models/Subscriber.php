@@ -15,7 +15,17 @@ class Subscriber extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'name',
         'email',
+        'status',
     ];
+
+    /**
+     * Obtener las transacciones de un Subscriber.
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 
 }

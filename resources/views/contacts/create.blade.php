@@ -21,7 +21,7 @@
                 <div class="contact-address">
                     <i class="bi bi-geo-alt"></i>
                     <h3>Dirección</h3>
-                    <address>Carrera 77B #72A-42, CP. 111051 <br>Bogotá D.C. <br> Colombia</address>
+                    <address>{{--Carrera 77B #72A-42, CP. 111051 <br>--}}Bogotá D.C. <br> Colombia</address>
                 </div>
             </div>
 
@@ -29,7 +29,7 @@
                 <div class="contact-phone">
                     <i class="bi bi-phone"></i>
                     <h3>Teléfono</h3>
-                    <p><a href="tel:+573208887662">(+57) 320 888 76 62</a></p>
+                    <p><a href="tel:+573107657556">(+57) 310 765 75 56</a></p>
                 </div>
             </div>
 
