@@ -86,6 +86,7 @@ Route::post('/update', [App\Http\Controllers\CartController::class, 'update'])->
 Route::post('/remove', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
 Route::post('/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('cart.clear');
 Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
+Route::get('/update-checkout/{ref_transaction}', [App\Http\Controllers\CartController::class, 'updateCheckout'])->name('updateCheckout')->middleware('admin');
 Route::post('/saveCart', [App\Http\Controllers\CartController::class, 'saveCart'])->name('saveCart');
 
 
