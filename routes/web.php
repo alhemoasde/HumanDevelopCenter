@@ -17,10 +17,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Events;
-use phpDocumentor\Reflection\Types\Boolean;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +34,8 @@ use phpDocumentor\Reflection\Types\Boolean;
 Route::get('/', function () {
     $users = User::where('profile','=','Speaker')
     ->where('status','=','1')->get();
-    $events = Events::where('status','=','Programado')->where('active','=','1')->orWhere('status','=','En Desarrollo')->get();
-    return view('intro', compact(['users', 'events']));
+    $event = Events::where('status','=','Programado')->where('active','=','1')->orWhere('status','=','En Desarrollo')->first();
+    return view('intro', compact(['users', 'event']));
 });
 
 Route::get('/donation', function(){
