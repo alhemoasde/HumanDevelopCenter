@@ -30,7 +30,7 @@ class CartController extends Controller
     {
         $cartCollection = \Cart::getContent();
         $year = date("Y");
-        $invoice = 'CDH'.substr(str_shuffle('CentroDeDesarrolloHumano'), 0, 16).$year.random_int(100,1000000);
+        $invoice = 'CDH'.substr(str_shuffle('CentDevelopHuman'), 0, 16).$year.random_int(100,1000000);
         return view('cart.cart')->with(['cartCollection' => $cartCollection, 'ipInfo' => $this->getLocation(), 'invoice' => $invoice]);
     }
 

@@ -170,7 +170,7 @@
                                                     data-epayco-description="Compra Productos Digitales CDH"
                                                     data-epayco-currency="{{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}"
                                                     data-epayco-country="co" 
-                                                    data-epayco-test="true"
+                                                    data-epayco-test="false"
                                                     data-epayco-invoice="{{ $invoice }}" 
                                                     data-epayco-external="false"
                                                     data-epayco-response="https://laboratorioparaelconocimiento.com/checkout"
