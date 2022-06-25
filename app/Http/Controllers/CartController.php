@@ -251,7 +251,7 @@ class CartController extends Controller
                 'signature' => $ref_payco['x_signature'],
             ]);
         } 
-        return redirect()->route('homeAdmin');
+        return redirect()->route('home');
     }
 
 }
