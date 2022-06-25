@@ -51,11 +51,11 @@
 
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        {{-- @if ($transaction->response_reason_text != 'Aprobada')
+                                        @if ($transaction->response_reason_text != 'Aprobada')
                                             <a class="btn btn-outline-secondary" href="{{route('updateCheckout',$transaction->ref_transaction)}}" title="Actualizar">
                                                 <i class="bi bi-arrow-clockwise"></i>
                                             </a>
-                                        @endif --}}
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
