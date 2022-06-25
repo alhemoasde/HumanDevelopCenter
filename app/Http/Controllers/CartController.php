@@ -239,7 +239,7 @@ class CartController extends Controller
         
         if(isset($transaction)){
             $transaction->update([
-                'ref_transaction' => $request->ref_payco,
+                'ref_transaction' => $request->ref_transaction,
                 'date_transaccion' => $ref_payco['x_transaction_date'],
                 'transaction_id' => $ref_payco['x_transaction_id'],
                 'autorizacion' => $ref_payco['x_approval_code'],
@@ -251,7 +251,7 @@ class CartController extends Controller
                 'signature' => $ref_payco['x_signature'],
             ]);
         } 
-        
+        return view('homeAdmin');
     }
 
 }
