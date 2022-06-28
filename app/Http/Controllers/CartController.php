@@ -31,7 +31,8 @@ class CartController extends Controller
         $cartCollection = \Cart::getContent();
         $year = date("Y");
         $invoice = 'CDH'.substr(str_shuffle('CentDevelopHuman'), 0, 16).$year.random_int(100,1000000);
-        return view('cart.cart')->with(['cartCollection' => $cartCollection, 'ipInfo' => $this->getLocation(), 'invoice' => $invoice]);
+        $viewButton=True;
+        return view('cart.cart')->with(['cartCollection' => $cartCollection, 'ipInfo' => $this->getLocation(), 'invoice' => $invoice, 'viewButton' => $viewButton]);
     }
 
     /**
@@ -223,7 +224,8 @@ class CartController extends Controller
             ]);
             Mail::to($request->checkoutEmail)->send(new WelcomUserNew());   
         }
-        return view('cart.saveCart');
+        $viewButton=False;
+        return view('cart.saveCart', compact('viewButton'));
     }
 
     /**

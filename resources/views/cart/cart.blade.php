@@ -178,11 +178,13 @@
                                                     data-epayco-email-billing="" data-epayco-name-billing="">
                                             </script>                                    
                                         </div>
+                                        @if ($viewButton)
                                         <div class="bottonCheckout">
                                             <button id="bottonCheckout" type="submit" data-bs-toggle="collapse"
                                                 href="#bottonEpayco" onclick="checkout();" class="btn btn-primary">
                                                 Continuar</button>
                                         </div>
+                                        @endif
                                     </div>
                                 </div>
                             </form>
