@@ -30,9 +30,8 @@ class CartController extends Controller
     {
         $cartCollection = \Cart::getContent();
         $year = date("Y");
-        $invoice = 'CDH'.substr(str_shuffle('CentDevelopHuman'), 0, 16).$year.random_int(100,1000000);
-        $viewButton=True;
-        return view('cart.cart')->with(['cartCollection' => $cartCollection, 'ipInfo' => $this->getLocation(), 'invoice' => $invoice, 'viewButton' => $viewButton]);
+        $invoice = 'CDH'.substr(str_shuffle('human'), 0, 16).$year.random_int(100,1000000);
+        return view('cart.cart')->with(['cartCollection' => $cartCollection, 'ipInfo' => $this->getLocation(), 'invoice' => $invoice]);
     }
 
     /**
@@ -160,9 +159,8 @@ class CartController extends Controller
     public function checkout(Request $request)
     {
         $ref_payco = $this->getDataResponsePago($request->ref_payco);
+        if(isset($ref_payco['x_id_invoice'])){
         $transaction = Transaction::where('invoice_cart','=',$ref_payco['x_id_invoice'])->first();
-        
-        if(isset($transaction)){
             $transaction->update([
                 'ref_transaction' => $request->ref_payco,
                 'date_transaccion' => $ref_payco['x_transaction_date'],
@@ -222,10 +220,9 @@ class CartController extends Controller
                 'name' => $request->checkoutName,
                 'email' => $request->checkoutEmail,
             ]);
-            Mail::to($request->checkoutEmail)->send(new WelcomUserNew());   
+            /* Mail::to($request->checkoutEmail)->send(new WelcomUserNew()); */   
         }
-        $viewButton=False;
-        return view('cart.saveCart', compact('viewButton'));
+        return view('cart.saveCart');
     }
 
     /**
