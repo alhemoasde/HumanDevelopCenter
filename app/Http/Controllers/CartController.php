@@ -234,9 +234,8 @@ class CartController extends Controller
     public function updateCheckout(Request $request)
     {
         $ref_payco = $this->getDataResponsePago($request->ref_transaction);
-        $transaction = Transaction::where('invoice_cart','=',$ref_payco['x_id_invoice'])->first();
-        
-        if(isset($transaction)){
+        if(isset($ref_payco['x_id_invoice']) ){
+            $transaction = Transaction::where('invoice_cart','=',$ref_payco['x_id_invoice'])->first();
             $transaction->update([
                 'ref_transaction' => $request->ref_transaction,
                 'date_transaccion' => $ref_payco['x_transaction_date'],
