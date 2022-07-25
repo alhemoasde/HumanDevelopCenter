@@ -143,7 +143,7 @@
                                             <div class="card" 
                                                 style="margin-bottom: 5px; height: auto; background: radial-gradient(#e9686880, rgb(239 230 230 / 0%));">
                                                 <div class="d-flex justify-content-between p-3" style="height: 100px">
-                                                    <p class="text-sm-start text-capitalize fs-4"> <strong> {{ $pro->name }} </strong></p>
+                                                    <p class="text-sm-start text-capitalize fs-4"> <strong> {{ \Str::limit($pro->name, 25) }} </strong></p>
                                                     <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
                                                         style="width: 45px; height: 45px;">
                                                         <p class="text-white mb-0 small">{{ $pro->day }}</p>
