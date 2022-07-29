@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Subscriber;
 use App\Models\Transaction;
 use App\Models\Videos;
+use App\Models\Events;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\File\File;
 
 
 class HomeController extends Controller
@@ -51,17 +51,22 @@ class HomeController extends Controller
             return view('subscribers.notSubsc');
         }
 
-        $transactions = Transaction::where('subscriber_email','=',$subscriber->email)
-        ->where('response_reason_text','=','Aprobada')->get();
-        $buyVideos = array();
-        foreach($transactions as $transaction){
-            foreach($transaction->products as $product){
-                foreach($product->videos as $video){
-                    array_push($buyVideos, $video);
+        $event = Events::where('status','=','Programado')->where('active','=','1')->orWhere('status','=','En Desarrollo')->first();
+        if(isset($event) && date('d/m/Y', strtotime($event->dateFinish)) > date('d/m/Y')){
+            return view('subscribers.videoNoDisponible');
+        }else{
+            $transactions = Transaction::where('subscriber_email','=',$subscriber->email)
+            ->where('response_reason_text','=','Aprobada')->get();
+            $buyVideos = array();
+            foreach($transactions as $transaction){
+                foreach($transaction->products as $product){
+                    foreach($product->videos as $video){
+                        array_push($buyVideos, $video);
+                    }
                 }
             }
+            return view('/home', compact(['subscriber','buyVideos']));
         }
-        return view('/home', compact(['subscriber','buyVideos']));
     }
 
     /**

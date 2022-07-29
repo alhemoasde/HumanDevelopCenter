@@ -106,7 +106,6 @@
                             <th width="5%">Creado</th>
                             <th width="30%">Titulo</th>
                             <th width="35%">Descripción</th>
-                            <th width="10%">Url</th>
                             <th width="5%">Estado</th>
                             <th width="10%">Opción</th>
                         </tr>
@@ -120,13 +119,6 @@
                                 <td>{{ $video->title }}</td>
                                 
                                 <td style="text-align: justify;">{{ \Str::limit($video->description, 70) }}</td>
-                                
-                                <td class="text-center">
-                                    <video width="80" height="80" class="img-thumbnail">
-                                        <source src="{{ asset('/public/storage/'.$video->url) }}" type="video/mp4">
-                                        Tu navegador no admite el elemento <code>video</code>.
-                                    </video>
-                                </td>
                                 
                                 <td>{{ $video->status == 1 ? 'Activo' : 'Inactivo'}}</td>
 
