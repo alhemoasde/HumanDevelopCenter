@@ -254,4 +254,14 @@ class CartController extends Controller
         
     }
 
+    /**
+     * Permite cargar la vista resumen de un dia determinado.
+     * @return \Illuminate\Http\Response
+     */
+    public function viewDay(Request $request)
+    {
+        $products = Product::where('day','=',$request->day)->get();
+        return view('cart.shop')->with(['products' => $products, 'ipInfo' => $this->getLocation()]);
+    }
+
 }
