@@ -8,9 +8,250 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tienda</li>
+                    <li class="breadcrumb-item active" aria-current="page">Día {{substr($day, -1);}}</li>
                 </ol>
             </nav>
+
+            <!-- ======= Schedule Section ======= -->
+    <section id="schedule" class="section-with-bg">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Programa del Evento</h2>
+                <p>Esta es la guía de actividades que realizaremos en nuestro evento.</p>
+            </div>
+
+            <ul class="nav nav-tabs" role="tablist" data-aos="fade-up" data-aos-delay="100">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#{{$day}}" role="tab" data-bs-toggle="tab">Día {{substr($day, -1);}}</a>
+                </li>
+            </ul>
+            <h3 class="sub-heading">¡Por tiempo limitado accede a todo nuestro contenido de forma <b>Gratuita</b>!</h3>
+            <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+
+                    <!-- Schdule Day -->
+                    <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="{{$day}}">
+                        @foreach ($event->eventActivitys as $activity)
+                            @if ($activity->day === $day)
+                                <div class="row schedule-item">
+                                    <div class="col-md-2">{{ date('d/m/Y', strtotime($activity->dateStart)) }}
+                                        <time>{{ date('g:i A', strtotime($activity->hourStart)) }}</time>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="speaker">
+                                            <img src="{{ $activity->user->photography == '' ? asset('/img/user-perfil-not.jpg') : asset('/public/storage/' . $activity->user->photography) }}"
+                                                alt="{{ $activity->user->name }}">
+                                        </div>
+                                        <h4>{{ $activity->user->name }} <span>{{ $activity->title }}</span>
+                                        </h4>
+                                        <p>{{ $activity->description }}</p>
+                                        @if (date('d/m/Y', strtotime($activity->dateStart)) === date('d/m/Y'))
+                                            <a data-bs-toggle="collapse" href="#video{{ $activity->id }}" role="button"
+                                                aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="bi bi-play-btn-fill btn btn-danger"> ¡Ver Ahora!</i>
+                                            </a>
+                                            <div class="collapse" id="video{{ $activity->id }}">
+                                                <div class="card card-body">
+                                                    <div class="ratio ratio-16x9">
+                                                        <video controls allowfullscreen class="lozad"
+                                                            data-poster="/img/video1IntroCamilaMontes.png" width="100%"
+                                                            height="50%">
+                                                            <source
+                                                                data-src="{{ asset('/public/storage/' . $activity->user->videos->first()->url) }}"
+                                                                type="video/mp4">
+                                                        </video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    <!-- End Schdule Day 1 -->
+
+                    <!-- Schdule Day 2 -->
+                    <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-2">
+
+                        @foreach ($event->eventActivitys as $activity)
+                            @if ($activity->day === 'Dia_2')
+                                <div class="row schedule-item">
+                                    <div class="col-md-2">{{ date('d/m/Y', strtotime($activity->dateStart)) }}
+                                        <time>{{ date('g:i A', strtotime($activity->hourStart)) }}</time>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="speaker">
+                                            <img src="{{ $activity->user->photography == '' ? asset('/img/user-perfil-not.jpg') : asset('/public/storage/' . $activity->user->photography) }}"
+                                                alt="{{ $activity->user->name }}">
+                                        </div>
+                                        <h4>{{ $activity->user->name }} <span>{{ $activity->title }}</span>
+                                        </h4>
+                                        <p>{{ $activity->description }}</p>
+                                        @if (date('d/m/Y', strtotime($activity->dateStart)) === date('d/m/Y'))
+                                            <a data-bs-toggle="collapse" href="#video{{ $activity->id }}" role="button"
+                                                aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="bi bi-play-btn-fill btn btn-danger"> ¡Ver Ahora!</i>
+                                            </a>
+                                            <div class="collapse" id="video{{ $activity->id }}">
+                                                <div class="card card-body">
+                                                    <div class="ratio ratio-16x9">
+                                                        <video controls allowfullscreen class="lozad"
+                                                            data-poster="/img/video1IntroCamilaMontes.png" width="100%"
+                                                            height="50%">
+                                                            <source
+                                                                data-src="{{ asset('/public/storage/' . $activity->user->videos->first()->url) }}"
+                                                                type="video/mp4">
+                                                        </video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    <!-- End Schdule Day 2 -->
+
+                    <!-- Schdule Day 3 -->
+                    <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-3">
+
+                        @foreach ($event->eventActivitys as $activity)
+                            @if ($activity->day === 'Dia_3')
+                                <div class="row schedule-item">
+                                    <div class="col-md-2">{{ date('d/m/Y', strtotime($activity->dateStart)) }}
+                                        <time>{{ date('g:i A', strtotime($activity->hourStart)) }}</time>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="speaker">
+                                            <img src="{{ $activity->user->photography == '' ? asset('/img/user-perfil-not.jpg') : asset('/public/storage/' . $activity->user->photography) }}"
+                                                alt="{{ $activity->user->name }}">
+                                        </div>
+                                        <h4>{{ $activity->user->name }} <span>{{ $activity->title }}</span>
+                                        </h4>
+                                        <p>{{ $activity->description }}</p>
+                                        @if (date('d/m/Y', strtotime($activity->dateStart)) === date('d/m/Y'))
+                                            <a data-bs-toggle="collapse" href="#video{{ $activity->id }}" role="button"
+                                                aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="bi bi-play-btn-fill btn btn-danger"> ¡Ver Ahora!</i>
+                                            </a>
+                                            <div class="collapse" id="video{{ $activity->id }}">
+                                                <div class="card card-body">
+                                                    <div class="ratio ratio-16x9">
+                                                        <video controls allowfullscreen class="lozad"
+                                                            data-poster="/img/video1IntroCamilaMontes.png" width="100%"
+                                                            height="50%">
+                                                            <source
+                                                                data-src="{{ asset('/public/storage/' . $activity->user->videos->first()->url) }}"
+                                                                type="video/mp4">
+                                                        </video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    <!-- End Schdule Day 3 -->
+
+                    <!-- Schdule Day 4 -->
+                    <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-4">
+
+                        @foreach ($event->eventActivitys as $activity)
+                            @if ($activity->day === 'Dia_4')
+                                <div class="row schedule-item">
+                                    <div class="col-md-2">{{ date('d/m/Y', strtotime($activity->dateStart)) }}
+                                        <time>{{ date('g:i A', strtotime($activity->hourStart)) }}</time>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="speaker">
+                                            <img src="{{ $activity->user->photography == '' ? asset('/img/user-perfil-not.jpg') : asset('/public/storage/' . $activity->user->photography) }}"
+                                                alt="{{ $activity->user->name }}">
+                                        </div>
+                                        <h4>{{ $activity->user->name }} <span>{{ $activity->title }}</span>
+                                        </h4>
+                                        <p>{{ $activity->description }}</p>
+                                        @if (date('d/m/Y', strtotime($activity->dateStart)) === date('d/m/Y'))
+                                            <a data-bs-toggle="collapse" href="#video{{ $activity->id }}" role="button"
+                                                aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="bi bi-play-btn-fill btn btn-danger"> ¡Ver Ahora!</i>
+                                            </a>
+                                            <div class="collapse" id="video{{ $activity->id }}">
+                                                <div class="card card-body">
+                                                    <div class="ratio ratio-16x9">
+                                                        <video controls allowfullscreen class="lozad"
+                                                            data-poster="/img/video1IntroCamilaMontes.png" width="100%"
+                                                            height="50%">
+                                                            <source
+                                                                data-src="{{ asset('/public/storage/' . $activity->user->videos->first()->url) }}"
+                                                                type="video/mp4">
+                                                        </video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    <!-- End Schdule Day 4 -->
+
+                    <!-- Schdule Day 5 -->
+                    <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-5">
+
+                        @foreach ($event->eventActivitys as $activity)
+                            @if ($activity->day === 'Dia_5')
+                                <div class="row schedule-item">
+                                    <div class="col-md-2">{{ date('d/m/Y', strtotime($activity->dateStart)) }}
+                                        <time>{{ date('g:i A', strtotime($activity->hourStart)) }}</time>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="speaker">
+                                            <img src="{{ $activity->user->photography == '' ? asset('/img/user-perfil-not.jpg') : asset('/public/storage/' . $activity->user->photography) }}"
+                                                alt="{{ $activity->user->name }}">
+                                        </div>
+                                        <h4>{{ $activity->user->name }} <span>{{ $activity->title }}</span>
+                                        </h4>
+                                        <p>{{ $activity->description }}</p>
+                                        @if (date('d/m/Y', strtotime($activity->dateStart)) === date('d/m/Y'))
+                                            <a data-bs-toggle="collapse" href="#video{{ $activity->id }}" role="button"
+                                                aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="bi bi-play-btn-fill btn btn-danger"> ¡Ver Ahora!</i>
+                                            </a>
+                                            <div class="collapse" id="video{{ $activity->id }}">
+                                                <div class="card card-body">
+                                                    <div class="ratio ratio-16x9">
+                                                        <video controls allowfullscreen class="lozad"
+                                                            data-poster="/img/video1IntroCamilaMontes.png" width="100%"
+                                                            height="50%">
+                                                            <source
+                                                                data-src="{{ asset('/public/storage/' . $activity->user->videos->first()->url) }}"
+                                                                type="video/mp4">
+                                                        </video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    <!-- End Schdule Day 5 -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Schedule Section -->
+
+
+
+
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <hr>
