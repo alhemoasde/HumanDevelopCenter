@@ -29,54 +29,73 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <tbody>
-                                        <tr>
-                                            <td>Referencia CDH</td>
-                                            <td id="referencia">{{$ref_payco['x_id_invoice']}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bold">Fecha</td>
-                                            <td id="fecha" class="">{{$ref_payco['x_transaction_date']}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Respuesta</td>
-                                            <td id="respuesta">{{$ref_payco['x_response']}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Motivo</td>
-                                            <td id="motivo">{{$ref_payco['x_response_reason_text']}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bold">Banco</td>
-                                            <td class="" id="banco">{{$ref_payco['x_bank_name']}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bold">Recibo</td>
-                                            <td id="recibo">{{$ref_payco['x_transaction_id']}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bold">Total</td>
-                                            <td class="" id="total">{{number_format($ref_payco['x_amount'], 2, '.', ',')}} {{$ref_payco['x_currency_code']}}</td>
-                                        </tr>
+                                        @if (isset($ref_payco['x_id_invoice']))
+                                            <tr>
+                                                <td>Referencia CDH</td>
+                                                <td id="referencia">{{ $ref_payco['x_id_invoice'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bold">Fecha</td>
+                                                <td id="fecha" class="">{{ $ref_payco['x_transaction_date'] }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Respuesta</td>
+                                                <td id="respuesta">{{ $ref_payco['x_response'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Motivo</td>
+                                                <td id="motivo">{{ $ref_payco['x_response_reason_text'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bold">Banco</td>
+                                                <td class="" id="banco">{{ $ref_payco['x_bank_name'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bold">Recibo</td>
+                                                <td id="recibo">{{ $ref_payco['x_transaction_id'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bold">Total</td>
+                                                <td class="" id="total">
+                                                    {{ number_format($ref_payco['x_amount'], 2, '.', ',') }}
+                                                    {{ $ref_payco['x_currency_code'] }}</td>
+                                            </tr>
+                                        @else
+                                            <tr>
+                                                <td>Respuesta</td>
+                                                <td id="respuesta">{{ $ref_payco['x_response'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Motivo</td>
+                                                <td id="motivo">{{ $ref_payco['x_response_reason_text'] }}</td>
+                                            </tr>
+                                        @endif
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="col-lg-8 col-lg-offset-2 text-center">
                             <div class="alert-info">
-                                <label for="email" style="color: rgb(238, 16, 16);"><i class="bi bi-envelope-check-fill"></i> Email:</label>
-                                <input class="about-btn" onchange="chargeEmail()" type="email" name="email" id="email" placeholder="Correo electrónico...">
-                                <a id="btView" name="btView" href="{{ route('player','') }}" class="about-btn scrollto"><i class="bi bi-play-circle-fill"> Ver Mis Videos</i></a>
-                              </div>
-                              <script>
-                                function chargeEmail(){
-                                  btnViewVideo = document.getElementById('btView');
-                                  inputEmail = document.getElementById('email');
-                                  hrefRoute = '{{ route('player','') }}';
-                                  btnViewVideo.setAttribute('href', hrefRoute+'/'+inputEmail.value);
+                                <label for="email" style="color: rgb(238, 16, 16);"><i
+                                        class="bi bi-envelope-check-fill"></i> Email:</label>
+                                <input class="about-btn" onchange="chargeEmail()" type="email" name="email"
+                                    id="email" placeholder="Correo electrónico...">
+                                <a id="btView" name="btView" href="{{ route('player', '') }}"
+                                    class="about-btn scrollto"><i class="bi bi-play-circle-fill"> Ver Mis Videos</i></a>
+                            </div>
+                            <script>
+                                function chargeEmail() {
+                                    btnViewVideo = document.getElementById('btView');
+                                    inputEmail = document.getElementById('email');
+                                    hrefRoute = '{{ route('player', '') }}';
+                                    btnViewVideo.setAttribute('href', hrefRoute + '/' + inputEmail.value);
                                 }
-                              </script>
-                              <br>
-                            <a class="btn btn-danger" role="button" href="/"><i class="bi bi-door-closed-fill"></i> Finalizar</a>
+                            </script>
+                            <br>
+                            <a class="btn btn-danger" role="button" href="/"><i class="bi bi-door-closed-fill"></i>
+                                Finalizar</a>
                         </div>
                     </div>
                 </div>

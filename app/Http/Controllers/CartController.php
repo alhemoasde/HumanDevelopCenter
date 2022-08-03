@@ -30,7 +30,7 @@ class CartController extends Controller
     {
         $cartCollection = \Cart::getContent();
         $year = date("Y");
-        $invoice = 'CDH'.substr(str_shuffle('CentroDeDesarrolloHumano'), 0, 16).$year.random_int(100,1000000);
+        $invoice = 'CDH'.substr(str_shuffle('human'), 0, 16).$year.random_int(100,1000000);
         return view('cart.cart')->with(['cartCollection' => $cartCollection, 'ipInfo' => $this->getLocation(), 'invoice' => $invoice]);
     }
 
@@ -159,9 +159,8 @@ class CartController extends Controller
     public function checkout(Request $request)
     {
         $ref_payco = $this->getDataResponsePago($request->ref_payco);
+        if(isset($ref_payco['x_id_invoice'])){
         $transaction = Transaction::where('invoice_cart','=',$ref_payco['x_id_invoice'])->first();
-        
-        if(isset($transaction)){
             $transaction->update([
                 'ref_transaction' => $request->ref_payco,
                 'date_transaccion' => $ref_payco['x_transaction_date'],
@@ -221,7 +220,7 @@ class CartController extends Controller
                 'name' => $request->checkoutName,
                 'email' => $request->checkoutEmail,
             ]);
-            Mail::to($request->checkoutEmail)->send(new WelcomUserNew());   
+            /* Mail::to($request->checkoutEmail)->send(new WelcomUserNew()); */   
         }
         return view('cart.saveCart');
     }
@@ -235,11 +234,10 @@ class CartController extends Controller
     public function updateCheckout(Request $request)
     {
         $ref_payco = $this->getDataResponsePago($request->ref_transaction);
-        $transaction = Transaction::where('invoice_cart','=',$ref_payco['x_id_invoice'])->first();
-        
-        if(isset($transaction)){
+        if(isset($ref_payco['x_id_invoice']) ){
+            $transaction = Transaction::where('invoice_cart','=',$ref_payco['x_id_invoice'])->first();
             $transaction->update([
-                'ref_transaction' => $request->ref_payco,
+                'ref_transaction' => $request->ref_transaction,
                 'date_transaccion' => $ref_payco['x_transaction_date'],
                 'transaction_id' => $ref_payco['x_transaction_id'],
                 'autorizacion' => $ref_payco['x_approval_code'],
@@ -251,7 +249,7 @@ class CartController extends Controller
                 'signature' => $ref_payco['x_signature'],
             ]);
         } 
-        
+        return redirect()->route('home');
     }
 
 }

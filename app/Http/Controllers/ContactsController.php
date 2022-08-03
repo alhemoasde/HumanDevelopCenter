@@ -44,7 +44,7 @@ class ContactsController extends Controller
         $validated = $request->safe()->only(['name', 'email', 'subject', 'message']);
         $validated = $request->safe()->except(['name', 'email', 'subject', 'message']);
         
-        Contacts::create($request->all());
+        //Contacts::create($request->all());
 
         return back()->with('status', 'Su mensaje ha sido enviado satisfactoriamente, pronto nos pondremos en contacto.');
     }
