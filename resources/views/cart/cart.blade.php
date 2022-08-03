@@ -128,7 +128,7 @@
                                 @method('post')
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Datos para Checkout</h5>
+                                        <h5 class="modal-title">Datos del Suscriptor</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -138,8 +138,9 @@
                                                 <!-- Name input -->
                                                 <div class="form-outline">
                                                     <label class="form-label" for="checkoutName">Nombre:</label>
-                                                    <input type="text" id="checkoutName" name="checkoutName" class="form-control"
-                                                        value="{{ old('checkoutName') }}" required />
+                                                    <input type="text" id="checkoutName" name="checkoutName"
+                                                        class="form-control" value="{{ old('checkoutName') }}"
+                                                        required />
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -164,23 +165,16 @@
                                     <div class="modal-footer">
                                         <div class="collapse text-center" id="bottonEpayco">
                                             <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
-                                                    data-epayco-key="913a0e8d59c3bfecc380c4ea114bc1ee"
-                                                    data-epayco-amount="{{ \Cart::getTotal() }}"
-                                                    data-epayco-name="Centro de Desarrollo Humano"
-                                                    data-epayco-description="Compra Productos Digitales CDH"
-                                                    data-epayco-currency="{{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}"
-                                                    data-epayco-country="co" 
-                                                    data-epayco-test="true"
-                                                    data-epayco-invoice="{{ $invoice }}" 
-                                                    data-epayco-external="false"
-                                                    data-epayco-response="https://laboratorioparaelconocimiento.com/checkout"
-                                                    data-epayco-confirmation="" data-epayco-autoclick="false"
-                                                    data-epayco-email-billing="" data-epayco-name-billing="">
-                                            </script>                                    
+                                                data-epayco-key="913a0e8d59c3bfecc380c4ea114bc1ee" data-epayco-amount="{{ \Cart::getTotal() }}"
+                                                data-epayco-name="Centro de Desarrollo Humano" data-epayco-description="Compra Productos Digitales CDH"
+                                                data-epayco-currency="{{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}" data-epayco-country="co"
+                                                data-epayco-test="false" data-epayco-invoice="{{ $invoice }}" data-epayco-external="false"
+                                                data-epayco-response="https://laboratorioparaelconocimiento.com/checkout" data-epayco-confirmation=""
+                                                data-epayco-autoclick="false" data-epayco-email-billing="" data-epayco-name-billing=""></script>
                                         </div>
                                         <div class="bottonCheckout">
-                                            <button id="bottonCheckout" type="submit" data-bs-toggle="collapse"
-                                                href="#bottonEpayco" onclick="checkout();" class="btn btn-primary">
+                                            <button type="submit" id="bottonCheckout" data-bs-toggle="collapse"
+                                                href="#bottonEpayco" onclick="deleteButton(); checkout();" class="btn btn-primary">
                                                 Continuar</button>
                                         </div>
                                     </div>
@@ -197,11 +191,37 @@
 @endsection
 @section('js')
     <script>
+        let inputName = document.getElementById("checkoutName");
+        let inputEmail = document.getElementById("checkoutEmail");
+        let button = document.getElementById("bottonCheckout");
+        button.disabled = true;
+        inputName.addEventListener("change", stateHandle);
+        inputEmail.addEventListener("change", stateHandle);
+
+        function deleteButton(){
+            inputName.removeAttribute('required');
+            inputEmail.removeAttribute('required');
+            inputName.readOnly = true;
+            inputEmail.readOnly = true;
+            button.style.visibility = "hidden";
+        }
+
+        function stateHandle() {
+            if (document.getElementById("checkoutName").value === "" || document.getElementById("checkoutEmail").value ===
+                "") {
+                button.disabled = true;
+            } else {
+                button.disabled = false;
+            }
+        }
+
         function checkout() {
             var x = document.getElementsByClassName('epayco-button');
             const email = document.getElementById("checkoutEmail").value;
             const name = document.getElementById("checkoutName").value;
             for (var i = 0; i < x.length; i++) {
+                x[i].setAttribute("data-epayco-email-billing", email);
+                x[i].setAttribute("data-epayco-name-billing", name);
                 x[i + 1].setAttribute("data-epayco-email-billing", email);
                 x[i + 1].setAttribute("data-epayco-name-billing", name);
             }
