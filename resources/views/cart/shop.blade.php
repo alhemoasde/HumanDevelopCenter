@@ -78,8 +78,13 @@
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
-                                                            <strong>${{ number_format($pro->priceSell, 2, '.', ',') }}
-                                                                {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}</strong>
+                                                            <strong>
+                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                    ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
+                                                                @else
+                                                                    ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
+                                                                @endif
+                                                            </strong>
                                                         </p>
                                                     </div>
                                                     <div class="d-flex justify-content-between" style="height: 38px">
@@ -91,7 +96,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -104,15 +109,18 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    <input type="hidden" value="{{ $pro->priceSell }}" id="price"
-                                                        name="price">
+                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                        <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
+                                                    @else
+                                                        <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
+                                                    @endif
                                                     <input type="hidden"
                                                         value="{{ asset('/public/storage/' . $pro->poster) }}" id="img"
                                                         name="img">
@@ -158,8 +166,13 @@
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
-                                                            <strong>${{ number_format($pro->priceSell, 2, '.', ',') }}
-                                                                {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}</strong>
+                                                            <strong>
+                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                    ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
+                                                                @else
+                                                                    ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
+                                                                @endif
+                                                            </strong>
                                                         </p>
                                                     </div>
                                                     <div class="d-flex justify-content-between" style="height: 38px">
@@ -171,7 +184,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -184,15 +197,18 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    <input type="hidden" value="{{ $pro->priceSell }}" id="price"
-                                                        name="price">
+                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                        <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
+                                                    @else
+                                                        <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
+                                                    @endif
                                                     <input type="hidden"
                                                         value="{{ asset('/public/storage/' . $pro->poster) }}" id="img"
                                                         name="img">
@@ -239,8 +255,13 @@
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
-                                                            <strong>${{ number_format($pro->priceSell, 2, '.', ',') }}
-                                                                {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}</strong>
+                                                            <strong>
+                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                    ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
+                                                                @else
+                                                                    ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
+                                                                @endif
+                                                            </strong>
                                                         </p>
                                                     </div>
                                                     <div class="d-flex justify-content-between" style="height: 38px">
@@ -252,7 +273,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -265,15 +286,18 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    <input type="hidden" value="{{ $pro->priceSell }}" id="price"
-                                                        name="price">
+                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                        <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
+                                                    @else
+                                                        <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
+                                                    @endif
                                                     <input type="hidden"
                                                         value="{{ asset('/public/storage/' . $pro->poster) }}" id="img"
                                                         name="img">
@@ -320,8 +344,13 @@
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
-                                                            <strong>${{ number_format($pro->priceSell, 2, '.', ',') }}
-                                                                {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}</strong>
+                                                            <strong>
+                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                    ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
+                                                                @else
+                                                                    ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
+                                                                @endif
+                                                            </strong>
                                                         </p>
                                                     </div>
                                                     <div class="d-flex justify-content-between" style="height: 38px">
@@ -333,7 +362,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -346,15 +375,18 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    <input type="hidden" value="{{ $pro->priceSell }}" id="price"
-                                                        name="price">
+                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                        <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
+                                                    @else
+                                                        <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
+                                                    @endif
                                                     <input type="hidden"
                                                         value="{{ asset('/public/storage/' . $pro->poster) }}" id="img"
                                                         name="img">
@@ -401,8 +433,13 @@
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
-                                                            <strong>${{ number_format($pro->priceSell, 2, '.', ',') }}
-                                                                {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}</strong>
+                                                            <strong>
+                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                    ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
+                                                                @else
+                                                                    ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
+                                                                @endif
+                                                            </strong>
                                                         </p>
                                                     </div>
                                                     <div class="d-flex justify-content-between" style="height: 38px">
@@ -414,7 +451,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -427,15 +464,18 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    <input type="hidden" value="{{ $pro->priceSell }}" id="price"
-                                                        name="price">
+                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                        <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
+                                                    @else
+                                                        <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
+                                                    @endif
                                                     <input type="hidden"
                                                         value="{{ asset('/public/storage/' . $pro->poster) }}" id="img"
                                                         name="img">
@@ -481,8 +521,13 @@
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
-                                                            <strong>${{ number_format($pro->priceSell, 2, '.', ',') }}
-                                                                {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}</strong>
+                                                            <strong>
+                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                    ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
+                                                                @else
+                                                                    ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
+                                                                @endif
+                                                            </strong>
                                                         </p>
                                                     </div>
                                                     <div class="d-flex justify-content-between" style="height: 38px">
@@ -494,7 +539,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -507,15 +552,18 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    <input type="hidden" value="{{ $pro->priceSell }}" id="price"
-                                                        name="price">
+                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                        <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
+                                                    @else
+                                                        <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
+                                                    @endif
                                                     <input type="hidden"
                                                         value="{{ asset('/public/storage/' . $pro->poster) }}" id="img"
                                                         name="img">
