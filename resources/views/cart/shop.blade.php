@@ -96,7 +96,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -109,7 +109,7 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
@@ -184,7 +184,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -197,7 +197,7 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
@@ -273,7 +273,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -286,7 +286,7 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
@@ -362,7 +362,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -375,7 +375,7 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
@@ -451,7 +451,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -464,7 +464,7 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
@@ -539,7 +539,7 @@
                                                                 class="small text-danger fw-bold h4">{{ $pro->videos->count() }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between mb-2">
+                                                    {{-- <div class="d-flex justify-content-between mb-2">
                                                         <div class="collapse card text-center"
                                                             id="listVideo{{ $pro->id }}">
                                                             @foreach ($pro->videos as $video)
@@ -552,7 +552,7 @@
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
