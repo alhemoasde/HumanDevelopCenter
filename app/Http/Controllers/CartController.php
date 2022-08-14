@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Events;
 use App\Models\Transaction;
 use App\Models\Subscriber;
 use Illuminate\Support\Facades\Mail;
@@ -220,7 +221,7 @@ class CartController extends Controller
                 'name' => $request->checkoutName,
                 'email' => $request->checkoutEmail,
             ]);
-            /* Mail::to($request->checkoutEmail)->send(new WelcomUserNew()); */   
+            Mail::to($request->checkoutEmail)->send(new WelcomUserNew());   
         }
         return view('cart.saveCart');
     }
@@ -250,6 +251,23 @@ class CartController extends Controller
             ]);
         } 
         return redirect()->route('home');
+    }
+
+    /**
+     * Permite cargar la vista resumen de un dia determinado.
+     * @return \Illuminate\Http\Response
+     */
+    public function viewDay(Request $request)
+    {
+        /* dd($request->day); */
+        $day = ucfirst($request->day);
+        $event = Events::where('status','=','En Desarrollo')->where('active','=','1')->first();
+        $products = Product::where('day','=',$request->day)->where('events_id','=',$event->id)->get();
+        $productAll = Product::where('day','=',null)->where('events_id','=',$event->id)->get();
+        $products = $products->push($productAll->first());
+        $products->all();
+        return view('cart.shopDay')->with(['products' => $products,'event' => $event, 
+        'day' => $day, 'ipInfo' => $this->getLocation()]);
     }
 
 }

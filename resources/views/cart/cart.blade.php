@@ -54,10 +54,9 @@
                             <b><a href="/shop/{{ $item->attributes->slug }}" class="itemsName">{{ $item->id }} -
                                     {{ $item->name }}</a></b><br>
                             <b>Precio: </b>${{ number_format($item->price, 2, '.', ',') }}
-                            {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}<br>
+                            {{ $ipInfo['continent'] !== 'South America' ? 'USD' : 'COP' }}<br>
                             <b>Sub Total: </b>${{ number_format(\Cart::get($item->id)->getPriceSum(), 2, '.', ',') }}
-                            {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}<br>
-                            :: Info IP :: {{ $ipInfo['ip'] }}
+                            {{ $ipInfo['continent'] !== 'South America' ? 'USD' : 'COP' }}<br>
                             {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
                         </div>
                         <div class="col-md-2">
@@ -98,17 +97,17 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <b>Transporte: </b>
-                                <span class="badge bg-dark rounded-pill">0 {{ $ipInfo['currency_code'] }}</span>
+                                <span class="badge bg-dark rounded-pill">0 {{ $ipInfo['continent'] !== 'South America' ? 'USD' : 'COP' }}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <b>Impuestos: </b>
-                                <span class="badge bg-dark rounded-pill">0 {{ $ipInfo['currency_code'] }}</span>
+                                <span class="badge bg-dark rounded-pill">0 {{ $ipInfo['continent'] !== 'South America' ? 'USD' : 'COP' }}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <b>Total: </b>
                                 <span class="badge bg-danger rounded-pill">$
                                     {{ number_format(\Cart::getTotal(), 2, '.', ',') }}
-                                    {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}</span>
+                                    {{ $ipInfo['continent'] !== 'South America' ? 'USD' : 'COP' }}</span>
                             </li>
                         </ul>
                         <img class="img-fluid img-thumbnail" src="img/ePayco-Medios-de-Pago.png"
@@ -167,7 +166,7 @@
                                             <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
                                                 data-epayco-key="913a0e8d59c3bfecc380c4ea114bc1ee" data-epayco-amount="{{ \Cart::getTotal() }}"
                                                 data-epayco-name="Centro de Desarrollo Humano" data-epayco-description="Compra Productos Digitales CDH"
-                                                data-epayco-currency="{{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}" data-epayco-country="co"
+                                                data-epayco-currency="{{ $ipInfo['continent'] !== 'South America' ? 'USD' : 'COP' }}" data-epayco-country="{{$ipInfo['country_code']}}"
                                                 data-epayco-test="false" data-epayco-invoice="{{ $invoice }}" data-epayco-external="false"
                                                 data-epayco-response="https://laboratorioparaelconocimiento.com/checkout" data-epayco-confirmation=""
                                                 data-epayco-autoclick="false" data-epayco-email-billing="" data-epayco-name-billing=""></script>

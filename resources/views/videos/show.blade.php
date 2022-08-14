@@ -29,7 +29,12 @@
 
                     <li class="list-group-item" style="text-align: justify;">
                         <label for="description"><strong>Descripción:</strong></label>
-                        <p id="description">{{ $video->description }}</p>
+                        <p id="description" class="display-6">{{ $video->description }}</p>
+                    </li>
+
+                    <li class="list-group-item" style="text-align: justify;">
+                        <label for="description"><strong>Orador:</strong></label>
+                        <p id="description" class="display-6">{{ $video->user->name }}</p>
                     </li>
 
                     <li class="list-group-item">
