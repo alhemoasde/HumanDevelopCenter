@@ -58,14 +58,14 @@
                                 @if (isset($user->telephone))
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="bi bi-whatsapp text-success"></i>
-                                    <p class="mb-0"><a
+                                    <p class="mb-0"><a style="word-wrap: break-word;"
                                             href="https://wa.me/{{ $str = ltrim ($user->telephone,'+') }}/?&text=%F0%9F%99%8B%E2%80%8D%E2%99%82%EF%B8%8F%C2%A1Hola!%20Me%20interesa%20conocer%20mas%20informaci%C3%B3n%20sobre%20su%20grandioso%20evento.%F0%9F%A4%9D" target="_blank"
                                             style="color: #1e941a;" class="facebook">¡Contactar Ahora!</a></p>
                                 </li>
 
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="bi bi-telegram" style="color: #3b5998;"></i>
-                                    <p class="mb-0"><a
+                                    <p class="mb-0"><a style="word-wrap: break-word;"
                                             href="https://t.me/{{ $user->telephone }}" target="_blank" style="color: #3b5998;"
                                             class="facebook">¡Contactar Ahora!</a></p>
                                 </li>
@@ -73,63 +73,59 @@
                                 @if (isset($user->accountFacabook))
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="bi bi-facebook" style="color: #3b5998;"></i>
-                                    <p class="mb-0"><a
+                                    <p class="mb-0"><a style="word-wrap: break-word;"
                                             href="https://www.facebook.com/{{ $user->accountFacabook }}" target="_blank"
-                                            class="facebook">{{ $user->accountFacabook }}</a></p>
+                                            class="facebook">¡Contactar Ahora!</a></p>
                                 </li>
                                 @endif
                                 @if (isset($user->accountInstagram))
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="bi bi-instagram" style="color: #ac2bac;"></i>
-                                    <p class="mb-0"><a
+                                    <p class="mb-0"><a style="word-wrap: break-word;"
                                             href="https://www.instagram.com/{{ $user->accountInstagram }}" target="_blank"
-                                            class="instagram">{{ $user->accountInstagram }}</a></p>
+                                            class="instagram">¡Contactar Ahora!</a></p>
                                 </li>
                                 @endif
                                 @if (isset($user->accountTwitter))
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="bi bi-twitter" style="color: #55acee;"></i>
-                                    <p class="mb-0"><a href="https://twitter.com/{{ $user->accountTwitter }}"
-                                            target="_blank" class="twitter">{{ $user->accountTwitter }}</a></p>
+                                    <p class="mb-0"><a style="word-wrap: break-word;"
+                                            href="https://twitter.com/{{ $user->accountTwitter }}"
+                                            target="_blank" class="twitter">¡Contactar Ahora!</a></p>
                                 </li>
                                 @endif
                                 @if (isset($user->accountLinkedin))
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="bi bi-linkedin" style="color: #333333;"></i>
-                                    <p class="mb-0"><a
+                                    <p class="mb-0"><a style="word-wrap: break-word;"
                                             href="https://www.linkedin.com/in/{{ $user->accountLinkedin }}"
-                                            class="linkedin">{{ $user->accountLinkedin }}</a></p>
+                                            class="linkedin">¡Contactar Ahora!</a></p>
                                 </li>
                                 @endif
                                 @if (isset($user->accountTiktok))
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="bi bi-tiktok text-info"></i>
-                                    <p class="mb-0"><a
+                                    <p class="mb-0"><a style="word-wrap: break-word;"
                                             href="https://www.tiktok.com/{{ '@'.$user->accountTiktok }}"
-                                            class="linkedin">{{ $user->accountTiktok }}</a></p>
+                                            class="linkedin">¡Contactar Ahora!</a></p>
                                 </li>
                                 @endif
                                 @if (isset($user->accountYouTube))
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="bi bi-youtube text-danger"></i>
-                                    <p class="mb-0"><a
+                                    <p class="mb-0"><a style="word-wrap: break-word;"
                                             href="https://www.youtube.com/channel/{{ $user->accountYouTube }}"
-                                            class="linkedin">{{ $user->accountYouTube }}</a></p>
+                                            class="linkedin">¡Contactar Ahora!</a></p>
                                 </li>
                                 @endif
                                 @if (isset($user->accountOther))
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="bi bi-hand-index-thumb-fill"></i>
-                                    <p class="mb-0"><a
+                                    <p class="mb-0"><a style="word-wrap: break-word;"
                                             href="{{ $user->accountOther }}"
-                                            class="linkedin">{{ $user->accountOther }}</a></p>
+                                            class="linkedin">¡Contactar Ahora!</a></p>
                                 </li>
                                 @endif
-
-                               
-                                
-                                
-                                
                                 
                             </ul>
                         </div>

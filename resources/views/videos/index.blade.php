@@ -33,8 +33,9 @@
                         <tr class="table-dark text-center">
                             <th width="5%">No.</th>
                             <th width="5%">Creado</th>
-                            <th width="30%">Titulo</th>
-                            <th width="35%">Descripción</th>
+                            <th width="25%">Titulo</th>
+                            <th width="25%">Descripción</th>
+                            <th width="15%">Orador</th>
                             <th width="5%">Estado</th>
                             <th width="10%">Opción</th>
                         </tr>
@@ -48,6 +49,8 @@
                                 <td>{{ $video->title }}</td>
                                 
                                 <td style="text-align: justify;">{{ \Str::limit($video->description, 70) }}</td>
+
+                                <td style="text-align: justify;">{{ \Str::limit($video->user->name, 40) }}</td>
                                 
                                 <td>{{ $video->status == 1 ? 'Activo' : 'Inactivo'}}</td>
 

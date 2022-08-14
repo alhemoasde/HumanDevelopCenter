@@ -90,6 +90,9 @@ Route::get('/update-checkout/{ref_transaction}', [App\Http\Controllers\CartContr
 Route::post('/saveCart', [App\Http\Controllers\CartController::class, 'saveCart'])->name('saveCart');
 
 
+Route::get('/view-day/{day}', [App\Http\Controllers\CartController::class, 'viewDay'])->name('cart.shopDay');
+
+
 Route::get('/response', function(){
     return response('Confirmación Recibida', 200)->header('success', true);
 });

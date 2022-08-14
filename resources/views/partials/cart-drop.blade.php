@@ -9,15 +9,17 @@
             <div class="card-body text-secondary">
                 @foreach (\Cart::getContent() as $item)
                     <p class="card-text">
-                        <div class="col-xs-12 col-sm-12 col-lg-3 text-center">
+                        {{-- <div class="col-xs-12 col-sm-12 col-lg-3 text-center">
                             <img class="img-fluid" src="{{ $item->attributes->image }}" >
-                        </div>
+                        </div> --}}
                         <div class="col-xs-12 col-sm-12 col-lg-6">
                             <b>{{ $item->name }}</b>
                             <br><small>Cantidad: {{ $item->quantity }}</small>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-lg-3">
-                            <p>${{ \Cart::get($item->id)->getPriceSum() }} USD</p>
+                            <p>${{ \Cart::get($item->id)->getPriceSum() }} 
+                                
+                            </p>
                         </div>
                         <hr>
                     </p>
@@ -27,7 +29,7 @@
     <li class="list-group-item">
         <div class="row">
             <div class="col-lg-10">
-                <b>Total: </b>${{ \Cart::getTotal() }} USD
+                <b>Total: </b>${{ \Cart::getTotal() }} 
             </div>
             <div class="col-lg-2">
                 <form action="{{ route('cart.clear') }}" method="POST">
@@ -45,7 +47,7 @@
         <!-- <a class="btn btn-success btn-sm" href="{{route('cart.checkout')}}">
             <i class="bi bi-paypal"> Procesar Pago</i> <i class="bi bi-arrow-right-square-fill"></i>
         </a> -->
-        <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
+        {{-- <script src="https://checkout.epayco.co/checkout.js" class="epayco-button"
             data-epayco-key="eda14fc53c7f3e9af3e97901a7f27d68"
             data-epayco-amount="{{ \Cart::getTotal() }}"
             data-epayco-name="Centro de Desarrollo Humano"
@@ -60,7 +62,7 @@
             data-epayco-autoclick="false"
             data-epayco-email-billing="" 
             data-epayco-name-billing="">                           
-        </script>
+        </script> --}}
     </div>
 @else
     <li class="list-group-item"><i class="bi bi-arrow-repeat"> Carrito Vacio...</i></li>
