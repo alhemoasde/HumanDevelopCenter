@@ -44,7 +44,7 @@
                                     <div class="col-lg-8 col-md-10">
                                             <div class="speaker" data-aos="fade-up" data-aos-delay="100">
                                                 <img src="{{ $activity->user->photography == '' ? asset('/img/user-perfil-not.jpg') : asset('/public/storage/' . $activity->user->photography) }}"
-                                                    alt="{{ $activity->user->name }}" class="img-fluid" style="border-radius: 40px;">
+                                                    alt="{{ $activity->user->name }}" class="img-fluid" style="border-radius: 30px; height: 736px !important;">
                                                 <div class="details">
                                                     <h3><a href="{{ route('users.show', $activity->user->id) }}">{{ $activity->user->name }}</a></h3>
                                                     <p>{{ $activity->user->famousPhrase }}</p>
