@@ -103,6 +103,7 @@
 
                     <!-- Schdule Day 1 -->
                     <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
+                        <a class="btn btn-info text-center" href="/view-day/dia_1" target="_blank"><i class="bi bi-1-square-fill">¡Ver Información del Dia!</i></a>
                         @foreach ($event->eventActivitys as $activity)
                             @if ($activity->day === 'Dia_1')
                                 <div class="row schedule-item">
@@ -125,11 +126,11 @@
                                             <div class="collapse" id="video{{ $activity->id }}">
                                                 <div class="card card-body">
                                                     <div class="ratio ratio-16x9">
-                                                        <video controls allowfullscreen class="lozad"
-                                                            data-poster="/img/video1IntroCamilaMontes.png" width="100%"
+                                                        <video controls allowfullscreen class=""
+                                                            poster="/img/video1IntroCamilaMontes.png" width="100%"
                                                             height="50%">
                                                             <source
-                                                                data-src="{{ asset('/public/storage/' . $activity->user->videos->first()->url) }}"
+                                                                src="{{ asset('/public/storage/' . $activity->user->videos->first()->url) }}"
                                                                 type="video/mp4">
                                                         </video>
                                                     </div>
@@ -145,7 +146,7 @@
 
                     <!-- Schdule Day 2 -->
                     <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-2">
-
+                        <a class="btn btn-info text-center" href="/view-day/dia_2" target="_blank"><i class="bi bi-1-square-fill">¡Ver Información del Dia!</i></a>
                         @foreach ($event->eventActivitys as $activity)
                             @if ($activity->day === 'Dia_2')
                                 <div class="row schedule-item">
@@ -188,7 +189,7 @@
 
                     <!-- Schdule Day 3 -->
                     <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-3">
-
+                        <a class="btn btn-info text-center" href="/view-day/dia_3" target="_blank"><i class="bi bi-1-square-fill">¡Ver Información del Dia!</i></a>
                         @foreach ($event->eventActivitys as $activity)
                             @if ($activity->day === 'Dia_3')
                                 <div class="row schedule-item">
@@ -231,7 +232,7 @@
 
                     <!-- Schdule Day 4 -->
                     <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-4">
-
+                        <a class="btn btn-info text-center" href="/view-day/dia_4" target="_blank"><i class="bi bi-1-square-fill">¡Ver Información del Dia!</i></a>
                         @foreach ($event->eventActivitys as $activity)
                             @if ($activity->day === 'Dia_4')
                                 <div class="row schedule-item">
@@ -274,7 +275,7 @@
 
                     <!-- Schdule Day 5 -->
                     <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-5">
-
+                        <a class="btn btn-info text-center" href="/view-day/dia_5" target="_blank"><i class="bi bi-1-square-fill">¡Ver Información del Dia!</i></a>
                         @foreach ($event->eventActivitys as $activity)
                             @if ($activity->day === 'Dia_5')
                                 <div class="row schedule-item">

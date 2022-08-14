@@ -79,7 +79,7 @@
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
                                                             <strong>
-                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                @if ($ipInfo['continent'] !== 'South America')
                                                                     ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
                                                                 @else
                                                                     ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
@@ -116,7 +116,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                    @if ($ipInfo['continent'] !== 'South America')
                                                         <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
                                                     @else
                                                         <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
@@ -167,7 +167,7 @@
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
                                                             <strong>
-                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                @if ($ipInfo['continent'] !== 'South America')
                                                                     ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
                                                                 @else
                                                                     ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
@@ -204,7 +204,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                    @if ($ipInfo['continent'] !== 'South America')
                                                         <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
                                                     @else
                                                         <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
@@ -256,7 +256,7 @@
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
                                                             <strong>
-                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                @if ($ipInfo['continent'] !== 'South America')
                                                                     ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
                                                                 @else
                                                                     ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
@@ -293,7 +293,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                    @if ($ipInfo['continent'] !== 'South America')
                                                         <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
                                                     @else
                                                         <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
@@ -345,7 +345,7 @@
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
                                                             <strong>
-                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                @if ($ipInfo['continent'] !== 'South America')
                                                                     ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
                                                                 @else
                                                                     ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
@@ -382,7 +382,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                    @if ($ipInfo['continent'] !== 'South America')
                                                         <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
                                                     @else
                                                         <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
@@ -434,7 +434,7 @@
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
                                                             <strong>
-                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                @if ($ipInfo['continent'] !== 'South America')
                                                                     ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
                                                                 @else
                                                                     ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
@@ -471,7 +471,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                    @if ($ipInfo['continent'] !== 'South America')
                                                         <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
                                                     @else
                                                         <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
@@ -522,7 +522,7 @@
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
                                                             <strong>
-                                                                @if ($ipInfo['currency_code'] !== 'COP')
+                                                                @if ($ipInfo['continent'] !== 'South America')
                                                                     ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
                                                                 @else
                                                                     ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
@@ -559,7 +559,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    @if ($ipInfo['currency_code'] !== 'COP')
+                                                    @if ($ipInfo['continent'] !== 'South America')
                                                         <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
                                                     @else
                                                         <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">

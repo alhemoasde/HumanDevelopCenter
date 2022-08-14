@@ -167,7 +167,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-center">
-                                                    <img src="{{ asset('/storage/' . $pro->poster) }}"
+                                                    <img src="{{ asset('/public/storage/' . $pro->poster) }}"
                                                         class="card-img-top mx-autoimg-fluid img-thumbnail"
                                                         style="height: 180px; width: 180px; border-radius: 19px;"
                                                         alt="{{ $pro->name }}"/>
@@ -175,8 +175,13 @@
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <p class="text-left h3">
-                                                            <strong>${{ number_format($pro->priceSell, 2, '.', ',') }}
-                                                                {{ $ipInfo['currency_code'] !== 'COP' ? 'USD' : 'COP' }}</strong>
+                                                            <strong>
+                                                                @if ($ipInfo['continent'] !== 'South America')
+                                                                    ${{ number_format($pro->priceSellUSD, 2, '.', ',') }} USD
+                                                                @else
+                                                                    ${{ number_format($pro->priceSell, 2, '.', ',') }} COP
+                                                                @endif
+                                                            </strong>
                                                         </p>
                                                     </div>
                                                     <div class="d-flex justify-content-between" style="height: 38px">
@@ -206,10 +211,14 @@
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST">
                                                     {{ csrf_field() }}
+                                                    <input type="hidden" value="{{$day}}" id="idDay" name="idDay">
                                                     <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
                                                     <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                                    <input type="hidden" value="{{ $pro->priceSell }}" id="price"
-                                                        name="price">
+                                                    @if ($ipInfo['continent'] !== 'South America')
+                                                        <input type="hidden" value="{{ $pro->priceSellUSD }}" id="price" name="price">
+                                                    @else
+                                                        <input type="hidden" value="{{ $pro->priceSell }}" id="price" name="price">
+                                                    @endif
                                                     <input type="hidden"
                                                         value="{{ asset('/public/storage/' . $pro->poster) }}" id="img"
                                                         name="img">
