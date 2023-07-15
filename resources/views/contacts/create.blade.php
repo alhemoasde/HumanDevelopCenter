@@ -29,7 +29,7 @@
                 <div class="contact-phone">
                     <i class="bi bi-phone"></i>
                     <h3>Teléfono</h3>
-                    <p><a href="tel:+573107657556">(+57) 310 765 75 56</a></p>
+                    <p><a href="tel:+573107657556">(+57) xxx xxx xx xx</a></p>
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
                 <div class="contact-email">
                     <i class="bi bi-envelope"></i>
                     <h3>Email</h3>
-                    <p><a href="mailto:info@laboratorioparaelconocimiento.com">info@laboratorioparaelconocimiento.com</a></p>
+                    <p><a href="mailto:info@laboratorioparaelconocimiento.com">info@appContact.com</a></p>
                 </div>
             </div>
 

@@ -31,12 +31,12 @@ use App\Models\Events;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     $users = User::where('profile','=','Speaker')
     ->where('status','=','1')->get();
     $event = Events::where('status','=','Programado')->where('active','=','1')->orWhere('status','=','En Desarrollo')->first();
     return view('intro', compact(['users', 'event']));
-});
+}); */
 
 Route::get('/donation', function(){
     return view('donation');
@@ -54,7 +54,7 @@ Route::resource('users', App\Http\Controllers\UserController::class)->middleware
 Route::get('/speaker/{id}', [App\Http\Controllers\UserController::class, 'showProfile'])->name('users.show');
 
 Route::resource('contacts', App\Http\Controllers\ContactsController::class)->except(['create','store','edit','update','destroy'])->middleware('admin');
-Route::get('/contacts-create', [App\Http\Controllers\ContactsController::class, 'create'])->name('contacts.create');
+Route::get('/', [App\Http\Controllers\ContactsController::class, 'create'])->name('contacts.create');
 Route::post('/contacts-store', [App\Http\Controllers\ContactsController::class, 'store'])->name('contacts.store');
 
 Route::resource('bussiness', App\Http\Controllers\BussinessController::class)->middleware('admin')->except('destroy','show');
